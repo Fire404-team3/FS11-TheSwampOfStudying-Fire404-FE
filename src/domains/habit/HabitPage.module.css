@@ -1,10 +1,46 @@
 .habitContainer{
-  margin-top: 8.69rem;
-  width: 0 auto;
+  margin: 0 auto;
+  width: 78rem;
+}
+
+.habitBox{
+  background-color: white;
+  margin-top: 8rem;
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.navTop{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
 }
 
 .studyNameTitle{
   font-size: 2rem;
   font-weight: 800;
   color: var(--black);
+}
+
+.timeContainer{
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  
+
+}
+.nowTimeWord{
+  font-size: 1.125rem;
+  font-weight: 400;
+  color: var(--gray-818181);
+}
+
+.imRealClock{
+  border: 1px solid var(--gray-EEEEEE);
+  padding: 0.5rem 0.75rem;
+  width: 12rem;
+  border-radius: 3.125rem;
+  
 }

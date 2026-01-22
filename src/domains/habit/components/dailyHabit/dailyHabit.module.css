@@ -1,0 +1,47 @@
+.dailyHabitContainer {
+  border: 1px solid var(--gray-DDDDDD);
+  border-radius: 1.25rem;
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.habitBox {
+  padding: 0 22.5rem;
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: 800;
+  margin-bottom: 1.5rem;
+  text-align: right;
+}
+
+.patchHabitBtn {
+  border: none;
+  background-color: transparent;
+  color: var(--gray-818181);
+  margin-left: 5.75rem;
+}
+
+.habitBtnContainer{
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.habitBtn, .habitBtnClick {
+  width: 25rem;
+  height: 3.375rem;
+  
+  border: none;
+  border-radius: 1.25rem;
+
+  color: var(--gray-818181);
+}
+
+.habitBtnClick{
+  background-color: var(--brand);
+  color: #fff ;
+}
