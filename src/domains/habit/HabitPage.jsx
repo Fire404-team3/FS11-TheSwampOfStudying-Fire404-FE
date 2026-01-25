@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import DailyHabit from './components/DailyHabit/DailyHabit';
 import styles from './HabitPage.module.css';
 
-function habitPage() {
+function HabitPage() {
   //예비 id : studyid 번호
   const id = '101';
 
@@ -40,4 +40,4 @@ function habitPage() {
   );
 }
 
-export default habitPage;
+export default HabitPage;
