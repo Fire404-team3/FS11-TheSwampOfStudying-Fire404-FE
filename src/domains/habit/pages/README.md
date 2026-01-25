@@ -1,9 +1,9 @@
 ## 통합시 확인 사항 (Habit modal)
 
-# 1. Modal 호출 방법 (개발시)
-
-인자 : Type(studyId, habits[{}], refetchTodayHabits()) => Object
- 예시 
+## Modal 호출 방법 
+1. VITE_API_BASE_URL=http://localhost:5001 DB환경설정 필요
+2. Type(studyId, habits[{}], refetchTodayHabits()) => Object
+  <사용예시> 
   {isModalOpen && (
     <HabitsModal
     studyId={studyData.id}

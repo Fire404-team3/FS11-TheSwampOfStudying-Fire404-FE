@@ -38,7 +38,7 @@ function HabitsModal({ studyId, habits: passedHabits, refetchTodayHabits, onClos
     );
   };
 
-  // Add New Habit
+
   // "new-타임스탬프" 형식으로 프론트 임시 ID 생성
   const handleClickAddNewButton = () => {
     const lastHabit = habits.at(-1);
@@ -51,13 +51,13 @@ function HabitsModal({ studyId, habits: passedHabits, refetchTodayHabits, onClos
   };
 
   // Delete Habit
-  // 실제 삭제가 아닌, 프론트 배열에서 제거
+  // 삭제대상 제거 후 재배열
   const handleClickDeleteButton = (id) => () => {
     setHabits((prev) => prev.filter((habit) => habit.id !== id));
   };
 
   // Submit 처리
-  // 프론트 단에서 빈 문자열 방어
+  // 프론트 단에서 빈 문자열 1차 방어
   const handleClickUpdate = async () => {
     if (habits.some((h) => !h.name || h.name.trim() === '')) {
       alert('습관 이름은 필수입니다.');
@@ -66,7 +66,8 @@ function HabitsModal({ studyId, habits: passedHabits, refetchTodayHabits, onClos
 
     try {
       const response = await fetch(
-        `${BASE_URL}/studies/${studyId}/habits`,
+        `${BASE_URL}/habits/${studyId}`,
+        // `${BASE_URL}/studies/${studyId}/habits`,
         {
           method: 'PUT',
           headers: { 'Content-Type': 'application/json' },
@@ -87,7 +88,7 @@ function HabitsModal({ studyId, habits: passedHabits, refetchTodayHabits, onClos
     }
   };
 
-  // 화면 렌더링
+  // 화면 렌더링 영역
   return (
     <Modal>
       <h5 className="habits-modal-title">습관 목록</h5>
@@ -125,8 +126,7 @@ function HabitsModal({ studyId, habits: passedHabits, refetchTodayHabits, onClos
   );
 }
 
-// Habit Item
-// 습관 1개에 대한 입력/삭제 처리
+// Habit Item 컴포넌트 처리 
 function Habit({ habit, onChangeInput, onClickDelete }) {
   return (
     <div className="habit-item">
