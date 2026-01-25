@@ -1,3 +1,9 @@
+# Habit modal test 목적용
+src/app.jsx
+src/main.jsx
+src/domains/habit/pages/HabitsModalTestPage.jsx
+.env.development
+
 # Logs
 logs
 *.log
