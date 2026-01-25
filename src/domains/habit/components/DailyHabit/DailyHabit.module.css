@@ -39,6 +39,8 @@
   border-radius: 1.25rem;
 
   color: var(--gray-818181);
+
+  cursor: pointer;
 }
 
 .habitBtnClick{

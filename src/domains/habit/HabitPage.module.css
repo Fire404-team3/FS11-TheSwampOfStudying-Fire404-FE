@@ -40,7 +40,8 @@
 .imRealClock{
   border: 1px solid var(--gray-EEEEEE);
   padding: 0.5rem 0.75rem;
-  width: 12rem;
+  width: 13rem;
   border-radius: 3.125rem;
+  text-align: center;
   
 }
