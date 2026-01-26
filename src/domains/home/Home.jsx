@@ -1,14 +1,14 @@
 import { useEffect, useState } from 'react';
 import StudyExploreList from './components/StudyExploreList/StudyExploreList';
 
-const DEBOUNCE_DELAY = 300;
-
 const SORT_OPTION = {
   created_desc: { sort: 'createdAt', order: 'desc' },
-  createdAt_asc: { sort: 'createdAt', order: 'asc' },
+  created_asc: { sort: 'createdAt', order: 'asc' },
   points_desc: { sort: 'points', order: 'desc' },
   points_asc: { sort: 'points', order: 'asc' },
 };
+
+const DEBOUNCE_DELAY = 300;
 
 export default function Home() {
   const [exploreStudies, setExploreStudies] = useState([]);

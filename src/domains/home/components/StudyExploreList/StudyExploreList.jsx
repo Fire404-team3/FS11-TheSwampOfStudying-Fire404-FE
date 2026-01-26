@@ -28,8 +28,8 @@ export default function StudyExploreList({
             value={sortOrder}
             onChange={(e) => onSortChange(e.target.value)}
           >
-            <option value="createdAt_desc">최근 순</option>
-            <option value="createdAt_asc">오래된 순</option>
+            <option value="created_desc">최근 순</option>
+            <option value="created_asc">오래된 순</option>
             <option value="points_desc">많은 포인트 순</option>
             <option value="points_asc">적은 포인트 순</option>
           </select>
