@@ -9,11 +9,15 @@ const SORT_OPTION = {
 };
 
 const DEBOUNCE_DELAY = 300;
+const LIMIT = 6;
 
 export default function Home() {
   const [exploreStudies, setExploreStudies] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [sortOrder, setSortOrder] = useState('created_desc');
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalCount, setTotalCount] = useState(0);
 
   useEffect(() => {
     const debounceTimer = setTimeout(() => {
@@ -25,6 +29,8 @@ export default function Home() {
             search: searchTerm,
             sort: sort,
             order: order,
+            page: currentPage,
+            limit: LIMIT,
           });
 
           const response = await fetch(
@@ -33,6 +39,7 @@ export default function Home() {
           const result = await response.json();
 
           setExploreStudies(result.data || []);
+          setTotalCount(result.meta.totalCount);
         } catch (error) {
           console.error('데이터 로드 실패', error);
         }
@@ -40,7 +47,7 @@ export default function Home() {
       fetchStudies();
     }, DEBOUNCE_DELAY);
     return () => clearTimeout(debounceTimer);
-  }, [searchTerm, sortOrder]);
+  }, [searchTerm, sortOrder, currentPage]);
 
   return (
     <>
@@ -55,6 +62,10 @@ export default function Home() {
           searchTerm={searchTerm}
           sortOrder={sortOrder}
           onSortChange={setSortOrder}
+          currentPage={currentPage}
+          onPageChange={setCurrentPage}
+          totalCount={totalCount}
+          limit={LIMIT}
         />
       </section>
     </>
