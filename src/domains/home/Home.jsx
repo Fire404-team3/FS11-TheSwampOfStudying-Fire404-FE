@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import StudyExploreList from './components/StudyExploreList/StudyExploreList';
+import StudyExploreList from './components/StudyExploreList';
 
 const SORT_OPTION = {
   created_desc: { sort: 'createdAt', order: 'desc' },
