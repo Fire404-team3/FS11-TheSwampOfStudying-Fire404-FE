@@ -18,6 +18,16 @@ export default function StudyExploreList({
   const startPage = currentGroup * pageLimit + 1;
   const endPage = Math.min(startPage + pageLimit - 1, totalPages);
 
+  const handleSearch = (value) => {
+    onSearchChange(value);
+    onPageChange(1);
+  };
+
+  const handleSort = (value) => {
+    onSortChange(value);
+    onPageChange(1);
+  };
+
   const renderEmptyMessage = () => {
     if (searchTerm) {
       return <p>{searchTerm}에 대한 검색 결과가 없습니다.</p>;
@@ -32,12 +42,12 @@ export default function StudyExploreList({
             type="text"
             placeholder="검색"
             value={searchTerm}
-            onChange={(e) => onSearchChange(e.target.value)}
+            onChange={(e) => handleSearch(e.target.value)}
           />
 
           <select
             value={sortOrder}
-            onChange={(e) => onSortChange(e.target.value)}
+            onChange={(e) => handleSort(e.target.value)}
           >
             <option value="created_desc">최근 순</option>
             <option value="created_asc">오래된 순</option>
