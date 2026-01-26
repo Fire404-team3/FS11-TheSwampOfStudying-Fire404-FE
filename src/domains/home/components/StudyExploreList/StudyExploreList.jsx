@@ -1,5 +1,6 @@
 import StudyCard from '../StudyCard/StudyCard';
 import styles from './StudyExploreList.module.css';
+import Pagination from '../../../../common/components/Pagination';
 
 export default function StudyExploreList({
   studies,
@@ -12,11 +13,11 @@ export default function StudyExploreList({
   totalCount,
   limit,
 }) {
-  const totalPages = Math.ceil(totalCount / limit);
-  const pageLimit = 5;
-  const currentGroup = Math.floor((currentPage - 1) / pageLimit);
-  const startPage = currentGroup * pageLimit + 1;
-  const endPage = Math.min(startPage + pageLimit - 1, totalPages);
+  // const totalPages = Math.ceil(totalCount / limit);
+  // const pageLimit = 5;
+  // const currentGroup = Math.floor((currentPage - 1) / pageLimit);
+  // const startPage = currentGroup * pageLimit + 1;
+  // const endPage = Math.min(startPage + pageLimit - 1, totalPages);
 
   const handleSearch = (value) => {
     onSearchChange(value);
@@ -65,33 +66,12 @@ export default function StudyExploreList({
             ))}
           </div>
         )}
-
-        {totalPages > 0 && (
-          <div>
-            <button
-              disabled={currentPage === 1}
-              onClick={() => onPageChange(currentPage - 1)}
-            >
-              이전
-            </button>
-
-            {Array.from({ length: endPage - startPage + 1 }, (_, i) => {
-              const pageNum = startPage + i;
-              return (
-                <button key={pageNum} onClick={() => onPageChange(pageNum)}>
-                  {pageNum}
-                </button>
-              );
-            })}
-
-            <button
-              disabled={currentPage === totalPages}
-              onClick={() => onPageChange(currentPage + 1)}
-            >
-              다음
-            </button>
-          </div>
-        )}
+        <Pagination
+          currentPage={currentPage}
+          totalCount={totalCount}
+          limit={limit}
+          onPageChange={onPageChange}
+        />
       </section>
     </>
   );
