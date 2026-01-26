@@ -1,6 +1,6 @@
 import StudyCard from '../StudyCard/StudyCard';
 import styles from './StudyExploreList.module.css';
-import Pagination from '../../../../common/components/Pagination';
+import Pagination from '@/common/components/Pagination';
 
 export default function StudyExploreList({
   studies,
