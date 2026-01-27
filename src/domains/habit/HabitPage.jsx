@@ -5,14 +5,14 @@ import styles from './HabitPage.module.css';
 function HabitPage() {
   //예비 id : studyid 번호
   const id = '101';
-
+  const INTERVAL_TIME = 10000;
   const [current, setCurrent] = useState(new Date());
 
   //날짜,시간 업로드
   useEffect(() => {
     const intervalId = setInterval(() => {
       setCurrent(new Date());
-    }, 60000); //1분에 한번씩 업로드
+    }, INTERVAL_TIME); //1분에 한번씩 업로드
     return () => clearInterval(intervalId);
   }, []);
 
@@ -28,7 +28,7 @@ function HabitPage() {
         <div className={styles.timeContainer}>
           <p className={styles.nowTimeWord}>현재 시간</p>
           <div className={styles.imRealClock}>
-            {`${current.toISOString().slice(0, 10)}. ${current.toLocaleTimeString('ko-KR', { hour: 'numeric', minute: '2-digit' })}`}
+            {`${current.toISOString('ko-Kr').slice(0, 10)} ${current.toLocaleTimeString('ko-KR', { hour: 'numeric', minute: '2-digit' })}`}
           </div>
         </div>
 
