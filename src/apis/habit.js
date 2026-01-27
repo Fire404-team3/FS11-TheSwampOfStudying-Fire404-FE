@@ -28,3 +28,17 @@ export const creatHabitCheckDate = async (id, checkDate) => {
 
   return response.json();
 };
+
+//오늘의 습관에서 실행한 습관 클릭시 habitRecord에 checkDate날짜 삭제
+
+export const deleteHabitCheckDate = async (id, checkDate) => {
+  const response = await fetch(`${API_BASE_URL}/habits/${id}/check?checkDate=${checkDate}`, {
+  method:'DELETE'
+  })
+
+  if (!response.ok) {
+    throw new Error('checkDate 삭제 실패되었습니다.')
+  }
+
+  return response.json()
+}

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import styles from './DailyHabit.module.css';
-import { creatHabitCheckDate, fetchHabitList } from '@/apis/habit';
+import { creatHabitCheckDate, deleteHabitCheckDate, fetchHabitList } from '@/apis/habit';
 import clsx from 'clsx';
 
 //habitPage에서 임의로 id값 부여...
@@ -29,12 +29,22 @@ function DailyHabit({ id }) {
     dailyHabitlist();
   }, [id]);
 
+
+  //토글 click 함수 
   const handleClick = async(habitId) => {
     try {
       //현재 날짜 기준
       const checkDate = new Date().toISOString();
-      //습관 날짜 생성 api 호출
-      await creatHabitCheckDate(habitId, checkDate);
+      const isChecked = clickedHabitId.includes(habitId);
+      
+      if (isChecked) {
+        await deleteHabitCheckDate(habitId, checkDate);
+        console.log('삭제 성공');
+      } else {
+        await creatHabitCheckDate(habitId, checkDate);
+        console.log('생성 성공');
+
+      }
       setClickedHabitId((prev) =>
         prev.includes(habitId)? prev.filter((id)=>id !== habitId): [...prev, habitId])
 
@@ -56,7 +66,7 @@ function DailyHabit({ id }) {
 
         {/* 여기부터 습관 버튼 들 */}
         <div className={styles.habitBtnContainer}>
-          {/* 클릭 버튼 토글은 진행중... */}
+          {/* 클릭 버튼 토글 */}
           {habitList.map((habit) => (
             <button
               key={habit.id}
