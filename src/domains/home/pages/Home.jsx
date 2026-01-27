@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
-import StudyExploreList from './components/StudyExploreList';
+import StudyExploreList from '../components/StudyExploreList';
+import { getStudies } from '@/api/studyApi';
 
 const SORT_OPTION = {
   created_desc: { sort: 'createdAt', order: 'desc' },
@@ -25,18 +26,13 @@ export default function Home() {
         try {
           const { sort, order } = SORT_OPTION[sortOrder];
 
-          const params = new URLSearchParams({
+          const result = await getStudies({
             search: searchTerm,
-            sort: sort,
-            order: order,
+            sort,
+            order,
             page: currentPage,
             limit: LIMIT,
           });
-
-          const response = await fetch(
-            `http://localhost:5050/studies?${params.toString()}`,
-          );
-          const result = await response.json();
 
           setExploreStudies(result.data || []);
           setTotalCount(result.meta.totalCount);
