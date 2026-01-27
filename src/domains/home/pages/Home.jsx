@@ -1,6 +1,8 @@
+import styles from './Home.module.css';
 import { useEffect, useState } from 'react';
 import StudyExploreList from '../components/StudyExploreList';
 import { getStudies } from '@/api/studyApi';
+import Header from '@/common/components/Header';
 
 const SORT_OPTION = {
   created_desc: { sort: 'createdAt', order: 'desc' },
@@ -46,7 +48,8 @@ export default function Home() {
   }, [searchTerm, sortOrder, currentPage]);
 
   return (
-    <>
+    <div className={styles.fullPageWrapper}>
+      <Header />
       <section>
         <h2>최근 조회한 스터디</h2>
       </section>
@@ -64,6 +67,6 @@ export default function Home() {
           limit={LIMIT}
         />
       </section>
-    </>
+    </div>
   );
 }
