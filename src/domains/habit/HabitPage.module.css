@@ -24,6 +24,11 @@
   color: var(--black);
 }
 
+.moveBtnContainer{
+  display: flex;
+  gap: 1rem;
+}
+
 .timeContainer{
   display: flex;
   flex-direction: column;

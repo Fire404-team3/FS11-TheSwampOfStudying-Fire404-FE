@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import DailyHabit from './components/DailyHabit/DailyHabit';
 import styles from './HabitPage.module.css';
-
-function HabitPage() {
+import { LinkButton } from '@/components/LinkButton';
+function HabitPage({to, children, className}) {
   //예비 id : studyid 번호
   const id = '101';
   const INTERVAL_TIME = 10000;
@@ -22,7 +22,12 @@ function HabitPage() {
         <div className={styles.navTop}>
           {/* 여기  연우는 추후 {nickname}으로 교체 */}
           <p className={styles.studyNameTitle}>연우의 개발공장</p>
-          {/* 여기는 버튼 들어옴....*/}
+          <div className={styles.moveBtnContainer}>
+
+          <LinkButton to={to} className={className}>오늘의 집중{children}</LinkButton> 
+          <LinkButton to={to} className={className}>홈{children}</LinkButton> 
+
+          </div>
         </div>
 
         <div className={styles.timeContainer}>
