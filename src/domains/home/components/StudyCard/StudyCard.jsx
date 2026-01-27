@@ -4,6 +4,7 @@ export default function StudyCard({ study }) {
   if (!study) {
     return <div>데이터 로딩 중...</div>;
   }
+  const themeClass = styles[study.background] || styles.colorGreen;
 
   const { nickname, name, points, description, createdAt, background } = study;
 
@@ -13,7 +14,7 @@ export default function StudyCard({ study }) {
   const diffTime = today - startDate;
   const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24)) + 1;
   return (
-    <article className={styles.backgroundArea}>
+    <article className={`${styles.backgroundArea} ${themeClass}`}>
       <div className={styles.cardContainer}>
         <div className={styles.contentContainer}>
           <div className={styles.mainContainer}>

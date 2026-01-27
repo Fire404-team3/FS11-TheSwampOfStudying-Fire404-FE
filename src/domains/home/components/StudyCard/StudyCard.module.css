@@ -4,7 +4,10 @@
   height: 15.1875rem;
   border-radius: 1.25rem;
   border: 1px solid rgba(0, 0, 0, 0.1);
-  background: var(--green-green_E1EDDE, #e1edde);
+  background: var(--theme-bg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .cardContainer {
@@ -43,18 +46,22 @@
   font-style: normal;
   font-weight: 700;
   line-height: normal;
+  color: var(--theme-title);
+}
+.nickname {
+  color: var(--theme-nickname);
 }
 
 .pointBadge {
-  color: var(--black-black_414141, #414141);
+  color: var(--theme-point-text);
+  background: var(--theme-point-bg);
+  border: 1px solid var(--theme-point-border);
   font-family: Pretendard;
   font-size: 0.75rem;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
   border-radius: 3.125rem;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  background: rgba(255, 255, 255, 0.3);
   display: flex;
   padding: 0.25rem 0.5rem;
   flex-direction: column;
@@ -63,7 +70,7 @@
 }
 
 .statusText {
-  color: var(--gray-gray_818181, #818181);
+  color: var(--theme-date);
   font-family: Pretendard;
   font-size: 0.875rem;
   font-style: normal;
@@ -71,10 +78,80 @@
   line-height: normal;
 }
 .description {
-  color: var(--black-black_414141, #414141);
+  color: var(--theme-desc);
   font-family: Pretendard;
   font-size: 1rem;
   font-style: normal;
   font-weight: 400;
   line-height: 1.5rem;
+}
+
+.colorGreen {
+  --theme-bg: #e1edde;
+  --theme-nickname: #578246;
+  --theme-date: #818181;
+  --theme-title: #414141 --theme-desc: #414141;
+  --theme-point-text: #414141;
+  --theme-point-bg: rgba(255, 255, 255, 0.3);
+  --theme-point-border: rgba(0, 0, 0, 0.1);
+}
+.colorYellow {
+  --theme-bg: #fff1cc; /* 배경색 */
+  --theme-nickname: #c18e1b; /* 닉네임 */
+  --theme-date: #818181;
+  --theme-title: #414141 /* 제목 */ --theme-desc: #414141; /* 소개글 */
+  --theme-point-text: #614d05;
+  --theme-point-bg: rgba(255, 255, 255, 0.3);
+  --theme-point-border: rgba(0, 0, 0, 0.1);
+}
+
+.colorBlue {
+  --theme-bg: #e0f1f5; /* 배경색 */
+  --theme-nickname: #418099; /* 닉네임 */
+  --theme-date: #818181;
+  --theme-title: #414141 /* 제목 */ --theme-desc: #414141; /* 소개글 */
+  --theme-point-text: #614d05;
+  --theme-point-bg: rgba(255, 255, 255, 0.3);
+  --theme-point-border: rgba(0, 0, 0, 0.1);
+}
+.colorPink {
+  --theme-bg: #fde0e9; /* 배경색 */
+  --theme-nickname: #bc3c6a; /* 닉네임 */
+  --theme-date: #818181;
+  --theme-title: #414141 /* 제목 */ --theme-desc: #414141; /* 소개글 */
+  --theme-point-text: #614d05;
+  --theme-point-bg: rgba(255, 255, 255, 0.3);
+  --theme-point-border: rgba(0, 0, 0, 0.1);
+}
+
+.imageDesk,
+.imageWindow,
+.imageTile,
+.imagePlant {
+  --theme-nickname: #ffffff;
+  --theme-date: #eee;
+  --theme-title: #ffffff;
+  --theme-desc: #ffffff;
+  --theme-point-text: #ffffff;
+  --theme-status: #eeeeee;
+  --theme-point-bg: rgba(0, 0, 0, 0.5);
+  --theme-point-border: rgba(0, 0, 0, 0.1);
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), var(--theme-bg);
+  background-color: rgba(0, 0, 0, 0.2);
+}
+.imageDesk {
+  --theme-bg: url('@/assets/images/imageDesk.jpg');
+}
+
+.imageWindow {
+  --theme-bg: url('@/assets/images/imageWindow.jpg');
+}
+
+.imageTile {
+  --theme-bg: url('@/assets/images/imageTile.jpg');
+}
+
+.imagePlant {
+  --theme-bg: url('@/assets/images/imagePlant.jpg');
 }
