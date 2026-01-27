@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import styles from './StudyFilterBar.module.css';
 
 export default function StudyFilterBar({
@@ -6,6 +7,19 @@ export default function StudyFilterBar({
   sortOrder,
   onSortChange,
 }) {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const sortOptions = [
+    { value: 'created_desc', label: '최근 순' },
+    { value: 'created_asc', label: '오래된 순' },
+    { value: 'points_desc', label: '많은 포인트 순' },
+    { value: 'points_asc', label: '적은 포인트 순' },
+  ];
+
+  const currentLabel = sortOptions.find(
+    (opt) => opt.value === sortOrder,
+  )?.label;
+
   return (
     <div className={styles.filterBarContainer}>
       <input
@@ -16,16 +30,29 @@ export default function StudyFilterBar({
         onChange={(e) => onSearchChange(e.target.value)}
       />
 
-      <select
-        className={styles.filterSelect}
-        value={sortOrder}
-        onChange={(e) => onSortChange(e.target.value)}
-      >
-        <option value="created_desc">최근 순</option>
-        <option value="created_asc">오래된 순</option>
-        <option value="points_desc">많은 포인트 순</option>
-        <option value="points_asc">적은 포인트 순</option>
-      </select>
+      <div className={styles.selectWrapper}>
+        <div className={styles.filterSelect} onClick={() => setIsOpen(!isOpen)}>
+          {currentLabel}
+          <span className={styles.arrow}>{isOpen ? '▲' : '▼'}</span>
+        </div>
+
+        {isOpen && (
+          <ul className={styles.optionsList}>
+            {sortOptions.map((option) => (
+              <li
+                key={option.value}
+                className={styles.optionItem}
+                onClick={() => {
+                  onSortChange(option.value);
+                  setIsOpen(false);
+                }}
+              >
+                {option.label}
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
     </div>
   );
 }
