@@ -1,13 +1,33 @@
-// 배경 선택(8개 이미지 배열)
-// [], selected, onSelect
+import React from 'react';
+import styles from './BackgroundSelector.module.css';
 
-// const STUDY_BACKGROUNDS = [
-//   'colorGreen',
-//   'colorYellow',
-//   'colorBlue',
-//   'colorPink',
-//   'imageDesk',
-//   'imageWindow',
-//   'imageTile',
-//   'imagePlant',
-// ];
+const BackgroundSelector = ({ options, selected, onSelect }) => {
+  return (
+    <div className={styles.container}>
+      <label className={styles.label}>배경을 선택해주세요</label>
+      <div className={styles.grid}>
+        {options.map((option) => (
+          <button
+            key={option}
+            className={styles.item}
+            onClick={() =>
+              onSelect({ target: { name: 'background', value: option } })
+            }
+          >
+            {/* 배경 이미지 프리뷰 */}
+            <div className={`${styles.preview} ${styles[option]}`}>
+              {/* 선택된 배경만 아이콘 올라가게 */}
+              {selected === option && (
+                <div className={styles.checkOverlay}>
+                  <div className={styles.selectIcon} />
+                </div>
+              )}
+            </div>
+          </button>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export default BackgroundSelector;

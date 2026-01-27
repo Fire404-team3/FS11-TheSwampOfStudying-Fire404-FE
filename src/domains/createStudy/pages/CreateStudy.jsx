@@ -24,7 +24,7 @@ const STUDY_BACKGROUNDS = [
 
 // 입력값(nickname, name 등)과 백엔드 fieldErrors를 State로 관리
 const CreateStudy = () => {
-  // 네비게이트 함수 실행
+  // 네비게이션 준비
   const navigate = useNavigate();
 
   // 입력항목 상태 관리
@@ -37,19 +37,21 @@ const CreateStudy = () => {
     passwordConfirm: '',
   });
 
-  // 백엔드 에러를 적어둘 공간
+  // 백엔드 유효성 검사 에러를 적어둘 공간
   const [errors, setErrors] = useState({});
 
   // 공통 입력 핸들러(입력 변화 감지)
   const handleInputChange = (event) => {
     const { name, value } = event.target;
 
+    // 기존 상태 복사 후 특정 필드만 업데이트
     setFormData((prev) => ({ ...prev, [name]: value }));
 
-    // 수정시작 시 에러 삭제
+    // 수정시작 시 에러 메세지 초기화
     if (errors[name]) setErrors((prev) => ({ ...prev, [name]: null }));
   };
 
+  // 서버 전송 로직
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
@@ -80,6 +82,8 @@ const CreateStudy = () => {
     <div className={styles.container}>
       <main className={styles.main}>
         <h1 className={styles.title}>스터디 만들기</h1>
+
+        {/* 컴포넌트 부품 조립 */}
         <form onSubmit={handleSubmit} className={styles.form}>
           <FormInput
             label="닉네임"
@@ -105,7 +109,7 @@ const CreateStudy = () => {
             placeholder="소개 멘트를 작성해주세요"
             value={formData.description}
             error={errors.description}
-            onChange={handleInputChange}
+            onInputChange={handleInputChange}
           />
 
           <BackgroundSelector
