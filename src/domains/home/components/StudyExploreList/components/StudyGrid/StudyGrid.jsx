@@ -1,12 +1,20 @@
-import StudyCard from '../../StudyCard';
-import styles from '../StudyExploreList.module.css';
+import StudyCard from '../../../StudyCard';
+import styles from './StudyGrid.module.css';
 
 export default function StudyGrid({ studies, searchTerm }) {
   const renderEmptyMessage = () => {
     if (searchTerm) {
-      return <p>{searchTerm}에 대한 검색 결과가 없습니다.</p>;
+      return (
+        <div className={styles.emptyContainer}>
+          <p>{searchTerm}에 대한 검색 결과가 없습니다.</p>
+        </div>
+      );
     }
-    return <p>아직 둘러 볼 스터디가 없습니다.</p>;
+    return (
+      <div className={styles.emptyContainer}>
+        <p>아직 둘러 볼 스터디가 없습니다.</p>
+      </div>
+    );
   };
   return (
     <>

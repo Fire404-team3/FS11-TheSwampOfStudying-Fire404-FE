@@ -1,0 +1,42 @@
+.filterBarContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+
+  margin-bottom: 1.5rem;
+}
+
+.filterInput {
+  display: flex;
+  width: 20.9375rem;
+  height: 2.625rem;
+  padding: 0.75rem 1.25rem;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.625rem;
+  border-radius: 0.9375rem;
+  border: 1px solid #ddd;
+  background: #fff;
+  color: #818181;
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+.filterSelect {
+  display: flex;
+  width: 11.25rem;
+  padding: 0.5625rem 1.25rem;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.625rem;
+  border-radius: 0.9375rem;
+  border: 1px solid #ddd;
+  background: #fff;
+  color: #818181;
+  font-family: Pretendard;
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}

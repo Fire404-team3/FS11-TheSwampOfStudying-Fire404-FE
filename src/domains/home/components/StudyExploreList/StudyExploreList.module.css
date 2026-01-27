@@ -1,6 +1,29 @@
-.grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-  width: 100%;
+.exploreSection {
+  display: flex;
+  padding: 2.5rem;
+  flex-direction: column;
+  align-items: center;
+  gap: 3.75rem;
+  border-radius: 1.25rem;
+  background: #fff;
+  width: 75rem;
+  height: 51.375rem;
+}
+.contentWrapper {
+  display: flex;
+  width: 70rem;
+  flex-direction: column;
+  /* align-items: center; */
+  gap: 1.5rem;
+}
+
+.title {
+  display: flex;
+  align-self: flex-start;
+  color: #414141;
+  font-family: Pretendard;
+  font-size: 1.5rem;
+  font-style: normal;
+  font-weight: 800;
+  line-height: normal;
 }

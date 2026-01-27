@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import StudyExploreList from '../components/StudyExploreList';
 import { getStudies } from '@/api/studyApi';
 import Header from '@/common/components/Header';
+import RecentStudyList from '../components/RecentStudyList/RecentStudyList';
 
 const SORT_OPTION = {
   created_desc: { sort: 'createdAt', order: 'desc' },
@@ -51,10 +52,9 @@ export default function Home() {
     <div className={styles.fullPageWrapper}>
       <Header />
       <section>
-        <h2>최근 조회한 스터디</h2>
+        <RecentStudyList />
       </section>
       <section>
-        <h2>스터디 둘러보기</h2>
         <StudyExploreList
           studies={exploreStudies}
           onSearchChange={setSearchTerm}

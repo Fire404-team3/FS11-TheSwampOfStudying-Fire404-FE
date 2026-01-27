@@ -1,0 +1,19 @@
+.emptyContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 100%;
+  min-height: 30rem;
+
+  color: var(--gray-gray_818181, #818181);
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  width: 100%;
+}
