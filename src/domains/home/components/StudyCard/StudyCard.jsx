@@ -59,7 +59,7 @@ export default function StudyCard({ study }) {
         <div className={styles.emojiListContainer}>
           {emojiLogs &&
             emojiLogs.length > 0 &&
-            emojiLogs.map((log) => (
+            emojiLogs?.map((log) => (
               <div key={log.id} className={styles.emojiBadge}>
                 <span className={styles.emojiType}> {log.emojiType}</span>
                 <span className={styles.emojiCount}> {log.count}</span>
