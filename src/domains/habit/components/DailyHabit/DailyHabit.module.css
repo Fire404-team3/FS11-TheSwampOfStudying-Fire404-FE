@@ -31,6 +31,12 @@
   gap: 1.25rem;
 }
 
+.placeholder {
+  color: var(--gray-818181);
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+
 /* 토글 css */
 .habitBtn,
 .habitBtnClick {
@@ -85,6 +91,12 @@
   .habitBtnContainer {
     gap: 0.75rem;
   }
+
+  .placeholder {
+    font-size: 1rem;
+    font-weight: 500;
+  }
+
   .habitBtn,
   .habitBtnClick {
     font-size: 1rem;
