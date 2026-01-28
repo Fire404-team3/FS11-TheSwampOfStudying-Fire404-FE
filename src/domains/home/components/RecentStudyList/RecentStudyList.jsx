@@ -21,7 +21,7 @@ export default function RecentStudyList() {
   return (
     <section className={styles.recentSection}>
       <h2 className={styles.title}>최근 조회한 스터디</h2>
-      <div>
+      <div className={styles.recentContainer}>
         {recentStudies.map((study) => (
           <StudyCard key={study.id} study={study} />
         ))}
