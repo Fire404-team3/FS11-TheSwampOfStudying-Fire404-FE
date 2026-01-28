@@ -1,7 +1,6 @@
 .fullPageWrapper {
   width: 120rem;
-  height: 97.375rem;
-  background: var(--bg-bg_F6F4EF, #f6f4ef);
+  min-height: 100vh;
   margin: 0 auto;
 
   display: flex;

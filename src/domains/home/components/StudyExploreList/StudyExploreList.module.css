@@ -7,7 +7,9 @@
   border-radius: 1.25rem;
   background: #fff;
   width: 75rem;
-  height: 51.375rem;
+  height: auto; 
+  min-height: 20rem;
+  margin-bottom: 10.9rem;
 }
 .contentWrapper {
   display: flex;

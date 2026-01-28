@@ -3,7 +3,7 @@
 @font-face {
   font-family: 'EF_jejudoldam';
   src: url('../assets/fonts/EF_jejudoldam.otf') format('opentype');
-  }
+}
 
 :root {
   --black: #414141;
@@ -35,4 +35,5 @@
 body {
   font-family: var(--main-font);
   font-size: 1rem; /* 16px 기준 */
+  background: var(--bg-bg_F6F4EF, #f6f4ef);
 }
