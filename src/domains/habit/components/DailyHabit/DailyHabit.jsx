@@ -3,7 +3,7 @@ import styles from './DailyHabit.module.css';
 import {
   creatHabitCheckDate,
   deleteHabitCheckDate,
-} from '@/api/dailyHabit/dailyhabit.api';
+} from '@/api/dailyHabit.api';
 import clsx from 'clsx';
 
 //부모인 habitPage에서 props로 habitList내려 받음 .

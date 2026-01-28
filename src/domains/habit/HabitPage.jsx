@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import DailyHabit from './components/DailyHabit/DailyHabit';
 import styles from './HabitPage.module.css';
 import { LinkButton } from '@/components/LinkButton';
-import { fetchHabitList } from '@/api/dailyHabit/dailyhabit.api';
+import { fetchHabitList } from '@/api/dailyHabit.api.js';
 
 function HabitPage({ to, className }) {
   //예비 id : studyid 번호 각자의 seed 데이터의 studyId 값을 넣어주세요
