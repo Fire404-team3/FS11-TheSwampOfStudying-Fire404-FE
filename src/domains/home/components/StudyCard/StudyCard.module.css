@@ -85,6 +85,27 @@
   font-weight: 400;
   line-height: 1.5rem;
 }
+.emojiListContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3125rem;
+}
+.emojiBadge {
+  display: flex;
+  padding: 0.375rem 0.5rem;
+  align-items: center;
+  border-radius: 3.125rem;
+  background: var(--theme-emoji-bg);
+}
+
+.emojiCount {
+  color: #fff;
+  font-family: Pretendard;
+  font-size: 0.75rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
 
 .colorGreen {
   --theme-bg: #e1edde;
@@ -94,6 +115,7 @@
   --theme-point-text: #414141;
   --theme-point-bg: rgba(255, 255, 255, 0.3);
   --theme-point-border: rgba(0, 0, 0, 0.1);
+  --theme-emoji-bg: rgba(0, 0, 0, 0.4);
 }
 .colorYellow {
   --theme-bg: #fff1cc; /* 배경색 */
@@ -103,6 +125,7 @@
   --theme-point-text: #614d05;
   --theme-point-bg: rgba(255, 255, 255, 0.3);
   --theme-point-border: rgba(0, 0, 0, 0.1);
+  --theme-emoji-bg: rgba(0, 0, 0, 0.4);
 }
 
 .colorBlue {
@@ -113,6 +136,7 @@
   --theme-point-text: #614d05;
   --theme-point-bg: rgba(255, 255, 255, 0.3);
   --theme-point-border: rgba(0, 0, 0, 0.1);
+  --theme-emoji-bg: rgba(0, 0, 0, 0.4);
 }
 .colorPink {
   --theme-bg: #fde0e9; /* 배경색 */
@@ -122,6 +146,7 @@
   --theme-point-text: #614d05;
   --theme-point-bg: rgba(255, 255, 255, 0.3);
   --theme-point-border: rgba(0, 0, 0, 0.1);
+  --theme-emoji-bg: rgba(0, 0, 0, 0.4);
 }
 
 .imageDesk,
@@ -136,6 +161,7 @@
   --theme-status: #eeeeee;
   --theme-point-bg: rgba(0, 0, 0, 0.5);
   --theme-point-border: rgba(0, 0, 0, 0.1);
+  --theme-emoji-bg: rgba(0, 0, 0, 0.5);
   background-image:
     linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), var(--theme-bg);
   background-color: rgba(0, 0, 0, 0.2);

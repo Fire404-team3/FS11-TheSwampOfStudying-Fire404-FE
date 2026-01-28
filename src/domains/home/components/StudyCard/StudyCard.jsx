@@ -4,10 +4,18 @@ export default function StudyCard({ study }) {
   if (!study) {
     return <div>데이터 로딩 중...</div>;
   }
-  const themeClass = styles[study.background] || styles.colorGreen;
 
-  const { nickname, name, points, description, createdAt, background } = study;
+  const {
+    nickname,
+    name,
+    points,
+    description,
+    createdAt,
+    background,
+    emojiLogs,
+  } = study;
 
+  const themeClass = styles[background] || styles.colorGreen;
   const startDate = new Date(createdAt);
   const today = new Date();
 
@@ -31,10 +39,15 @@ export default function StudyCard({ study }) {
           </div>
           <h2 className={styles.description}>{description}</h2>
         </div>
-        <div>
-          <div className={styles.emojiBadge}>👩‍💻 37</div>
-          <div className={styles.emojiBadge}>🔥 26</div>
-          <div className={styles.emojiBadge}>🤍 14</div>
+        <div className={styles.emojiListContainer}>
+          {emojiLogs &&
+            emojiLogs.length > 0 &&
+            emojiLogs.map((log) => (
+              <div key={log.id} className={styles.emojiBadge}>
+                <span className={styles.emojiType}> {log.emojiType}</span>
+                <span className={styles.emojiCount}> {log.count}</span>
+              </div>
+            ))}
         </div>
       </div>
     </article>
