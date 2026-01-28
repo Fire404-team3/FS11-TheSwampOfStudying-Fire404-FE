@@ -6,6 +6,7 @@ export default function StudyCard({ study }) {
   }
 
   const {
+    id,
     nickname,
     name,
     points,
@@ -15,6 +16,18 @@ export default function StudyCard({ study }) {
     emojiLogs,
   } = study;
 
+  const handleCardClick = () => {
+    const saved = localStorage.getItem('recentStudies');
+    let recentList = saved ? JSON.parse(saved) : [];
+
+    recentList = recentList.filter((item) => item.id !== id);
+
+    const updateList = [study, ...recentList].slice(0, 3);
+
+    localStorage.setItem('recentStudies', JSON.stringify(updateList));
+    console.log('click');
+  };
+
   const themeClass = styles[background] || styles.colorGreen;
   const startDate = new Date(createdAt);
   const today = new Date();
@@ -22,7 +35,11 @@ export default function StudyCard({ study }) {
   const diffTime = today - startDate;
   const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24)) + 1;
   return (
-    <article className={`${styles.backgroundArea} ${themeClass}`}>
+    <article
+      className={`${styles.backgroundArea} ${themeClass}`}
+      onClick={handleCardClick}
+      style={{ cursor: 'pointer' }}
+    >
       <div className={styles.cardContainer}>
         <div className={styles.contentContainer}>
           <div className={styles.mainContainer}>
