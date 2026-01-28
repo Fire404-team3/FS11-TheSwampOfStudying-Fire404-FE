@@ -81,10 +81,9 @@ const CreateStudy = () => {
   return (
     <div className={styles.container}>
       <main className={styles.main}>
-        <h1 className={styles.title}>스터디 만들기</h1>
-
         {/* 컴포넌트 부품 조립 */}
         <form onSubmit={handleSubmit} className={styles.form}>
+          <h1 className={styles.title}>스터디 만들기</h1>
           <FormInput
             label="닉네임"
             name="nickname"
