@@ -1,52 +1,87 @@
-.habitContainer{
-  margin: 0 auto;
-  width: 78rem;
+/* haibtPage css */
+.habitContainer {
+  width: 0 auto;
+  padding: 8.69rem 19.5rem 6.25rem 22.5rem;
+  font-family: Pretendard;
 }
 
-.habitBox{
+.habitBox {
   background-color: white;
-  margin-top: 8rem;
   padding: 2.5rem;
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  border-radius: 1.25rem;
 }
 
-.navTop{
+/* nav */
+.navTop {
   display: flex;
   justify-content: space-between;
   margin-bottom: 1rem;
 }
 
-.studyNameTitle{
+.studyNameTitle {
   font-size: 2rem;
   font-weight: 800;
   color: var(--black);
 }
 
-.moveBtnContainer{
+/* 이동버튼 컨테이너 */
+.moveBtnContainer {
   display: flex;
   gap: 1rem;
 }
 
-.timeContainer{
+/* 시간 */
+.timeContainer {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  
-
 }
-.nowTimeWord{
+.nowTimeWord {
   font-size: 1.125rem;
   font-weight: 400;
   color: var(--gray-818181);
 }
 
-.imRealClock{
+.imRealClock {
   border: 1px solid var(--gray-EEEEEE);
   padding: 0.5rem 0.75rem;
   width: 13rem;
   border-radius: 3.125rem;
   text-align: center;
-  
+}
+
+/* tablet media */
+@media (max-width: 1199px) and (min-width: 744px) {
+  .habitContainer {
+    padding: 7.25rem 1.5rem 4.94rem 1.5rem;
+  }
+  .habitBox {
+    padding: 1.5rem;
+  }
+}
+
+/* mobile media */
+@media (max-width: 743px) and (min-width: 375px) {
+  .habitContainer {
+    padding: 7.5rem 0.94rem 8.81rem 1rem;
+  }
+  .habitBox {
+    padding: 1rem 1.5rem;
+  }
+
+  .navTop {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .studyNameTitle {
+    font-size: 1.5rem;
+  }
+
+  .moveBtnContainer {
+    gap: 0.5rem;
+  }
 }

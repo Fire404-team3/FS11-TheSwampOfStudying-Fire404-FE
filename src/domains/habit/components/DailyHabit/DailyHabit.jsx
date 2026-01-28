@@ -1,9 +1,9 @@
-import {  useState } from 'react';
+import { useState } from 'react';
 import styles from './DailyHabit.module.css';
 import {
   creatHabitCheckDate,
   deleteHabitCheckDate,
-} from '@/apis/habit';
+} from '@/api/dailyHabit/dailyhabit.api';
 import clsx from 'clsx';
 
 //부모인 habitPage에서 props로 habitList내려 받음 .

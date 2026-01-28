@@ -1,3 +1,4 @@
+/* dailyHabit 토글 부분  */
 .dailyHabitContainer {
   border: 1px solid var(--gray-DDDDDD);
   border-radius: 1.25rem;
@@ -7,10 +8,7 @@
   align-items: center;
 }
 
-.habitBox {
-  padding: 0 22.5rem;
-}
-
+/* 오늘의 습관 */
 .title {
   font-size: 1.5rem;
   font-weight: 800;
@@ -18,6 +16,7 @@
   text-align: right;
 }
 
+/* 목록수정 */
 .patchHabitBtn {
   border: none;
   background-color: transparent;
@@ -25,25 +24,70 @@
   margin-left: 5.75rem;
 }
 
-.habitBtnContainer{
+/* 토글 컨테이너 */
+.habitBtnContainer {
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
 }
 
-.habitBtn, .habitBtnClick {
+/* 토글 css */
+.habitBtn,
+.habitBtnClick {
   width: 25rem;
   height: 3.375rem;
-  
+
+  font-size: 1rem;
+  font-weight: 700;
   border: none;
   border-radius: 1.25rem;
 
   color: var(--gray-818181);
-
   cursor: pointer;
 }
-
-.habitBtnClick{
+/* 클릭시 변경 */
+.habitBtnClick {
   background-color: var(--brand);
-  color: #fff ;
+  color: #fff;
+}
+
+/* tablet media */
+@media (max-width: 1199px) and (min-width: 744px) {
+  .dailyHabitContainer {
+    margin-top: 2.5rem;
+    padding: 2.5rem 1.5rem;
+  }
+}
+
+/* mobile media */
+@media (max-width: 743px) and (min-width: 375px) {
+  .dailyHabitContainer {
+    margin-top: 1.5rem;
+    padding: 1.5rem 1rem;
+  }
+
+  .habitBox {
+    width: 100%;
+  }
+
+  .title {
+    font-size: 1.125rem;
+  }
+
+  .patchHabitBtn {
+    margin-left: 2.94rem;
+  }
+
+  .patchHabitBtn {
+    font-size: 0.875rem;
+  }
+
+  .habitBtnContainer {
+    gap: 0.75rem;
+  }
+  .habitBtn,
+  .habitBtnClick {
+    font-size: 1rem;
+    width: 100%;
+  }
 }

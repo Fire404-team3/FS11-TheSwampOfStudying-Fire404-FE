@@ -2,23 +2,21 @@ import { useEffect, useState } from 'react';
 import DailyHabit from './components/DailyHabit/DailyHabit';
 import styles from './HabitPage.module.css';
 import { LinkButton } from '@/components/LinkButton';
-import { fetchHabitList } from '@/apis/habit';
+import { fetchHabitList } from '@/api/dailyHabit/dailyhabit.api';
 
-
-function HabitPage({to, className}) {
-  //예비 id : studyid 번호 각자의 seed 데이터의 studyId 값을 넣어주세요 
+function HabitPage({ to, className }) {
+  //예비 id : studyid 번호 각자의 seed 데이터의 studyId 값을 넣어주세요
   //이 부분은 추후 연결....
-  const id= '101'
+  const id = '101';
   const INTERVAL_TIME = 10000;
   const [current, setCurrent] = useState(new Date());
-
 
   const [habitList, setHabitList] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [studyName, setStudyName] = useState('')
+  const [studyName, setStudyName] = useState('');
 
-  //studyId => habit 가져오기 props로 dailyHabit에 내려줌 
+  //studyId => habit 가져오기 props로 dailyHabit에 내려줌
   // 여기서 가저온 studyName을 habitPage에서 사용.
   useEffect(() => {
     const dailyHabitlist = async () => {
@@ -34,9 +32,8 @@ function HabitPage({to, className}) {
         setLoading(false);
       }
     };
-  dailyHabitlist();
+    dailyHabitlist();
   }, [id]);
-
 
   //날짜,시간 업로드
   useEffect(() => {
@@ -53,10 +50,13 @@ function HabitPage({to, className}) {
           {/* 여기{study.name}으로 교체 */}
           <p className={styles.studyNameTitle}>{studyName}</p>
           <div className={styles.moveBtnContainer}>
-          {/* 페이지 이동 연결 해야함  */}
-          <LinkButton to={to} className={className}>오늘의 집중</LinkButton> 
-          <LinkButton to={to} className={className}>홈</LinkButton> 
-
+            {/* 페이지 이동 연결 해야함  */}
+            <LinkButton to={to} className={className}>
+              오늘의 집중
+            </LinkButton>
+            <LinkButton to={to} className={className}>
+              홈
+            </LinkButton>
           </div>
         </div>
 
