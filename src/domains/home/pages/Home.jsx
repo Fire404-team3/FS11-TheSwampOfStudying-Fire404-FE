@@ -37,7 +37,11 @@ export default function Home() {
             limit: LIMIT,
           });
 
-          setExploreStudies(result.data || []);
+          setExploreStudies((prev) => {
+            return currentPage === 1
+              ? result.data || []
+              : [...prev, ...(result.data || [])];
+          });
           setTotalCount(result.meta.totalCount);
         } catch (error) {
           console.error('데이터 로드 실패', error);

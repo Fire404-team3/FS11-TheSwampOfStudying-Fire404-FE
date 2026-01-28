@@ -1,5 +1,5 @@
 import StudyFilterBar from './components/StudyFilterBar/StudyFilterBar';
-import Pagination from '@/common/components/Pagination';
+import Pagination from '@/common/components/Pagination/Pagination';
 import StudyGrid from './components/StudyGrid/StudyGrid';
 import styles from './StudyExploreList.module.css';
 
