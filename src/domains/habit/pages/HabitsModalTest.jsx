@@ -36,12 +36,8 @@ export default function HabitsModalTest() {
     fetchTestData();
   }, [fetchTestData]);
 
-  const openModal = () => {
-    if (study && habits.length > 0) {
-      setShowModal(true);
-    }
-  };
-
+  const openModal = () => setShowModal(true);
+    
   return (
     <div>
       <h1>HabitsModal Test 페이지</h1>

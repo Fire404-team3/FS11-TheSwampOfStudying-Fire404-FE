@@ -1,6 +1,5 @@
-// habits.api.js - PR 리뷰 후 UI로직으로부터 별도 분리
-const BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
+const BASE_URL = import.meta.env.VITE_API_BASE_URL;
 export const updateHabits = async (studyId, habits) => {
   const response = await fetch(`${BASE_URL}/habits/${studyId}`, {
     method: 'PUT',
@@ -9,8 +8,24 @@ export const updateHabits = async (studyId, habits) => {
   });
 
   if (!response.ok) {
-    const text = await response.text();
-    throw new Error(text);
+    let finalMessage = '알 수 없는 오류가 발생했습니다.';
+    
+    try {
+      // 응답이 JSON인지 확인 후 파싱
+      const errorData = await response.json();
+      finalMessage = errorData.message || finalMessage;
+      
+      console.group('❌ [API Error] Update Habits Failed');
+      console.log('Status Code:', response.status);
+      console.log('Error Data:', errorData);
+      console.groupEnd();
+    } catch (parseError) {
+      // JSON 파싱 실패 시 (서버가 HTML 에러를 뱉었을 때 등)
+      console.error('Failed to parse error JSON', parseError);
+    }
+
+    // 최종적으로 메시지를 담아 던짐 -> UI의 catch 블록으로 전달됨
+    throw new Error(finalMessage);
   }
 
   return; 
