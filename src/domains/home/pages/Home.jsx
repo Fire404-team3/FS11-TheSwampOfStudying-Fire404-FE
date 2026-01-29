@@ -30,11 +30,9 @@ export default function Home() {
             page: currentPage,
             limit: LIMIT,
           });
-
+          const newStudies = result.data || [];
           setExploreStudies((prev) => {
-            return currentPage === 1
-              ? result.data || []
-              : [...prev, ...(result.data || [])];
+            return currentPage === 1 ? newStudies : [...prev, ...newStudies];
           });
           setTotalCount(result.meta.totalCount);
         } catch (error) {
