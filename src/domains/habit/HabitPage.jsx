@@ -33,7 +33,7 @@ function HabitPage({ to, className }) {
       }
     };
     dailyHabitlist();
-  }, [id]);
+  }, [id, dailyHabitlist]);
 
   //날짜,시간 업로드
   useEffect(() => {

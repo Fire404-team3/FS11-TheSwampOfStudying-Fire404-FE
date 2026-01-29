@@ -5,10 +5,14 @@ import {
   deleteHabitCheckDate,
 } from '@/api/dailyHabit.api';
 import clsx from 'clsx';
+import HabitsModal from '../../pages/HabitsModal';
 
 //부모인 habitPage에서 props로 habitList내려 받음 .
-function DailyHabit({ habitList }) {
+function DailyHabit({ habitList, fetchTestData }) {
   const [clickedHabitId, setClickedHabitId] = useState([]);
+   const [study, setStudy] = useState(null);
+  const [habits, setHabits] = useState([]);
+  const [showModal, setShowModal] = useState(false);
 
   //토글 click 함수
   const handleClick = async (habitId) => {
@@ -40,7 +44,14 @@ function DailyHabit({ habitList }) {
         <h2 className={styles.title}>
           오늘의 습관
           {/* 목록 수정 링크 들어와야함 */}
+          
           <button className={styles.patchHabitBtn}>목록 수정</button>
+
+          {showModal && <HabitsModal
+          studyId={study.id}
+          habits={habits}
+          refetchTodayHabits={fetchTestData}
+          onClose={() => setShowModal(false)} /> }
         </h2>
 
         {/* 여기부터 습관 버튼 들 */}
