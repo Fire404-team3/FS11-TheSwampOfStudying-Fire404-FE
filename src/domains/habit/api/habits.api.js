@@ -14,11 +14,7 @@ export const updateHabits = async (studyId, habits) => {
       // 응답이 JSON인지 확인 후 파싱
       const errorData = await response.json();
       finalMessage = errorData.message || finalMessage;
-      
-      console.group('❌ [API Error] Update Habits Failed');
-      console.log('Status Code:', response.status);
-      console.log('Error Data:', errorData);
-      console.groupEnd();
+    
     } catch (parseError) {
       // JSON 파싱 실패 시 (서버가 HTML 에러를 뱉었을 때 등)
       console.error('Failed to parse error JSON', parseError);
@@ -28,5 +24,5 @@ export const updateHabits = async (studyId, habits) => {
     throw new Error(finalMessage);
   }
 
-  return; 
+  return true;  //서버 성공시 NO_CONENT 전달
 };
