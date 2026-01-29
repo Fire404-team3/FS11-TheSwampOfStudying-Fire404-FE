@@ -1,25 +1,12 @@
 import StudyCard from '../../../StudyCard';
+import EmptyMessage from './EmptyMessage';
 import styles from './StudyGrid.module.css';
 
 export default function StudyGrid({ studies, searchTerm }) {
-  const renderEmptyMessage = () => {
-    if (searchTerm) {
-      return (
-        <div className={styles.emptyContainer}>
-          <p>{searchTerm}에 대한 검색 결과가 없습니다.</p>
-        </div>
-      );
-    }
-    return (
-      <div className={styles.emptyContainer}>
-        <p>아직 둘러 볼 스터디가 없습니다.</p>
-      </div>
-    );
-  };
   return (
     <>
       {studies.length === 0 ? (
-        renderEmptyMessage()
+        <EmptyMessage searchTerm={searchTerm} />
       ) : (
         <div className={styles.grid}>
           {studies.map((study) => (
