@@ -1,5 +1,6 @@
 import storage from '@/utils/storage';
 import styles from './StudyCard.module.css';
+import clsx from 'clsx';
 
 export default function StudyCard({ study }) {
   if (!study) {
@@ -38,7 +39,7 @@ export default function StudyCard({ study }) {
   const diffDays = Math.floor(diffTime / MS_PER_DAY) + 1;
   return (
     <article
-      className={`${styles.backgroundArea} ${themeClass}`}
+      className={clsx(styles.backgroundArea, themeClass)}
       onClick={handleCardClick}
       style={{ cursor: 'pointer' }}
     >
