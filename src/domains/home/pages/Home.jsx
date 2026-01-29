@@ -2,7 +2,7 @@ import styles from './Home.module.css';
 import { useEffect, useState } from 'react';
 import StudyExploreList from '../components/StudyExploreList';
 import { getStudies } from '@/api/studyApi';
-import Header from '@/common/components/Header';
+import { HomeHeader } from '@/common/components/HomeHeader';
 import RecentStudyList from '../components/RecentStudyList/RecentStudyList';
 
 const DEBOUNCE_DELAY = 300;
@@ -46,7 +46,7 @@ export default function Home() {
 
   return (
     <div className={styles.fullPageWrapper}>
-      <Header />
+      <HomeHeader />
       <section>
         <RecentStudyList />
       </section>
