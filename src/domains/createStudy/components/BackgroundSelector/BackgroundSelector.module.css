@@ -32,6 +32,9 @@
   .grid {
     grid-template-columns: repeat(2, 1fr);
   }
+  .label {
+    font-size: 1rem;
+  }
 }
 
 .item {
@@ -49,11 +52,11 @@
   /* 정사각형 유지(가로 세로 1:1 비율) */
   aspect-ratio: 1 / 1;
 
-  border-radius: 0.75rem;
+  border-radius: 1rem;
+
   background-size: cover;
   background-position: center;
   overflow: hidden;
-  box-shadow: inset 1px rgba(0, 0, 0, 0.05);
 }
 
 .checkOverlay {

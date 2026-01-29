@@ -43,23 +43,29 @@
     font-weight: 800;
     line-height: normal;
   }
+}
 
-  /* Mobile: 23.4rem 이하 */
-  @media (max-width: 23.4rem) {
-    .container {
-      padding: 0;
-      /* width: 19.5rem; */
-    }
-    .main {
-      /* display: inline-flex; */
-      padding: 1rem 1rem 1.25rem 1rem;
-      align-items: flex-start;
-      gap: 0.625rem;
-      margin-left: 0.94rem;
-      margin-right: 1rem;
-    }
+/* 태블릿 : 46.5rem max */
+@media (max-width: 46.5rem) {
+  .main {
+    padding: 1rem;
+    margin-top: 1.25rem;
+    margin-left: 0.94rem;
+    margin-right: 1rem;
+  }
+  .input {
+    padding: 1rem 1rem 1.25rem 1rem;
+  }
+}
+
+/* 모바일 : 23.4rem 이하 */
+@media (max-width: 23.4rem) {
+  .container {
+    padding: 0;
+  }
+  .form {
     .title {
-      font-size: 1.25rem;
+      font-size: 1rem;
     }
   }
 }

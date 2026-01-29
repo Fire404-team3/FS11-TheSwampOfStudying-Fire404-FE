@@ -70,10 +70,12 @@
   margin-top: 0.5rem;
 }
 
-/* Mobile: 23.4rem max */
-/* @media (max-width: 23.4rem) {
-  .input {
-    padding: 0.75rem 2.5rem 0.75rem 0.875rem;
-    font-size: 0.9375rem;
+/* 모바일 : 23.4rem 이하 */
+@media (max-width: 23.4rem) {
+  .label {
+    font-size: 1rem;
   }
-} */
+  .input {
+    font-size: 0.875rem;
+  }
+}
