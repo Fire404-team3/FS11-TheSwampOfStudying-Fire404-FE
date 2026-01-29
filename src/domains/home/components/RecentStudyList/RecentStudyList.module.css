@@ -33,3 +33,13 @@
   font-size: 1.25rem;
   font-weight: 500;
 }
+
+/* Tablet (iPad Mini) */
+@media (max-width: 1199px) {
+  .recentSection {
+    width: 43.5625rem; 
+    height: 23.5625rem;
+    padding: 1.5rem;
+    overflow: hidden; 
+  }
+}

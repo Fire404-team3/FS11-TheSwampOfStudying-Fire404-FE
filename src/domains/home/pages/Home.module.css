@@ -1,5 +1,6 @@
 .fullPageWrapper {
-  width: 120rem;
+  width: 100%;
+  max-width: 120rem;
   min-height: 100vh;
   margin: 0 auto;
 
@@ -8,4 +9,19 @@
   align-items: center;
 
   gap: 2.5rem;
+}
+/* iPad Mini */
+@media (max-width: 1199px) {
+  .fullPageWrapper {
+    max-width: 46.5rem;
+    gap: 1.5rem;
+  }
+
+  /* Mobile */
+  @media (max-width: 767px) {
+    .fullPageWrapper {
+      max-width: 23.4375rem;
+      gap: 1rem;
+    }
+  }
 }

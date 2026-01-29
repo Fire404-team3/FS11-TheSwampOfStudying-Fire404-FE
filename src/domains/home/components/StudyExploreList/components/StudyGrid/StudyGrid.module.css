@@ -17,3 +17,12 @@
   gap: 24px;
   width: 100%;
 }
+
+@media (max-width: 1199px) {
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(2, 19.5rem);
+    justify-content: center; 
+    gap: 1.5rem;
+  }
+}

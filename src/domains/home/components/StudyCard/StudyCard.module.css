@@ -181,3 +181,12 @@
 .imagePlant {
   --theme-bg: url('@/assets/images/imagePlant.jpg');
 }
+
+@media (max-width: 1199px) {
+  .backgroundArea {
+    width: 19.5rem;
+  }
+  .headerContainer {
+    padding-right: 1.5rem;
+  }
+}
