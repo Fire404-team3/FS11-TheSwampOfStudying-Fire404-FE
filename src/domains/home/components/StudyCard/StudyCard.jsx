@@ -37,6 +37,9 @@ export default function StudyCard({ study }) {
   const diffTime = today - startDate;
   const MS_PER_DAY = 1000 * 60 * 60 * 24;
   const diffDays = Math.floor(diffTime / MS_PER_DAY) + 1;
+
+  const isShowEmojis = emojiLogs && emojiLogs.length > 0;
+
   return (
     <article
       className={clsx(styles.backgroundArea, themeClass)}
@@ -60,8 +63,7 @@ export default function StudyCard({ study }) {
           <h2 className={styles.description}>{description}</h2>
         </div>
         <div className={styles.emojiListContainer}>
-          {emojiLogs &&
-            emojiLogs.length > 0 &&
+          {isShowEmojis &&
             emojiLogs?.map((log) => (
               <div key={log.id} className={styles.emojiBadge}>
                 <span className={styles.emojiType}> {log.emojiType}</span>

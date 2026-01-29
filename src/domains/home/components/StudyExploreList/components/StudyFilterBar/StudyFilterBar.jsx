@@ -10,15 +10,16 @@ export default function StudyFilterBar({
   const [isOpen, setIsOpen] = useState(false);
 
   const sortOptions = [
-    { value: 'created_desc', label: '최근 순' },
-    { value: 'created_asc', label: '오래된 순' },
-    { value: 'points_desc', label: '많은 포인트 순' },
-    { value: 'points_asc', label: '적은 포인트 순' },
+    { label: '최근 순', field: 'createdAt', order: 'desc' },
+    { label: '오래된 순', field: 'createdAt', order: 'asc' },
+    { label: '많은 포인트 순', field: 'points', order: 'desc' },
+    { label: '적은 포인트 순', field: 'points', order: 'asc' },
   ];
 
-  const currentLabel = sortOptions.find(
-    (opt) => opt.value === sortOrder,
-  )?.label;
+  const currentLabel =
+    sortOptions.find(
+      (opt) => opt.filed === sortOrder.filed && opt.order === sortOrder.order,
+    )?.label || '최근 순';
 
   return (
     <div className={styles.filterBarContainer}>
@@ -40,10 +41,10 @@ export default function StudyFilterBar({
           <ul className={styles.optionsList}>
             {sortOptions.map((option) => (
               <li
-                key={option.value}
+                key={`${option.field}_${option.order}`}
                 className={styles.optionItem}
                 onClick={() => {
-                  onSortChange(option.value);
+                  onSortChange({ field: option.field, order: option.order });
                   setIsOpen(false);
                 }}
               >

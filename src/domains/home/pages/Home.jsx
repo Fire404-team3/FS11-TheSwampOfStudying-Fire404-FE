@@ -5,20 +5,16 @@ import { getStudies } from '@/api/studyApi';
 import Header from '@/common/components/Header';
 import RecentStudyList from '../components/RecentStudyList/RecentStudyList';
 
-const SORT_OPTION = {
-  created_desc: { sort: 'createdAt', order: 'desc' },
-  created_asc: { sort: 'createdAt', order: 'asc' },
-  points_desc: { sort: 'points', order: 'desc' },
-  points_asc: { sort: 'points', order: 'asc' },
-};
-
 const DEBOUNCE_DELAY = 300;
 const LIMIT = 6;
 
 export default function Home() {
   const [exploreStudies, setExploreStudies] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
-  const [sortOrder, setSortOrder] = useState('created_desc');
+  const [sortOrder, setSortOrder] = useState({
+    field: 'createdAt',
+    order: 'desc',
+  });
 
   const [currentPage, setCurrentPage] = useState(1);
   const [totalCount, setTotalCount] = useState(0);
@@ -27,12 +23,10 @@ export default function Home() {
     const debounceTimer = setTimeout(() => {
       const fetchStudies = async () => {
         try {
-          const { sort, order } = SORT_OPTION[sortOrder];
-
           const result = await getStudies({
             search: searchTerm,
-            sort,
-            order,
+            sort: sortOrder.field,
+            order: sortOrder.order,
             page: currentPage,
             limit: LIMIT,
           });
