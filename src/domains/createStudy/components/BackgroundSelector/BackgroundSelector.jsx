@@ -9,6 +9,7 @@ const BackgroundSelector = ({ options, selected, onSelect }) => {
         {options.map((option) => (
           <button
             key={option}
+            type="button" // submit 방지하기 위해 타입을 버튼으로 지정
             className={styles.item}
             onClick={() =>
               onSelect({ target: { name: 'background', value: option } })
@@ -16,7 +17,7 @@ const BackgroundSelector = ({ options, selected, onSelect }) => {
           >
             {/* 배경 이미지 프리뷰 */}
             <div className={`${styles.preview} ${styles[option]}`}>
-              {/* 선택된 배경만 아이콘 올라가게 */}
+              {/* 선택된 배경만 체크 아이콘 올라가게 */}
               {selected === option && (
                 <div className={styles.checkOverlay}>
                   <div className={styles.selectIcon} />

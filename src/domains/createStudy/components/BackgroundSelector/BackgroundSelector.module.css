@@ -1,0 +1,99 @@
+/**
+ * [데스크탑 우선]
+ * 1. 베이스: 120rem 데스크탑 기준
+ * 2. 미디어 쿼리: 데스크탑과 태블릿 4개, 2줄 모바일에서 2개 4줄 배치
+ */
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  width: 100%;
+}
+
+.label {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--black);
+  margin-bottom: 1.5rem;
+  margin-top: 0.5rem;
+}
+
+/* 데스크탑, 태블릿 : 4개 배치 */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  width: 100%;
+}
+
+/* 모바일 : 23.4rem 이하 */
+@media (max-width: 23.4rem) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.item {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  width: 100%;
+}
+
+.preview {
+  position: relative;
+  width: 100%;
+
+  /* 정사각형 유지(가로 세로 1:1 비율) */
+  aspect-ratio: 1 / 1;
+
+  border-radius: 0.75rem;
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+  box-shadow: inset 1px rgba(0, 0, 0, 0.05);
+}
+
+.checkOverlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.selectIcon {
+  width: 2.5rem;
+  height: 2.5rem;
+  background-image: url('/ic_selected.svg');
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+/* 배경 이미지 */
+.colorGreen {
+  background-image: url('/colorGreen.svg');
+}
+.colorYellow {
+  background-image: url('/colorYellow.svg');
+}
+.colorBlue {
+  background-image: url('/colorBlue.svg');
+}
+.colorPink {
+  background-image: url('/colorPink.svg');
+}
+.imageDesk {
+  background-image: url('/imageDesk.svg');
+}
+.imageWindow {
+  background-image: url('/imageWindow.svg');
+}
+.imageTile {
+  background-image: url('/imageTile.svg');
+}
+.imagePlant {
+  background-image: url('/imagePlant.svg');
+}

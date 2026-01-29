@@ -1,0 +1,79 @@
+/**
+ * [데스크탑 우선]
+ * 1. 베이스: 120rem 데스크탑 기준
+ * 2. 미디어 쿼리: 모바일에서 크기 조절
+ */
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  width: 100%;
+}
+
+.label {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--black);
+  margin-bottom: 1rem;
+  margin-top: 0.5rem;
+}
+
+/* 눈모양 구현 */
+.inputWrapper {
+  position: relative;
+  width: 100%;
+}
+
+.input {
+  width: 100%;
+  padding: 0.94rem 1.25rem 0.94rem 1.25rem;
+
+  color: var(--gray-818181);
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+
+  border: 1px solid var(--gray-DDDDDD);
+  border-radius: 0.9375rem;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.input:focus {
+  border-color: var(--black);
+}
+
+.errorInput {
+  border-color: var(--red-error);
+}
+
+.eyeButton {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.errorText {
+  color: var(--red-error);
+  font-family: var(--main-font);
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: normal;
+
+  margin-top: 0.5rem;
+}
+
+/* Mobile: 23.4rem max */
+/* @media (max-width: 23.4rem) {
+  .input {
+    padding: 0.75rem 2.5rem 0.75rem 0.875rem;
+    font-size: 0.9375rem;
+  }
+} */

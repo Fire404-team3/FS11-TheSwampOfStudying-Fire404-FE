@@ -16,10 +16,11 @@ const FormTextArea = ({
       <label className={styles.label}>{label}</label>
       <textarea
         name={name}
-        className={error ? styles.errorInput : styles.input}
+        className={`${styles.input} ${error ? styles.errorInput : ''}`}
         placeholder={placeholder}
         value={value}
         onChange={onInputChange}
+        rows={3} // 3줄 정도 쓸 수 있는 높이
       />
       {/* 에러 메세지가 있을때만 렌더링 */}
       {error && <p className={styles.errorText}>*{error[0]}</p>}

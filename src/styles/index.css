@@ -3,7 +3,7 @@
 @font-face {
   font-family: 'EF_jejudoldam';
   src: url('../assets/fonts/EF_jejudoldam.otf') format('opentype');
-  }
+}
 
 :root {
   --black: #414141;
