@@ -1,3 +1,4 @@
+import storage from '@/utils/storage';
 import styles from './StudyCard.module.css';
 
 export default function StudyCard({ study }) {
@@ -17,15 +18,15 @@ export default function StudyCard({ study }) {
   } = study;
 
   const handleCardClick = () => {
-    const saved = localStorage.getItem('recentStudies');
-    let recentList = saved ? JSON.parse(saved) : [];
+    const recentList = storage.get('recentStudies', []);
 
-    recentList = recentList.filter((item) => item.id !== id);
+    const filteredList = recentList.filter((item) => item.id !== id);
 
-    const updateList = [study, ...recentList].slice(0, 3);
+    const updateList = [study, ...filteredList].slice(0, 3);
 
-    localStorage.setItem('recentStudies', JSON.stringify(updateList));
-    console.log('click');
+    storage.set('recentStudies', updateList);
+
+    console.log('스터디 클릭');
   };
 
   const themeClass = styles[background] || styles.colorGreen;
@@ -33,7 +34,8 @@ export default function StudyCard({ study }) {
   const today = new Date();
 
   const diffTime = today - startDate;
-  const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24)) + 1;
+  const MS_PER_DAY = 1000 * 60 * 60 * 24;
+  const diffDays = Math.floor(diffTime / MS_PER_DAY) + 1;
   return (
     <article
       className={`${styles.backgroundArea} ${themeClass}`}
