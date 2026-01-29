@@ -35,4 +35,5 @@
 body {
   font-family: var(--main-font);
   font-size: 1rem; /* 16px 기준 */
+  background-color: var(--bg);
 }
