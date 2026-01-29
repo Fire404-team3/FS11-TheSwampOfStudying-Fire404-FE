@@ -1,0 +1,49 @@
+.habitItem {
+  position: relative;
+  width: 100%;
+  max-width: 25rem;
+  height: 3.375rem;
+  background: #eeeeee;
+  border-radius: 1.25rem;
+  padding: 0 1rem;
+  margin-bottom: 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.habitInput {
+  width: 100%;
+  height: 2.25rem;
+  text-align: center;
+  font-weight: bold;
+  font-size: 1rem;
+  color: #818181;
+  background: transparent;
+  border: none;
+  outline: none;
+  text-decoration: underline;
+  text-decoration-thickness: 0.125rem;
+  text-underline-offset: 0.25rem;
+}
+
+.habitDeleteButton {
+  position: absolute;
+  right: -0.5rem;
+  transform: translateX(100%);
+  width: 3rem;
+  height: 3rem;
+  background: #fde0e9;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  cursor: pointer;
+}
+
+.habitDeleteIcon {
+  width: 1.5rem;
+  height: 1.5rem;
+}
