@@ -1,0 +1,170 @@
+.board {
+  display: flex;
+  width: 78rem;
+  max-width: 100%;
+  min-height: 48.375rem;
+  margin: 0 auto;
+  padding: 2.5rem;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.625rem;
+  background-color: #fff;
+  border-radius: 1rem;
+  box-sizing: border-box;
+}
+
+.header {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding-bottom: 1.5rem;
+}
+
+.content {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 2.5rem;
+  box-sizing: border-box;
+}
+
+.leftSection {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.25rem;
+}
+
+.studyName {
+  color: #414141;
+  font-family: Pretendard;
+  font-size: 2rem;
+  font-style: normal;
+  font-weight: 800;
+  line-height: normal;
+  margin: 0 0 1rem 0;
+}
+
+.pointsLabel {
+  color: var(--gray-gray_818181, #818181);
+  font-family: Pretendard;
+  font-size: 1.125rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin: 0 0 0.5rem 0;
+}
+
+.pointsBadge {
+  display: inline-flex;
+  padding: 0.5rem 0.75rem;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 3.125rem;
+  border: 1px solid rgba(0, 0, 0, 0.10);
+  background: rgba(255, 255, 255, 0.30);
+  color: var(--black-black_414141, #414141);
+  font-family: Pretendard;
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.leafIcon {
+  font-size: 0.875rem;
+}
+
+.rightSection {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.navButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.75rem 1rem 0.75rem 1.5rem;
+  border-radius: 0.9375rem;
+  border: 1px solid var(--gray-gray_DDDDDD, #DDD);
+  background: #FFF;
+  color: var(--gray-818181);
+  text-align: center;
+  font-family: Pretendard;
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 300; /* 500으로 하니 피그마 화면과 달라보여 300으로 조정 */
+  line-height: normal;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+}
+
+.navButton:hover {
+  background-color: var(--gray-EEEEEE);
+}
+
+.arrow {
+  font-size: 1rem;
+  line-height: 1;
+}
+
+/* Tablet */
+@media (max-width: 1199px) {
+  .board {
+    width: 43.5rem;
+    min-height: 45.375rem;
+  }
+
+  .header {
+    padding: 1.5rem 0;
+  }
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+  .board {
+    width: 21.5rem;
+    min-height: auto;
+    padding: 1rem;
+  }
+
+  .content {
+    padding: 1rem;
+  }
+
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+    padding: 1rem 0;
+  }
+
+  .leftSection {
+    display: contents;
+  }
+
+  .studyName {
+    order: 1;
+    font-size: 1.5rem;
+  }
+
+  .rightSection {
+    order: 2;
+    justify-content: flex-start;
+  }
+
+  .pointsLabel {
+    order: 3;
+  }
+
+  .pointsBadge {
+    order: 4;
+  }
+
+  .navButton {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.75rem;
+  }
+}
