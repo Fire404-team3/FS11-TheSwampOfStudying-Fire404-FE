@@ -108,42 +108,42 @@
 }
 
 .colorGreen {
-  --theme-bg: #e1edde;
-  --theme-nickname: #578246;
-  --theme-date: #818181;
-  --theme-title: #414141 --theme-desc: #414141;
-  --theme-point-text: #414141;
+  --theme-bg: var(--green);
+  --theme-nickname: var(--green-text);
+  --theme-date: var(--gray-818181);
+  --theme-title: var(--black);
+  --theme-desc: var(--black);
   --theme-point-bg: rgba(255, 255, 255, 0.3);
   --theme-point-border: rgba(0, 0, 0, 0.1);
   --theme-emoji-bg: rgba(0, 0, 0, 0.4);
 }
 .colorYellow {
-  --theme-bg: #fff1cc; /* 배경색 */
-  --theme-nickname: #c18e1b; /* 닉네임 */
-  --theme-date: #818181;
-  --theme-title: #414141 /* 제목 */ --theme-desc: #414141; /* 소개글 */
-  --theme-point-text: #614d05;
+  --theme-bg: var(--yellow); /* 배경색 */
+  --theme-nickname: var(--yellow-text); /* 닉네임 */
+  --theme-date: var(--gray-818181);
+  --theme-title: var(--black); /* 제목 */
+  --theme-desc: var(--black); /* 소개글 */
   --theme-point-bg: rgba(255, 255, 255, 0.3);
   --theme-point-border: rgba(0, 0, 0, 0.1);
   --theme-emoji-bg: rgba(0, 0, 0, 0.4);
 }
 
 .colorBlue {
-  --theme-bg: #e0f1f5; /* 배경색 */
-  --theme-nickname: #418099; /* 닉네임 */
-  --theme-date: #818181;
-  --theme-title: #414141 /* 제목 */ --theme-desc: #414141; /* 소개글 */
-  --theme-point-text: #614d05;
+  --theme-bg: var(--blue); /* 배경색 */
+  --theme-nickname: var(--blue-text); /* 닉네임 */
+  --theme-date: var(--gray-818181);
+  --theme-title: var(--black); /* 제목 */
+  --theme-desc: var(--black); /* 소개글 */
   --theme-point-bg: rgba(255, 255, 255, 0.3);
   --theme-point-border: rgba(0, 0, 0, 0.1);
   --theme-emoji-bg: rgba(0, 0, 0, 0.4);
 }
 .colorPink {
-  --theme-bg: #fde0e9; /* 배경색 */
-  --theme-nickname: #bc3c6a; /* 닉네임 */
-  --theme-date: #818181;
-  --theme-title: #414141 /* 제목 */ --theme-desc: #414141; /* 소개글 */
-  --theme-point-text: #614d05;
+  --theme-bg: var(--pink); /* 배경색 */
+  --theme-nickname: var(--pink-text); /* 닉네임 */
+  --theme-date: var(--gray-818181);
+  --theme-title: var(--black); /* 제목 */
+  --theme-desc: var(--black); /* 소개글 */
   --theme-point-bg: rgba(255, 255, 255, 0.3);
   --theme-point-border: rgba(0, 0, 0, 0.1);
   --theme-emoji-bg: rgba(0, 0, 0, 0.4);
@@ -154,11 +154,11 @@
 .imageTile,
 .imagePlant {
   --theme-nickname: #ffffff;
-  --theme-date: #eee;
+  --theme-date: var(--gray-EEEEEE);
   --theme-title: #ffffff;
   --theme-desc: #ffffff;
   --theme-point-text: #ffffff;
-  --theme-status: #eeeeee;
+  --theme-status: var(--gray-EEEEEE);
   --theme-point-bg: rgba(0, 0, 0, 0.5);
   --theme-point-border: rgba(0, 0, 0, 0.1);
   --theme-emoji-bg: rgba(0, 0, 0, 0.5);
@@ -189,4 +189,19 @@
   .headerContainer {
     padding-right: 1.5rem;
   }
+}
+/* Mobile */
+@media (max-width: 767px) {
+  .backgroundArea {
+    width: 15rem;
+    height: 11.25rem;
+  }
+  /* .headerContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+    width: 100%;
+    height: auto;
+  } */
 }

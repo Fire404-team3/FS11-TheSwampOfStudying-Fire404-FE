@@ -28,11 +28,20 @@
 @media (max-width: 1199px) {
   .exploreSection {
     width: 43.5rem;
-    height: 67.0625rem;
     padding: 2rem 1.5rem;
   }
 
   .contentWrapper {
     width: 100%;
+  }
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+  .exploreSection {
+    width: 21.5rem;
+  }
+  .title {
+    font-size: 1rem;
   }
 }

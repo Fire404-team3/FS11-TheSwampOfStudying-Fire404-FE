@@ -1,6 +1,6 @@
-import StudyFilterBar from './components/StudyFilterBar/StudyFilterBar';
+import StudyFilterBar from '../StudyFilterBar/StudyFilterBar';
 import Pagination from '@/common/components/Pagination/Pagination';
-import StudyGrid from './components/StudyGrid/StudyGrid';
+import StudyGrid from '../StudyGrid/StudyGrid';
 import styles from './StudyExploreList.module.css';
 
 export default function StudyExploreList({

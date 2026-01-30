@@ -22,7 +22,22 @@
   .grid {
     display: grid;
     grid-template-columns: repeat(2, 19.5rem);
-    justify-content: center; 
+    justify-content: center;
     gap: 1.5rem;
+  }
+  .emptyContainer {
+    font-size: 1rem;
+  }
+}
+/* Mobile */
+@media (max-width: 767px) {
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+    justify-items: center;
+  }
+  .emptyContainer {
+    font-size: 1rem;
   }
 }

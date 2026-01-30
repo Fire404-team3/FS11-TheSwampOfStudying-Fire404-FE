@@ -37,9 +37,19 @@
 /* Tablet (iPad Mini) */
 @media (max-width: 1199px) {
   .recentSection {
-    width: 43.5625rem; 
+    width: 43.5625rem;
     height: 23.5625rem;
     padding: 1.5rem;
-    overflow: hidden; 
+    overflow: hidden;
+  }
+}
+/* Mobile */
+@media (max-width: 767px) {
+  .recentSection {
+    width: 21.5rem;
+    height: 15.4375rem;
+  }
+  .title {
+    font-size: 1rem;
   }
 }

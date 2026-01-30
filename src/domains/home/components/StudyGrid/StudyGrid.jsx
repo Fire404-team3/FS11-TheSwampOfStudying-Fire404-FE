@@ -1,4 +1,4 @@
-import StudyCard from '../../../StudyCard';
+import StudyCard from '../StudyCard';
 import EmptyMessage from './EmptyMessage';
 import styles from './StudyGrid.module.css';
 
