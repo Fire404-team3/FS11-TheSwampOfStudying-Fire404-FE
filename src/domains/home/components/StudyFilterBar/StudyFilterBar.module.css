@@ -79,3 +79,19 @@
   display: inline-block;
   transition: transform 0.2s ease;
 }
+
+/* Mobile */
+@media (max-width: 767px) {
+  .filterBarContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  .filterInput {
+    width: 100%;
+    max-width: 19.5rem;
+  }
+  .selectWrapper {
+    align-self: flex-end;
+  }
+}
