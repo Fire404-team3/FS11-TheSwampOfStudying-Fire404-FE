@@ -8,11 +8,13 @@ import clsx from 'clsx';
 import HabitsModal from '../HabitsModal/HabitsModal';
 
 //부모인 habitPage에서 props로 habitList내려 받음 .
-function DailyHabit({ habitList, fetchTestData }) {
+function DailyHabit({ habitList, studyId, refetchTodayHabits }) {
   const [clickedHabitId, setClickedHabitId] = useState([]);
-   const [study, setStudy] = useState(null);
+  // 모달
+  const [study, setStudy] = useState(null);
   const [habits, setHabits] = useState([]);
   const [showModal, setShowModal] = useState(false);
+  
 
   //토글 click 함수
   const handleClick = async (habitId) => {
@@ -37,6 +39,11 @@ function DailyHabit({ habitList, fetchTestData }) {
       console.error('error:', error.message);
     }
   };
+  // 모달
+  const openModal = () => setShowModal(true);
+
+
+
 
   return (
     <div className={styles.dailyHabitContainer}>
@@ -45,12 +52,12 @@ function DailyHabit({ habitList, fetchTestData }) {
           오늘의 습관
           {/* 목록 수정 링크 들어와야함 */}
           
-          <button className={styles.patchHabitBtn}>목록 수정</button>
+          <button onClick={openModal} className={styles.patchHabitBtn}>목록 수정</button>
 
           {showModal && <HabitsModal
-          studyId={study.id}
+          studyId={studyId}
           habits={habits}
-          refetchTodayHabits={fetchTestData}
+          refetchTodayHabits={refetchTodayHabits}
           onClose={() => setShowModal(false)} /> }
         </h2>
 

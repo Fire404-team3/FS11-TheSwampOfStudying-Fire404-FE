@@ -15,7 +15,7 @@ function HabitPage({ to, className }) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [studyName, setStudyName] = useState('');
-
+  const [studyId, setStudyId] = useState('');
   //studyId => habit 가져오기 props로 dailyHabit에 내려줌
   // 여기서 가저온 studyName을 habitPage에서 사용.
   useEffect(() => {
@@ -26,6 +26,7 @@ function HabitPage({ to, className }) {
         const result = await fetchHabitList(id);
         setHabitList(result.data.habits);
         setStudyName(result.data.name);
+        setStudyId(result.data.studyId)
       } catch (error) {
         setError(error.message);
       } finally {
@@ -33,7 +34,7 @@ function HabitPage({ to, className }) {
       }
     };
     dailyHabitlist();
-  }, [id, dailyHabitlist]);
+  }, [id, habitList]);
 
   //날짜,시간 업로드
   useEffect(() => {
@@ -68,7 +69,7 @@ function HabitPage({ to, className }) {
         </div>
 
         {/* 임의로 id값 부여  */}
-        <DailyHabit habitList={habitList} />
+        <DailyHabit habitList={habitList} studyId={studyId} refetchTodayHabits={habitList} />
         {/* 넘어오지 마시오  */}
       </div>
     </div>
