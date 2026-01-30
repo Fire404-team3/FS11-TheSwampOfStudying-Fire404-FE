@@ -5,7 +5,7 @@ import {
   deleteHabitCheckDate,
 } from '@/api/dailyHabit.api';
 import clsx from 'clsx';
-import HabitsModal from '../../pages/HabitsModal';
+import HabitsModal from '../HabitsModal/HabitsModal';
 
 //부모인 habitPage에서 props로 habitList내려 받음 .
 function DailyHabit({ habitList, fetchTestData }) {
