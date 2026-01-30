@@ -14,7 +14,6 @@ function DailyHabit({ habitList, studyId, refetchTodayHabits }) {
   const [study, setStudy] = useState(null);
   const [habits, setHabits] = useState([]);
   const [showModal, setShowModal] = useState(false);
-  
 
   //토글 click 함수
   const handleClick = async (habitId) => {
@@ -42,43 +41,47 @@ function DailyHabit({ habitList, studyId, refetchTodayHabits }) {
   // 모달
   const openModal = () => setShowModal(true);
 
-
-
-
   return (
     <div className={styles.dailyHabitContainer}>
       <div className={styles.habitBox}>
         <h2 className={styles.title}>
           오늘의 습관
           {/* 목록 수정 링크 들어와야함 */}
-          
-          <button onClick={openModal} className={styles.patchHabitBtn}>목록 수정</button>
-
-          {showModal && <HabitsModal
-          studyId={studyId}
-          habits={habits}
-          refetchTodayHabits={refetchTodayHabits}
-          onClose={() => setShowModal(false)} /> }
+          <button onClick={openModal} className={styles.patchHabitBtn}>
+            목록 수정
+          </button>
+          {showModal && (
+            <HabitsModal
+              studyId={studyId}
+              habits={habitList}
+              refetchTodayHabits={refetchTodayHabits}
+              onClose={() => setShowModal(false)}
+            />
+          )}
         </h2>
 
         {/* 여기부터 습관 버튼 들 */}
-      <div className={styles.habitBtnContainer}>
-        {(!habitList || habitList.length === 0) ? (
-          <div className={styles.placeholder}>아직 습관이 없어요<br/>목록 수정을 눌러 습관을 생성해보세요</div>
-        ) : (
-          habitList.map((habit) => (
-            <button
-              key={habit.id}
-              className={clsx(styles.habitBtn, {
-                [styles.habitBtnClick]: clickedHabitId.includes(habit.id),
-              })}
-              onClick={() => handleClick(habit.id)}
-            >
-              {habit.name}
-            </button>
-          ))
-        )}
-      </div>
+        <div className={styles.habitBtnContainer}>
+          {!habitList || habitList.length === 0 ? (
+            <div className={styles.placeholder}>
+              아직 습관이 없어요
+              <br />
+              목록 수정을 눌러 습관을 생성해보세요
+            </div>
+          ) : (
+            habitList.map((habit) => (
+              <button
+                key={habit.id}
+                className={clsx(styles.habitBtn, {
+                  [styles.habitBtnClick]: clickedHabitId.includes(habit.id),
+                })}
+                onClick={() => handleClick(habit.id)}
+              >
+                {habit.name}
+              </button>
+            ))
+          )}
+        </div>
 
         {/* 넘어 오지마시오 */}
       </div>
