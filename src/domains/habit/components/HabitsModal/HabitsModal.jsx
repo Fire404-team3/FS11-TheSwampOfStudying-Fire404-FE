@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { updateHabits } from '../api/habits.api.js';
-import HabitItem from './HabitItem.jsx';
+import { updateHabits } from '../../api/habits.api.js';
+import HabitItem from '../HabitItem/HabitItem.jsx';
 import styles from './HabitsModal.module.css';
 import MediumCancelButton from '@/assets/btn_cancel_md.png';
 import ModificationCompleteButton from '@/assets/btn_modification_complete.png';

@@ -1,5 +1,5 @@
 import styles from './App.module.css';
-import HabitPage from './domains/habit/HabitPage';
+import HabitPage from './domains/habit/page/HabitPage';
 
 function App() {
   return (

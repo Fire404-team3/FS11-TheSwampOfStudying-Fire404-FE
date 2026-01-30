@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import DailyHabit from './components/DailyHabit/DailyHabit';
+import DailyHabit from '../components/DailyHabit/DailyHabit';
 import styles from './HabitPage.module.css';
 import { LinkButton } from '@/components/LinkButton';
 import { fetchHabitList } from '@/api/dailyHabit.api.js';
