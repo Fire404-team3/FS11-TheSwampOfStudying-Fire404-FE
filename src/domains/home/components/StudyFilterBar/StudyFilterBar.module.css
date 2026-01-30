@@ -12,6 +12,11 @@
   color: #818181;
   font-size: 1rem;
   font-weight: 400;
+  background-image: url('@/assets/images/ic_search.svg');
+  background-repeat: no-repeat;
+  background-position: 0.7rem center;
+  background-size: 1rem;
+  padding-left: 2rem;
 }
 
 .filterBarContainer {
