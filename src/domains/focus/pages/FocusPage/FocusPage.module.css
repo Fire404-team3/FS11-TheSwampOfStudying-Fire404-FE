@@ -1,0 +1,37 @@
+.page {
+  min-height: 100vh;
+  background-color: var(--bg);
+  position: relative;
+}
+
+.container {
+  max-width: 75rem;
+  margin: 0 auto;
+  padding: 3.34rem 2rem 9.53rem;
+}
+
+.toastContainer {
+  position: fixed;
+  bottom: 2.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100;
+}
+
+/* Tablet */
+@media (max-width: 1199px) {
+  .container {
+    padding: 0 1.5rem;
+  }
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+  .container {
+    padding: 0 1rem;
+  }
+
+  .toastContainer {
+    bottom: 1.5rem;
+  }
+}

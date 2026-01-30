@@ -7,7 +7,7 @@ import { fetchHabitList } from '../api/habits.api';
 function HabitPage({ to, className }) {
   //예비 id : studyid 번호 각자의 seed 데이터의 studyId 값을 넣어주세요
   //이 부분은 추후 연결....
-  const id = '101';
+  const id = 'cml0jndun0000qoscmihfh6eq';
   const INTERVAL_TIME = 10000;
   const [current, setCurrent] = useState(new Date());
 
@@ -55,10 +55,10 @@ function HabitPage({ to, className }) {
           <p className={styles.studyNameTitle}>{studyName}</p>
           <div className={styles.moveBtnContainer}>
             {/* 페이지 이동 연결 해야함  */}
-            <LinkButton to={to} className={className}>
+            <LinkButton to='/focus' className={className}>
               오늘의 집중
             </LinkButton>
-            <LinkButton to={to} className={className}>
+            <LinkButton to='/' className={className}>
               홈
             </LinkButton>
           </div>

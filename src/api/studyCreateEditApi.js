@@ -3,7 +3,7 @@
  */
 
 // 서버주소, 향후 env로 관리
-const BASE_URL = 'http://localhost:5001';
+const BASE_URL = 'http://localhost:5005';
 
 // 1. 스터디 생성용 API
 export const postStudy = async (studyData) => {

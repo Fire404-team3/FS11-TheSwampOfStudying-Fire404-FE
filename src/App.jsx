@@ -6,6 +6,7 @@ import ModalTestPage from './components/PasswordModal/ModalTestPage';
 import HabitPage from './domains/habit/page/HabitPage';
 
 // 모달 테스트용, '스터디 상세 페이지' 연결 후 삭제
+import { FocusPage } from '@/domains/focus/pages';
 
 function App() {
   return (
@@ -17,7 +18,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/create-study" element={<CreateStudy />} />
         <Route path="/habit" element={<HabitPage />} />
-        <Route path="/focus" element={<HabitPage />} />
+        <Route path="/focus" element={<FocusPage />} />
 
         {/* 상세페이지 테스트용 */}
         <Route path="/test" element={<ModalTestPage />} />

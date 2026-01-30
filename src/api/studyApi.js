@@ -1,4 +1,4 @@
-const BASE_URL = 'http://localhost:5050';
+const BASE_URL = 'http://localhost:5005';
 
 export const getStudies = async ({ search, sort, order, page, limit }) => {
   const params = new URLSearchParams({

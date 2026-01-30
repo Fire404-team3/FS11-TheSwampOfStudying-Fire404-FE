@@ -1,0 +1,48 @@
+.toast {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 2rem;
+  font-size: 0.875rem;
+  animation: slideUp 0.3s ease-out;
+}
+
+.toast.success {
+  background-color: #fff;
+  border: 1px solid var(--gray-DDDDDD);
+  color: var(--black);
+}
+
+.toast.warning {
+  background-color: var(--pink);
+  border: 1px solid var(--pink);
+  color: var(--pink-text);
+}
+
+.icon {
+  font-size: 1rem;
+}
+
+.message {
+  font-weight: 500;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(1rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+  .toast {
+    padding: 0.625rem 1.25rem;
+    font-size: 0.75rem;
+  }
+}

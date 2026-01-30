@@ -1,4 +1,4 @@
-const API_BASE_URL = 'http://localhost:5713';
+const API_BASE_URL = 'http://localhost:5005';
 
 //habit데이터 불러오는 api
 export const fetchHabitList = async (id) => {
