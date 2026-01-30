@@ -44,24 +44,33 @@ function DailyHabit({ habitList }) {
         </h2>
 
         {/* 여기부터 습관 버튼 들 */}
-      <div className={styles.habitBtnContainer}>
-        {(!habitList || habitList.length === 0) ? (
-          <div className={styles.placeholder}>아직 습관이 없어요<br/>목록 수정을 눌러 습관을 생성해보세요</div>
-        ) : (
-          habitList.map((habit) => (
-            <button
-              key={habit.id}
-              className={clsx(styles.habitBtn, {
-                [styles.habitBtnClick]: clickedHabitId.includes(habit.id),
-              })}
-              onClick={() => handleClick(habit.id)}
-            >
-              {habit.name}
-            </button>
-          ))
-        )}
-      </div>
-
+        <div className={styles.habitBtnContainer}>
+          {!habitList || habitList.length === 0 ? (
+            <div className={styles.placeholder}>
+              아직 습관이 없어요
+              <br />
+              목록 수정을 눌러 습관을 생성해보세요
+            </div>
+          ) : (
+            habitList.map((habit) => (
+              <button
+                key={habit.id}
+                className={clsx(styles.habitBtn, {
+                  [styles.habitBtnClick]: clickedHabitId.includes(habit.id),
+                })}
+                onClick={() => handleClick(habit.id)}
+              >
+                {habit.name}
+              </button>
+            ))
+          )}
+        </div>
+        {/* 모달 인자 넘겨줌. */}
+        {/* <DailyHabit
+          habitList={habitList}
+          studyId={studyId}
+          refetchTodayHabits={dailyHabitlist}
+        /> */}
         {/* 넘어 오지마시오 */}
       </div>
     </div>

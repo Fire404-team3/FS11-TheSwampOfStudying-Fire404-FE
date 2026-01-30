@@ -15,23 +15,27 @@ function HabitPage({ to, className }) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [studyName, setStudyName] = useState('');
+  const [studyId, setStudyId] = useState('');
 
   //studyId => habit 가져오기 props로 dailyHabit에 내려줌
   // 여기서 가저온 studyName을 habitPage에서 사용.
+  const dailyHabitlist = async () => {
+    try {
+      setLoading(true);
+      setError(null);
+      const result = await fetchHabitList(id);
+      // console.log(result.data);
+      setHabitList(result.data.habits);
+      setStudyName(result.data.name);
+      setStudyId(result.data.id);
+    } catch (error) {
+      setError(error.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   useEffect(() => {
-    const dailyHabitlist = async () => {
-      try {
-        setLoading(true);
-        setError(null);
-        const result = await fetchHabitList(id);
-        setHabitList(result.data.habits);
-        setStudyName(result.data.name);
-      } catch (error) {
-        setError(error.message);
-      } finally {
-        setLoading(false);
-      }
-    };
     dailyHabitlist();
   }, [id]);
 
@@ -68,7 +72,11 @@ function HabitPage({ to, className }) {
         </div>
 
         {/* 임의로 id값 부여  */}
-        <DailyHabit habitList={habitList} />
+        <DailyHabit
+          habitList={habitList}
+          studyId={studyId}
+          refetchTodayHabits={dailyHabitlist}
+        />
         {/* 넘어오지 마시오  */}
       </div>
     </div>
