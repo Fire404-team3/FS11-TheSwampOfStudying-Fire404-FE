@@ -1,3 +1,4 @@
+// import { useNavigate } from 'react-router';
 import { useState } from 'react';
 import styles from './RecentStudyList.module.css';
 import StudyCard from '../StudyCard';
@@ -6,16 +7,20 @@ export default function RecentStudyList() {
   const [recentStudies, setRecentStudies] = useState(() => {
     const saved = localStorage.getItem('recentStudies');
 
-    if (saved) {
-      try {
-        return JSON.parse(saved);
-      } catch (error) {
-        console.error('데이터를 파싱하는 중 오류가 발생했습니다.', error);
-        return [];
-      }
-    }
+
+    // const navigate = useNavigate();
+
+if (saved) {
+  try {
+    return JSON.parse(saved);
+  } catch (error) {
+    console.error('데이터를 파싱하는 중 오류가 발생했습니다.', error);
     return [];
-  });
+  }
+}
+return [];
+});
+// navigate(`/studies/${result.id}`); 
 
   return (
     <section className={styles.recentSection}>
@@ -29,7 +34,9 @@ export default function RecentStudyList() {
           <p className={styles.emptyText}>아직 조회한 스터디가 없어요</p>
         ) : (
           recentStudies.map((study) => (
+            
             <StudyCard key={study.id} study={study} />
+          
           ))
         )}
       </div>

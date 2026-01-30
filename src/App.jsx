@@ -2,11 +2,12 @@ import { Route, Routes } from 'react-router';
 import Home from './domains/home/pages/Home';
 import styles from './App.module.css';
 import CreateStudy from './domains/createStudy/pages/CreateStudy';
-import ModalTestPage from './components/PasswordModal/ModalTestPage';
 import HabitPage from './domains/habit/page/HabitPage';
+import { FocusPage } from '@/domains/focus/pages';
+import StudyDetailPage from './domains/stydyDetail/pages/StudyDetailPage';
 
 // 모달 테스트용, '스터디 상세 페이지' 연결 후 삭제
-import { FocusPage } from '@/domains/focus/pages';
+// import ModalTestPage from './components/PasswordModal/ModalTestPage';
 
 function App() {
   return (
@@ -17,11 +18,11 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/create-study" element={<CreateStudy />} />
+        <Route path="/studies/cml0jndun0000qoscmihfh6eq" element={<StudyDetailPage />} />
         <Route path="/habit" element={<HabitPage />} />
         <Route path="/focus" element={<FocusPage />} />
 
         {/* 상세페이지 테스트용 */}
-        <Route path="/test" element={<ModalTestPage />} />
       </Routes>
     </>
   );

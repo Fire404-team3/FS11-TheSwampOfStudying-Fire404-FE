@@ -19,6 +19,8 @@ export default function Home() {
   const [currentPage, setCurrentPage] = useState(1);
   const [totalCount, setTotalCount] = useState(0);
 
+// const navigate = useNavigate();
+
   useEffect(() => {
     const debounceTimer = setTimeout(() => {
       const fetchStudies = async () => {
