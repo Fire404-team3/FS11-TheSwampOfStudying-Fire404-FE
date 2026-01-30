@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { updateHabits } from '../api/habitmodal/habits.api.js';
-import HabitItem from '../components/habitmodal/HabitItem.jsx';
+import { updateHabits } from '../api/habits.api.js';
+import HabitItem from './HabitItem.jsx';
 import styles from './HabitsModal.module.css';
 import MediumCancelButton from '@/assets/btn_cancel_md.png';
 import ModificationCompleteButton from '@/assets/btn_modification_complete.png';
@@ -29,7 +29,8 @@ export default function HabitsModal({
 
   const handleClickAddNewButton = () => {
     const lastHabit = habits.at(-1);
-    if (lastHabit?.id.startsWith('new-') && lastHabit.name === '') return;
+    if (lastHabit?.id.startsWith('new-') && lastHabit.name.trim() === '')
+      return;
 
     setHabits((prev) => [...prev, { id: `new-${Date.now()}`, name: '' }]);
   };
@@ -38,16 +39,25 @@ export default function HabitsModal({
     setHabits((prev) => prev.filter((habit) => habit.id !== id));
   };
 
-  // PUT 호출 로직을 API 함수로 분리
+  // Habit 등록/수정/삭제 처리를 위한 API 호출로직
   const handleClickUpdate = async () => {
-    if (habits.some((h) => !h.name || h.name.trim() === '')) {
+    // 1. 프론트엔드 자체 기본 검사 (네트워크 요청 전)
+    if (habits.some((habit) => !habit.name || habit.name.trim() === '')) {
       alert('습관 이름은 필수입니다.');
       return;
     }
 
-    await updateHabits(studyId, habits);
-    await refetchTodayHabits(); // 수정 후 재조회
-    onClose();
+    try {
+      // 서버에 업데이트 요청 (이 안에서 에러가 나면 catch 블록으로 이동)
+      await updateHabits(studyId, habits);
+      await refetchTodayHabits(); // 수정 후 재조회
+      // alert('성공적으로 수정되었습니다.');  성공 알림 필요 여부
+      onClose();
+    } catch (error) {
+      // 서버(Zod 미들웨어 등)에서 던진 에러 메시지를 여기서 alert로 띄웁니다.
+      // error.message는 habits.api.js에서 throw new Error(...)한 내용입니다.
+      alert(error.message);
+    }
   };
 
   return (
@@ -72,16 +82,12 @@ export default function HabitsModal({
             <img src={PlusIcon} className={styles.habitAddIcon} alt="추가" />
           </button>
         </div>
-
         <div className={styles.habitsModalActions}>
-          <button onClick={onClose} className={styles.habitsModalButton}>
-            <img src={MediumCancelButton} alt="취소" />
+          <button onClick={onClose} className={styles.cancelButton}>
+            취소
           </button>
-          <button
-            onClick={handleClickUpdate}
-            className={styles.habitsModalButton}
-          >
-            <img src={ModificationCompleteButton} alt="완료" />
+          <button onClick={handleClickUpdate} className={styles.saveButton}>
+            수정 완료
           </button>
         </div>
       </div>

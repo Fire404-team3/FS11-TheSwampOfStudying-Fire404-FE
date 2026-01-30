@@ -1,1 +1,2 @@
-export * from './Habitmodal';
+export * from './habitModal';
+export * from './HabitItem';
