@@ -78,9 +78,9 @@ const StudyForm = ({
             error={errors.passwordConfirm}
             onInputChange={onChange}
           />
-          <SubmitButton label={submitLabel} />
         </>
       )}
+      <SubmitButton label={submitLabel} />
     </form>
   );
 };
