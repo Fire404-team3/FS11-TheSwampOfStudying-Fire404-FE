@@ -3,6 +3,7 @@ import Home from './domains/home/pages/Home';
 import styles from './App.module.css';
 import CreateStudy from './domains/createStudy/pages/CreateStudy';
 import ModalTestPage from './components/PasswordModal/ModalTestPage';
+import HabitPage from './domains/habit/page/HabitPage';
 
 // 모달 테스트용, '스터디 상세 페이지' 연결 후 삭제
 
@@ -15,6 +16,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/create-study" element={<CreateStudy />} />
+        <Route path="/habit" element={<HabitPage />} />
+        <Route path="/focus" element={<HabitPage />} />
 
         {/* 상세페이지 테스트용 */}
         <Route path="/test" element={<ModalTestPage />} />
