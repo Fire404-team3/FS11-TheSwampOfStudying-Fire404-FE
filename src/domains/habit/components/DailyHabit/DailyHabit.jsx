@@ -3,7 +3,7 @@ import styles from './DailyHabit.module.css';
 import {
   creatHabitCheckDate,
   deleteHabitCheckDate,
-} from '@/api/dailyHabit.api';
+} from '../../api/habits.api.js';
 import clsx from 'clsx';
 import HabitsModal from '../HabitsModal/HabitsModal';
 

@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import DailyHabit from '../components/DailyHabit/DailyHabit';
 import styles from './HabitPage.module.css';
 import { LinkButton } from '@/components/LinkButton';
-import { fetchHabitList } from '@/api/dailyHabit.api.js';
+import { fetchHabitList } from '../api/habits.api';
 
 function HabitPage({ to, className }) {
   //예비 id : studyid 번호 각자의 seed 데이터의 studyId 값을 넣어주세요
@@ -18,23 +18,26 @@ function HabitPage({ to, className }) {
   const [studyId, setStudyId] = useState('');
   //studyId => habit 가져오기 props로 dailyHabit에 내려줌
   // 여기서 가저온 studyName을 habitPage에서 사용.
+
+  const dailyHabitlist = async () => {
+    try {
+      setLoading(true);
+      setError(null);
+      const result = await fetchHabitList(id);
+      // console.log(result.data);
+      setHabitList(result.data.habits);
+      setStudyName(result.data.name);
+      setStudyId(result.data.id);
+    } catch (error) {
+      setError(error.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   useEffect(() => {
-    const dailyHabitlist = async () => {
-      try {
-        setLoading(true);
-        setError(null);
-        const result = await fetchHabitList(id);
-        setHabitList(result.data.habits);
-        setStudyName(result.data.name);
-        setStudyId(result.data.studyId)
-      } catch (error) {
-        setError(error.message);
-      } finally {
-        setLoading(false);
-      }
-    };
     dailyHabitlist();
-  }, [id, habitList]);
+  }, [id]);
 
   //날짜,시간 업로드
   useEffect(() => {
@@ -69,7 +72,11 @@ function HabitPage({ to, className }) {
         </div>
 
         {/* 임의로 id값 부여  */}
-        <DailyHabit habitList={habitList} studyId={studyId} refetchTodayHabits={habitList} />
+        <DailyHabit
+          habitList={habitList}
+          studyId={studyId}
+          refetchTodayHabits={dailyHabitlist}
+        />
         {/* 넘어오지 마시오  */}
       </div>
     </div>
