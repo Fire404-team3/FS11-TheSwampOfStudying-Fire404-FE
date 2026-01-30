@@ -1,0 +1,29 @@
+.moreBtn {
+  display: flex;
+  width: 17.5rem;
+  height: 3.3125rem;
+  justify-content: center;
+  align-items: center;
+  border-radius: 1.25rem;
+  border: 1px solid var(--gray-DDDDDD);
+  background: #fff;
+  color: var(--green-text);
+  text-align: center;
+  font-family: Pretendard;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.moreBtn:hover {
+  background-color: #f8f9fa;
+  border-color: #414141;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+.moreBtn:active {
+  transform: translateY(0);
+  background-color: #e9ecef;
+}

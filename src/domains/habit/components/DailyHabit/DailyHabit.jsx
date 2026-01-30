@@ -3,12 +3,17 @@ import styles from './DailyHabit.module.css';
 import {
   creatHabitCheckDate,
   deleteHabitCheckDate,
-} from '@/api/dailyHabit.api';
+} from '../../api/habits.api.js';
 import clsx from 'clsx';
+import HabitsModal from '../HabitsModal/HabitsModal';
 
 //부모인 habitPage에서 props로 habitList내려 받음 .
-function DailyHabit({ habitList }) {
+function DailyHabit({ habitList, studyId, refetchTodayHabits }) {
   const [clickedHabitId, setClickedHabitId] = useState([]);
+  // 모달
+  const [study, setStudy] = useState(null);
+  const [habits, setHabits] = useState([]);
+  const [showModal, setShowModal] = useState(false);
 
   //토글 click 함수
   const handleClick = async (habitId) => {
@@ -33,6 +38,8 @@ function DailyHabit({ habitList }) {
       console.error('error:', error.message);
     }
   };
+  // 모달
+  const openModal = () => setShowModal(true);
 
   return (
     <div className={styles.dailyHabitContainer}>
@@ -40,7 +47,17 @@ function DailyHabit({ habitList }) {
         <h2 className={styles.title}>
           오늘의 습관
           {/* 목록 수정 링크 들어와야함 */}
-          <button className={styles.patchHabitBtn}>목록 수정</button>
+          <button onClick={openModal} className={styles.patchHabitBtn}>
+            목록 수정
+          </button>
+          {showModal && (
+            <HabitsModal
+              studyId={studyId}
+              habits={habitList}
+              refetchTodayHabits={refetchTodayHabits}
+              onClose={() => setShowModal(false)}
+            />
+          )}
         </h2>
 
         {/* 여기부터 습관 버튼 들 */}
@@ -65,12 +82,7 @@ function DailyHabit({ habitList }) {
             ))
           )}
         </div>
-        {/* 모달 인자 넘겨줌. */}
-        {/* <DailyHabit
-          habitList={habitList}
-          studyId={studyId}
-          refetchTodayHabits={dailyHabitlist}
-        /> */}
+
         {/* 넘어 오지마시오 */}
       </div>
     </div>

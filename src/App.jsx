@@ -1,12 +1,29 @@
+import { Route, Routes } from 'react-router';
+import Home from './domains/home/pages/Home';
 import styles from './App.module.css';
-import HabitPage from './domains/habit/HabitPage';
+import CreateStudy from './domains/createStudy/pages/CreateStudy';
+import HabitPage from './domains/habit/page/HabitPage';
+import { FocusPage } from '@/domains/focus/pages';
+import StudyDetailPage from './domains/stydyDetail/pages/StudyDetailPage';
+
+// 모달 테스트용, '스터디 상세 페이지' 연결 후 삭제
+// import ModalTestPage from './components/PasswordModal/ModalTestPage';
 
 function App() {
   return (
     <>
       {/* 추후 컴포넌트들이 들어올 예정입니다. */}
       <h1 className={styles.srOnly}>공부의 숲</h1>
-      <HabitPage />
+
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/create-study" element={<CreateStudy />} />
+        <Route path="/studies/cml0jndun0000qoscmihfh6eq" element={<StudyDetailPage />} />
+        <Route path="/habit" element={<HabitPage />} />
+        <Route path="/focus" element={<FocusPage />} />
+
+        {/* 상세페이지 테스트용 */}
+      </Routes>
     </>
   );
 }

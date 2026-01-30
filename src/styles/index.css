@@ -32,6 +32,10 @@
   --point-font: 'EF_jejudoldam', cursive;
 }
 
+* {
+  font-family: 'Pretendard', sans-serif;
+}
+
 body {
   font-family: var(--main-font);
   font-size: 1rem; /* 16px 기준 */

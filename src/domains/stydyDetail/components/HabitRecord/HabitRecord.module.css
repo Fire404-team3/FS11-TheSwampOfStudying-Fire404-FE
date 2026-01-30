@@ -1,0 +1,17 @@
+.recordContainer{
+  display: flex;
+}
+
+.habitName{
+  display: flex;
+  line-height:4rem;
+  background-color: transparent;
+  text-align: right;
+}
+
+
+.icon{
+  display: flex;
+  margin-left: 2rem;
+}
+

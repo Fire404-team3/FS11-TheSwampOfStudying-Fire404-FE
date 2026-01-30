@@ -1,0 +1,101 @@
+.datailPageContainer {
+  width: 0 auto;
+  padding: 8.69rem 19.5rem 6.25rem 22.5rem;
+}
+/* detail 흰 박스 */
+.datailBox {
+  background-color: white;
+  padding: 2.5rem;
+  border-radius: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+/* 스터디 정보 */
+.infoContainer,
+button {
+  border: none;
+  background-color: transparent;
+}
+
+.infoContainer p {
+  color: var(--gray-818181);
+  margin-bottom: 0.5rem;
+}
+
+/* 스터디 정보에 첫번째줄 */
+.firstNev {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+
+.fixBtns {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  color: var(--gray-818181);
+  font-weight: 500;
+}
+
+.Share,
+.studyFix {
+  color: var(--green-text);
+}
+
+/* 스터디정보의 두번째 줄 */
+.secondNev {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.studyName {
+  font-size: 2rem;
+  font-weight: 800;
+  font-style: normal;
+}
+
+.moveBtn {
+  display: flex;
+  gap: 1rem;
+}
+
+/* 소개 */
+.description {
+  margin-bottom: 1.5rem;
+}
+
+/* 포인트 */
+.point {
+  padding: 0.5rem 0.75rem;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 3.125rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+  gap: 0.25rem;
+}
+
+.pointIcon {
+  width: 1.1875rem;
+  height: 1.1875rem;
+}
+
+/* 습관기록표  */
+
+.weeklyHabitbox {
+  border: 1px solid var(--gray-DDDDDD);
+  border-radius: 1.25rem;
+  padding: 1.25rem;
+}
+
+.weeklyTitle{
+  font-size: 1.5rem;
+  font-weight: 800;
+  font-style: normal;
+  margin-bottom: 3.12rem;
+}
