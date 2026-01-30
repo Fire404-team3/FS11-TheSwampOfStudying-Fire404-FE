@@ -41,7 +41,7 @@
 }
 
 .title {
-  font-family: Pretendard;
+  font-family: var(--main-font);
   font-size: 1.125rem;
   font-style: normal;
   font-weight: 700;
@@ -56,7 +56,7 @@
   color: var(--theme-point-text);
   background: var(--theme-point-bg);
   border: 1px solid var(--theme-point-border);
-  font-family: Pretendard;
+  font-family: var(--main-font);
   font-size: 0.75rem;
   font-style: normal;
   font-weight: 500;
@@ -71,7 +71,7 @@
 
 .statusText {
   color: var(--theme-date);
-  font-family: Pretendard;
+  font-family: var(--main-font);
   font-size: 0.875rem;
   font-style: normal;
   font-weight: 400;
@@ -79,7 +79,7 @@
 }
 .description {
   color: var(--theme-desc);
-  font-family: Pretendard;
+  font-family: var(--main-font);
   font-size: 1rem;
   font-style: normal;
   font-weight: 400;
@@ -100,7 +100,7 @@
 
 .emojiCount {
   color: #fff;
-  font-family: Pretendard;
+  font-family: var(--main-font);
   font-size: 0.75rem;
   font-style: normal;
   font-weight: 400;

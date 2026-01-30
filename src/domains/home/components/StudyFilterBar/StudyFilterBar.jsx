@@ -18,7 +18,7 @@ export default function StudyFilterBar({
 
   const currentLabel =
     sortOptions.find(
-      (opt) => opt.filed === sortOrder.filed && opt.order === sortOrder.order,
+      (opt) => opt.field === sortOrder.field && opt.order === sortOrder.order,
     )?.label || '최근 순';
 
   return (
