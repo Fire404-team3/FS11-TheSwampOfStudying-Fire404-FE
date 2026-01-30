@@ -4,10 +4,10 @@ import styles from './HabitPage.module.css';
 import { LinkButton } from '@/components/LinkButton';
 import { fetchHabitList } from '../api/habits.api';
 
-function HabitPage({ to, className }) {
+function HabitPage({className }) {
   //예비 id : studyid 번호 각자의 seed 데이터의 studyId 값을 넣어주세요
   //이 부분은 추후 연결....
-  const id = 'cml0jndun0000qoscmihfh6eq';
+  const id = 'cml0pnrqr0000wbscrjr16seq';
   const INTERVAL_TIME = 10000;
   const [current, setCurrent] = useState(new Date());
 
