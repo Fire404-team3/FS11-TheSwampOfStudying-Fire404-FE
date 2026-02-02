@@ -1,13 +1,19 @@
+import { increaseEmoji } from '@/api/emojiUpdate';
 import { EmojiButton } from '../EmojiButton';
 import { EmojiPickerWrapper } from '../EmojiPickerWrapper';
 import styles from './EmojiList.module.css';
 
-export function EmojiList({ study }) {
-  if (!study) {
-    return <div>데이터 로딩 중...</div>;
-  }
-
+export function EmojiList({ study, onRefresh }) {
   const { id: studyId, emojiLogs = [] } = study;
+
+  const handleAddEmoji = async (emojiType) => {
+    try {
+      await increaseEmoji({ studyId, emojiType });
+      onRefresh();
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   return (
     <ul className={styles.emojiListContainer}>
@@ -24,7 +30,10 @@ export function EmojiList({ study }) {
 
       {/* 이모지 추가 버튼 / 피커 */}
       <li>
-        <EmojiPickerWrapper className={styles.emojiPicker} />
+        <EmojiPickerWrapper
+          onSelect={handleAddEmoji}
+          className={styles.emojiPicker}
+        />
       </li>
     </ul>
   );
