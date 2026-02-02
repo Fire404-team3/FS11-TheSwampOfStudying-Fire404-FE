@@ -34,7 +34,7 @@ function StudyDetailPage({ className }) {
       }
     };
     allResourcesList();
-  }, [id,habits]);
+  }, [id, habits]);
 
   return (
     <div className={styles.datailPageContainer}>
@@ -57,7 +57,7 @@ function StudyDetailPage({ className }) {
               <LinkButton to={`/studies/${id}/habits`} className={className}>
                 오늘의 습관
               </LinkButton>
-              <LinkButton to={"/studies"} className={className}>
+              <LinkButton to={`/studies/${id}/focus`} className={className}>
                 오늘의 집중
               </LinkButton>
             </div>
@@ -73,10 +73,10 @@ function StudyDetailPage({ className }) {
             {point}p 획득
           </div>
         </div>
+
+        {/* 습관기록표 */}
         <div className={styles.weeklyHabitbox}>
           <p className={styles.weeklyTitle}>습관 기록표</p>
-          {/* 습관기록표 */}
-
 
           {habits.length === 0 ? (
             <p>
@@ -85,7 +85,9 @@ function StudyDetailPage({ className }) {
               오늘의 습관에서 습관을 생성해보세요
             </p>
           ) : (
-            habits.map((habit,index) => <HabitRecord key={habit.id} habit={habit} index={index} />)
+            habits.map((habit, index) => (
+              <HabitRecord key={habit.id} habit={habit} index={index} />
+            ))
           )}
         </div>
       </div>

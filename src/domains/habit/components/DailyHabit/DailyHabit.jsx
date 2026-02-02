@@ -20,18 +20,18 @@ function DailyHabit({ habitList = [], studyId, refetchTodayHabits }) {
 
   // 토글 click 함수
   const handleClick = async (habitId) => {
+    const prev = clickedHabitId;
+    const checkDate = new Date().toISOString();
+    const isChecked = prev.includes(habitId);
+
+    // localStorage 반영
+    const next = isChecked
+      ? prev.filter((id) => id !== habitId)
+      : [...prev, habitId];
+    setClickedHabitId(next);
+    localStorage.setItem('checkedHabits', JSON.stringify(next));
     try {
-      const checkDate = new Date().toISOString();
-      const isChecked = clickedHabitId.includes(habitId);
-
-      // localStorage 반영
-      const next = isChecked
-        ? clickedHabitId.filter((id) => id !== habitId)
-        : [...clickedHabitId, habitId];
-      setClickedHabitId(next);
-      localStorage.setItem('checkedHabits', JSON.stringify(next));
-
-      // 서버 요청(기존 로직 유지)
+      // 서버 요청
       if (isChecked) {
         await deleteHabitCheckDate(habitId, checkDate);
         console.log('삭제 성공');
@@ -39,12 +39,12 @@ function DailyHabit({ habitList = [], studyId, refetchTodayHabits }) {
         await creatHabitCheckDate(habitId, checkDate);
         console.log('생성 성공');
       }
-
-      // 선택적으로 서버에서 최신 자료를 다시 불러오려면 주석 해제:
-      // if (typeof refetchTodayHabits === 'function') await refetchTodayHabits();
     } catch (error) {
       console.error('error:', error.message);
-      // 필요하면 실패 시 롤백 로직을 여기에 추가하세요.
+      //실패 시 롤백
+      setClickedHabitId(prev);
+      localStorage.setItem('checkedHabits', JSON.stringify(prev));
+      alert('요청에 실패했습니다. 다시 시도해주세요.');
     }
   };
 

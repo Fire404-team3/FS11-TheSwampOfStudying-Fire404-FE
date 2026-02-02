@@ -6,8 +6,6 @@ import { fetchHabitList } from '@/api/habits.api';
 import { useParams } from 'react-router';
 
 function HabitPage({ className }) {
-  //예비 id : studyid 번호 각자의 seed 데이터의 studyId 값을 넣어주세요
-  //이 부분은 추후 연결....
   const { id } = useParams();
   const INTERVAL_TIME = 10000;
   const [current, setCurrent] = useState(new Date());
@@ -17,8 +15,6 @@ function HabitPage({ className }) {
   const [error, setError] = useState(null);
   const [studyName, setStudyName] = useState('');
   const [studyId, setStudyId] = useState('');
-  //studyId => habit 가져오기 props로 dailyHabit에 내려줌
-  // 여기서 가저온 studyName을 habitPage에서 사용.
 
   const dailyHabitlist = async () => {
     try {
@@ -36,13 +32,7 @@ function HabitPage({ className }) {
     }
   };
 
-  // useEffect(() => {
-  //   if (!id) return;
-  //   dailyHabitlist();
-  // }, [id]);
-
   useEffect(() => {
-    console.log('study id:', id);
     if (!id) return;
     dailyHabitlist();
   }, [id]);
@@ -51,7 +41,7 @@ function HabitPage({ className }) {
   useEffect(() => {
     const intervalId = setInterval(() => {
       setCurrent(new Date());
-    }, INTERVAL_TIME); //1분에 한번씩 업로드
+    }, INTERVAL_TIME); //10초에 한번씩...
     return () => clearInterval(intervalId);
   }, []);
 
@@ -63,7 +53,7 @@ function HabitPage({ className }) {
           <p className={styles.studyNameTitle}>{studyName}</p>
           <div className={styles.moveBtnContainer}>
             {/* 페이지 이동 연결 해야함  */}
-            <LinkButton to="/focus" className={className}>
+            <LinkButton to={`/studies/${id}/focus`} className={className}>
               오늘의 집중
             </LinkButton>
             <LinkButton to="/" className={className}>
