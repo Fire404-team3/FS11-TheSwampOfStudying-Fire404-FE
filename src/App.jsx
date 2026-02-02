@@ -27,7 +27,7 @@ function App() {
         {/* [수훈] 스터디 수정하기 라우터 추가 */}
         <Route path="/studies/:id/update" element={<UpdateStudy />} />
         <Route path="/studies/:id/habits" element={<HabitPage />} />
-        <Route path="/focus" element={<FocusPage />} />
+        <Route path="/studies/:id/focus" element={<FocusPage />} />
       </Routes>
     </>
   );
