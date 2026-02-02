@@ -5,9 +5,9 @@ import CreateStudy from './domains/createStudy/pages/CreateStudy';
 import HabitPage from './domains/habit/page/HabitPage';
 import { FocusPage } from '@/domains/focus/pages';
 import StudyDetailPage from './domains/stydyDetail/pages/StudyDetailPage';
-
-// 모달 테스트용, '스터디 상세 페이지' 연결 후 삭제
-// import ModalTestPage from './components/PasswordModal/ModalTestPage';
+import UpdateStudy from './domains/studyEdit/pages/UpdateStudy';
+import { Toaster } from 'react-hot-toast';
+import GlobalToaster from './components/Toaster/GlobalToaster';
 
 function App() {
   return (
@@ -15,14 +15,22 @@ function App() {
       {/* 추후 컴포넌트들이 들어올 예정입니다. */}
       <h1 className={styles.srOnly}>공부의 숲</h1>
 
+      {/* [수훈] 토스터 추가 */}
+      <GlobalToaster />
+
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/create-study" element={<CreateStudy />} />
-        <Route path="/studies/cml0jndun0000qoscmihfh6eq" element={<StudyDetailPage />} />
+        {/* [수훈] 경로 수정 */}
+        <Route path="/studies/new" element={<CreateStudy />} />
+
+        {/* [수훈] useParams 사용으로 상세페이지 패스 수정 */}
+        <Route path="/studies/:id" element={<StudyDetailPage />} />
+
+        {/* [수훈] 스터디 수정하기 라우터 추가 */}
+        <Route path="/studies/:id/update" element={<UpdateStudy />} />
+
         <Route path="/habit" element={<HabitPage />} />
         <Route path="/focus" element={<FocusPage />} />
-
-        {/* 상세페이지 테스트용 */}
       </Routes>
     </>
   );

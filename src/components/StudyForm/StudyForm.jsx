@@ -3,6 +3,7 @@ import FormTextArea from '@/domains/createStudy/components/FormTextArea';
 import BackgroundSelector from '@/domains/createStudy/components/BackgroundSelector';
 import SubmitButton from '@/domains/createStudy/components/SubmitButton';
 import styles from '@/domains/createStudy/pages/CreateStudy.module.css';
+import { Header } from '../Header';
 
 const StudyForm = ({
   formData,
@@ -26,6 +27,7 @@ const StudyForm = ({
 
   return (
     <form onSubmit={onSubmit} className={styles.form}>
+      
       {/* 공통 필드 */}
       <FormInput
         label="닉네임"
