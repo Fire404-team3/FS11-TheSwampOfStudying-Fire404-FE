@@ -1,6 +1,5 @@
 import { useState } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
-import toast from 'react-hot-toast';
+import { useParams, useNavigate } from 'react-router';
 import { getStudyDetail, updateStudy } from '@/api/studyCreateEditApi.js';
 
 import useStudyForm from '@/hooks/useStudyForm';
@@ -10,6 +9,8 @@ import PasswordModal from '../../../components/PasswordModal/PasswordModal';
 import '@/styles/reset.css';
 import '@/styles/index.css';
 import styles from '../../createStudy/pages/CreateStudy.module.css';
+
+import { HomeHeader } from '@/components/HomeHeader';
 
 /**
  * [스터디 수정]
@@ -43,7 +44,7 @@ const UpdateStudy = () => {
 
       setIsCheckDone(true);
     } catch (error) {
-      toast.error(error.message || '스터디 정보를 불러오는데 실패했습니다.');
+      alert(error.message || '스터디 정보를 불러오는데 실패했습니다.');
 
       // 로딩 실패시 뒤로가기
       navigate(-1);
@@ -56,14 +57,12 @@ const UpdateStudy = () => {
 
     try {
       await updateStudy(id, formData);
-      toast.success('성공적으로 수정되었습니다!');
+      alert('성공적으로 수정되었습니다!');
 
       // 성공 시 상세페이지로 이동
       navigate(`/studies/${id}`);
     } catch (error) {
-      toast.error(
-        error.message || '수정에 실패했습니다. 입력값을 확인해주세요.',
-      );
+      alert(error.message || '수정에 실패했습니다. 입력값을 확인해주세요.');
 
       if (error.details) {
         setErrors(error.details);
@@ -84,20 +83,23 @@ const UpdateStudy = () => {
         />
       ) : (
         // 인증 후 : 기존 스터디 생성과 동일한 UI 노출
-        <main className={styles.main}>
-          <h1 className={styles.title}>스터디 수정하기</h1>
-          {/* 데이터가 로드된 후 폼 렌더링 */}
-          {initialData && (
-            <StudyForm
-              formData={formData}
-              errors={errors}
-              onChange={handleInputChange}
-              onSubmit={handleSubmit}
-              submitLabel="수정 완료"
-              isCreateMode={false} // 비밀번호 창 숨김 (모달에서 입력완료)
-            />
-          )}
-        </main>
+        <>
+          <HomeHeader />
+          <main className={styles.main}>
+            <h1 className={styles.title}>스터디 수정하기</h1>
+            {/* 데이터가 로드된 후 폼 렌더링 */}
+            {initialData && (
+              <StudyForm
+                formData={formData}
+                errors={errors}
+                onChange={handleInputChange}
+                onSubmit={handleSubmit}
+                submitLabel="수정 완료"
+                isCreateMode={false} // 비밀번호 창 숨김 (모달에서 입력완료)
+              />
+            )}
+          </main>
+        </>
       )}
     </div>
   );

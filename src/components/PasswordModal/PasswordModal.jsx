@@ -41,11 +41,11 @@ const PasswordModal = ({ studyId, studyName, mode, onCheck, onClose }) => {
       await checkStudyPassword(studyId, password);
 
       // 검증 성공 시 토스트 알림(zustand 라이브러리 사용 -> zustand, react-hot-toast)
-      toast.success('인증에 성공했습니다.');
+      toast.success('🎉 인증에 성공했습니다.');
       onCheck();
     } catch {
       // 에러 처리 - 토스트 메세지 띄우기
-      toast.error('비밀번호가 일치하지 않습니다. 다시 입력해주세요');
+      toast.error('🚨 비밀번호가 일치하지 않습니다. 다시 입력해주세요');
     } finally {
       setIsLoading(false);
     }
