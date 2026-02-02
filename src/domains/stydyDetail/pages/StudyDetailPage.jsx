@@ -4,10 +4,11 @@ import { LinkButton } from '@/components/LinkButton';
 import pointImg from '@/assets/ic_point.svg';
 import { useEffect, useState } from 'react';
 import { fetchAllResourcesList } from '@/api/studyDetail';
+import { useParams } from 'react-router';
 
 function StudyDetailPage({ to, className }) {
   // 임시로 주어진 id 값
-  const id = 'cml0jndun0000qoscmihfh6eq';
+  const { id } = useParams();
 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -33,7 +34,7 @@ function StudyDetailPage({ to, className }) {
       }
     };
     allResourcesList();
-  }, [id,habits]);
+  }, [id, habits]);
 
   return (
     <div className={styles.datailPageContainer}>
@@ -76,7 +77,6 @@ function StudyDetailPage({ to, className }) {
           <p className={styles.weeklyTitle}>습관 기록표</p>
           {/* 습관기록표 */}
 
-
           {habits.length === 0 ? (
             <p>
               아직 습관이 없어요
@@ -84,7 +84,9 @@ function StudyDetailPage({ to, className }) {
               오늘의 습관에서 습관을 생성해보세요
             </p>
           ) : (
-            habits.map((habit,index) => <HabitRecord key={habit.id} habit={habit} index={index} />)
+            habits.map((habit, index) => (
+              <HabitRecord key={habit.id} habit={habit} index={index} />
+            ))
           )}
         </div>
       </div>
