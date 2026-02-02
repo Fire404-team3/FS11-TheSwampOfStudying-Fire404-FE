@@ -43,6 +43,11 @@ button {
 .Share,
 .studyFix {
   color: var(--green-text);
+  cursor: pointer;
+}
+
+.deleteStudy{
+  cursor: pointer;
 }
 
 /* 스터디정보의 두번째 줄 */
