@@ -10,7 +10,7 @@ import toast from 'react-hot-toast';
 import PasswordModal from '@/components/PasswordModal';
 
 function StudyDetailPage({ to, className }) {
-  // 임시로 주어진 id 값 - [수훈] 테스트를 위해 잠시 주석처리
+  // 임시로 주어진 id 값 - [수훈] 테스트를 위해 주석처리
   // const id = 'cml0jndun0000qoscmihfh6eq';
 
   // [수훈] useParams에서 ID 가져오기, 네비게이트 연결
@@ -61,7 +61,9 @@ function StudyDetailPage({ to, className }) {
 
       // 맞으면 모달 닫고 수정 페이지로 이동
       setIsUpdateModalOpen(false);
-      navigate(`/studies/${id}/update`, { state: { password } });
+
+      // 수정하기에 갈땐 password 챙겨서 가기
+      navigate(`/studies/${id}/update`, { state: { password: password } });
     } catch (err) {
       console.error(err);
       toast.error('비밀번호가 일치하지 않습니다.');
@@ -78,12 +80,12 @@ function StudyDetailPage({ to, className }) {
       await deleteStudy(id, password);
 
       // 맞으면 성공 토스트 띄우고 메인으로 이동
-      toast.success('스터디가 삭제되었습니다.');
+      alert('스터디가 삭제되었습니다.');
       setIsDeleteModalOpen(false);
       navigate('/');
     } catch (err) {
       console.error(err);
-      toast.error('삭제 실패: 비밀번호를 확인해주세요.');
+      toast.error('비밀번호가 일치하지 않습니다.');
     }
   };
 

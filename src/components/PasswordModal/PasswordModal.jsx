@@ -40,9 +40,11 @@ const PasswordModal = ({ studyId, studyName, mode, onCheck, onClose }) => {
       // API 호출 - 서버에 비밀번호 검증 요청
       await checkStudyPassword(studyId, password);
 
-      // 검증 성공 시 토스트 알림(zustand 라이브러리 사용 -> zustand, react-hot-toast)
-      toast.success('🎉 인증에 성공했습니다.');
-      onCheck();
+      // 검증 성공 시 토스트 알림
+      // toast.success('🎉 인증에 성공했습니다.');
+      
+      // 비밀번호 같이 보내기
+      onCheck(password);
     } catch {
       // 에러 처리 - 토스트 메세지 띄우기
       toast.error('🚨 비밀번호가 일치하지 않습니다. 다시 입력해주세요');
