@@ -85,17 +85,3 @@ button {
   height: 1.1875rem;
 }
 
-/* 습관기록표  */
-
-.weeklyHabitbox {
-  border: 1px solid var(--gray-DDDDDD);
-  border-radius: 1.25rem;
-  padding: 1.25rem;
-}
-
-.weeklyTitle{
-  font-size: 1.5rem;
-  font-weight: 800;
-  font-style: normal;
-  margin-bottom: 3.12rem;
-}
