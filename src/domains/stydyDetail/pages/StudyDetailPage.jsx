@@ -1,3 +1,4 @@
+import { useParams } from 'react-router';
 import HabitRecord from '../components/HabitRecord/HabitRecord';
 import styles from './StudyDetailPage.module.css';
 import { LinkButton } from '@/components/LinkButton';
@@ -6,8 +7,7 @@ import { useEffect, useState } from 'react';
 import { fetchAllResourcesList } from '@/api/studyDetail';
 
 function StudyDetailPage({ to, className }) {
-  // 임시로 주어진 id 값
-  const id = 'cml0jndun0000qoscmihfh6eq';
+  const { id } = useParams();
 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);

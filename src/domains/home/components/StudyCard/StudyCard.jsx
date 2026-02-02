@@ -26,6 +26,7 @@ export default function StudyCard({ study }) {
     const updateList = [study, ...filteredList].slice(0, 3);
 
     storage.set('recentStudies', updateList);
+    storage.set('currentStudy', study);
 
     console.log('스터디 클릭');
   };

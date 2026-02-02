@@ -1,4 +1,4 @@
-const BASE_URL = 'http://localhost:5005';
+const BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000';
 
 export const getStudies = async ({ search, sort, order, page, limit }) => {
   const params = new URLSearchParams({
