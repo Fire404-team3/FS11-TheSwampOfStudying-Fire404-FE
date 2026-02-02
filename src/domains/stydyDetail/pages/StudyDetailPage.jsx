@@ -8,6 +8,7 @@ import { useNavigate, useParams } from 'react-router';
 import { checkStudyPassword, deleteStudy } from '@/api/studyCreateEditApi';
 import toast from 'react-hot-toast';
 import PasswordModal from '@/components/PasswordModal';
+import { Header } from '@/components/Header';
 
 function StudyDetailPage({ className }) {
   // [수훈] useParams에서 ID 가져오기, 네비게이트 연결
@@ -74,7 +75,7 @@ function StudyDetailPage({ className }) {
     try {
       // 삭제 요청
       await deleteStudy(id, password);
-
+      console.log(password)
       // 맞으면 성공 토스트 띄우고 메인으로 이동
       alert('스터디가 삭제되었습니다.');
       setIsDeleteModalOpen(false);
@@ -90,6 +91,8 @@ function StudyDetailPage({ className }) {
   if (error) return <div>에러 발생: {error}</div>;
 
   return (
+    <>
+    <Header /> 
     <div className={styles.datailPageContainer}>
       <div className={styles.datailBox}>
         {/* 스터디 정보 */}
@@ -158,6 +161,7 @@ function StudyDetailPage({ className }) {
         />
       )}
     </div>
+    </>
   );
 }
 

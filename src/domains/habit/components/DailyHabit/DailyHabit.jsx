@@ -1,27 +1,37 @@
 import { useState } from 'react';
 import styles from './DailyHabit.module.css';
-import {
-  creatHabitCheckDate,
-  deleteHabitCheckDate,
-} from '../../api/habits.api.js';
+import { creatHabitCheckDate, deleteHabitCheckDate } from '@/api/habits.api.js';
 import clsx from 'clsx';
 import HabitsModal from '../HabitsModal/HabitsModal';
 
 //부모인 habitPage에서 props로 habitList내려 받음 .
-function DailyHabit({ habitList, studyId, refetchTodayHabits }) {
-  const [clickedHabitId, setClickedHabitId] = useState([]);
-  // 모달
-  const [study, setStudy] = useState(null);
-  const [habits, setHabits] = useState([]);
+function DailyHabit({ habitList = [], studyId, refetchTodayHabits }) {
   const [showModal, setShowModal] = useState(false);
 
-  //토글 click 함수
-  const handleClick = async (habitId) => {
+  //로컬스토리지는 새로고침해도 값이 유지되므로 즉시 반영된 체크 상태를 보존하기 위해 사용
+  const [clickedHabitId, setClickedHabitId] = useState(() => {
     try {
-      //현재 날짜 기준
-      const checkDate = new Date().toISOString();
-      const isChecked = clickedHabitId.includes(habitId);
+      const saved = JSON.parse(localStorage.getItem('checkedHabits') || '[]');
+      return Array.isArray(saved) ? saved : [];
+    } catch {
+      return [];
+    }
+  });
 
+  // 토글 click 함수
+  const handleClick = async (habitId) => {
+    const prev = clickedHabitId;
+    const checkDate = new Date().toISOString();
+    const isChecked = prev.includes(habitId);
+
+    // localStorage 반영
+    const next = isChecked
+      ? prev.filter((id) => id !== habitId)
+      : [...prev, habitId];
+    setClickedHabitId(next);
+    localStorage.setItem('checkedHabits', JSON.stringify(next));
+    try {
+      // 서버 요청
       if (isChecked) {
         await deleteHabitCheckDate(habitId, checkDate);
         console.log('삭제 성공');
@@ -29,16 +39,15 @@ function DailyHabit({ habitList, studyId, refetchTodayHabits }) {
         await creatHabitCheckDate(habitId, checkDate);
         console.log('생성 성공');
       }
-      setClickedHabitId((prev) =>
-        prev.includes(habitId)
-          ? prev.filter((id) => id !== habitId)
-          : [...prev, habitId],
-      );
     } catch (error) {
       console.error('error:', error.message);
+      //실패 시 롤백
+      setClickedHabitId(prev);
+      localStorage.setItem('checkedHabits', JSON.stringify(prev));
+      alert('요청에 실패했습니다. 다시 시도해주세요.');
     }
   };
-  // 모달
+
   const openModal = () => setShowModal(true);
 
   return (
@@ -46,7 +55,6 @@ function DailyHabit({ habitList, studyId, refetchTodayHabits }) {
       <div className={styles.habitBox}>
         <h2 className={styles.title}>
           오늘의 습관
-          {/* 목록 수정 링크 들어와야함 */}
           <button onClick={openModal} className={styles.patchHabitBtn}>
             목록 수정
           </button>
@@ -60,7 +68,6 @@ function DailyHabit({ habitList, studyId, refetchTodayHabits }) {
           )}
         </h2>
 
-        {/* 여기부터 습관 버튼 들 */}
         <div className={styles.habitBtnContainer}>
           {!habitList || habitList.length === 0 ? (
             <div className={styles.placeholder}>
@@ -82,8 +89,6 @@ function DailyHabit({ habitList, studyId, refetchTodayHabits }) {
             ))
           )}
         </div>
-
-        {/* 넘어 오지마시오 */}
       </div>
     </div>
   );

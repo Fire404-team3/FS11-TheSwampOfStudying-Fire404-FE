@@ -45,8 +45,10 @@ const checkIcons = [
 function HabitRecordRow({ habit, index }) {
   const stickerSrc = checkIcons[index];
 
-  const daysOfHabitRecords = habit.records.map(
-    (habitRecord) => new Date(habitRecord.recordedAt).getDay()
+  const records = Array.isArray(habit.records) ? habit.records : [];
+
+  const daysOfHabitRecords = records.map(
+    (habitRecord) => new Date(habitRecord.checkDate).getDay()
   );
 
   const isActive = (day) => daysOfHabitRecords.includes(day);
