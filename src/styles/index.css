@@ -3,7 +3,7 @@
 @font-face {
   font-family: 'EF_jejudoldam';
   src: url('../assets/fonts/EF_jejudoldam.otf') format('opentype');
-  }
+}
 
 :root {
   --black: #414141;
@@ -30,6 +30,10 @@
 
   --main-font: 'Pretendard', sans-serif;
   --point-font: 'EF_jejudoldam', cursive;
+}
+
+* {
+  font-family: 'Pretendard', sans-serif;
 }
 
 body {

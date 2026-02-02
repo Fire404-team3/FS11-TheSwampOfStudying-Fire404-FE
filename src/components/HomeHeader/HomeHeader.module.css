@@ -1,0 +1,71 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 12.5rem;
+  background-color: var(--bg);
+}
+
+.logoLink {
+  display: flex;
+  align-items: center;
+}
+
+.logoLink img {
+  width: 11.35019rem;
+  height: 3.75rem;
+}
+
+.createButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 15.7499rem;
+  height: 3.3746rem;
+  background-color: var(--brand);
+  color: #fff;
+  border-radius: 15px;
+  font-family: var(--point-font);
+  font-size: 1.125rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-align: center;
+  text-decoration: none;
+  text-shadow: 0 -2px 0 #578246;
+  box-shadow: 0 2px 0 #578246;
+  transition: opacity 0.2s ease;
+}
+
+.createButton:hover {
+  opacity: 0.9;
+}
+
+/* Tablet */
+@media (max-width: 1199px) {
+  .header {
+    padding: 1rem 1.5rem;
+  }
+
+  .createButton {
+    width: 9.9999rem;
+    height: 3.3746rem;
+  }
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+  .header {
+    padding: 0.75rem 1rem;
+  }
+
+  .logoLink img {
+    height: 2rem;
+  }
+
+  .createButton {
+    width: 6.625rem;
+    height: 2.375rem;
+    font-size: 0.74531rem;
+  }
+}

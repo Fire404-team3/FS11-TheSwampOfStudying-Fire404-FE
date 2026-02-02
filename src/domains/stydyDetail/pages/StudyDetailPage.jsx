@@ -7,7 +7,7 @@ import { fetchAllResourcesList } from '@/api/studyDetail';
 
 function StudyDetailPage({ to, className }) {
   // 임시로 주어진 id 값
-  const id = '101';
+  const id = 'cml0jndun0000qoscmihfh6eq';
 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);

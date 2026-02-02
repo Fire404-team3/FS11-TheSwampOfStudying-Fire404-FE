@@ -1,0 +1,35 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 12.5rem;
+  background-color: var(--bg);
+}
+
+.logoLink {
+  display: flex;
+  align-items: center;
+}
+
+.logoLink img {
+  width: 11.35019rem;
+  height: 3.75rem;
+}
+
+/* Tablet */
+@media (max-width: 1199px) {
+  .header {
+    padding: 1rem 1.5rem;
+  }
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+  .header {
+    padding: 0.75rem 1rem;
+  }
+
+  .logoLink img {
+    height: 2rem;
+  }
+}

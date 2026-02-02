@@ -1,0 +1,78 @@
+.habitItemContainer {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 1.25rem;
+  box-sizing: border-box;
+}
+
+/* 데스크탑 여백 */
+.habitItemContainer::before {
+  content: "";
+  width: 6.25rem; /* 100px */
+  flex-shrink: 0;
+}
+
+.habitItem {
+  width: 25rem; /* 400px */
+  height: 3.375rem; /* 54px */
+  background: var(--color-gray-200, #EEEEEE);
+  border-radius: 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 1rem;
+}
+
+.habitInput {
+  width: 100%;
+  border: none;
+  background: transparent;
+  text-align: center;
+  font-weight: 800;
+  font-size: 1rem; /* 데스크탑 16px */
+  color: var(--color-gray-500, #818181);
+  outline: none;
+  text-decoration: underline;
+  text-underline-offset: 0.25rem;
+}
+
+.habitDeleteButton {
+  width: 3rem; /* 48px */
+  height: 3rem;
+  margin-left: 0.5rem;
+  background: var(--color-point-pink, #FFD6DE);
+  border-radius: 50%;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+/* ===== 모바일 환경 ===== */
+@media (max-width: 30rem) {
+  .habitItemContainer {
+    margin-bottom: 0.5rem;
+    padding-left: 1rem; /* Add 버튼의 margin-left와 일치 */
+    gap: 0.5rem;
+  }
+
+  .habitItemContainer::before {
+    display: none;
+  }
+
+  .habitItem {
+    width: 16rem; /* 256px */
+  }
+
+  .habitInput {
+    font-size: 0.875rem; /* 모바일 14px */
+  }
+
+  .habitDeleteButton {
+    width: 2.5rem; /* 40px */
+    height: 2.5rem;
+  }
+}
