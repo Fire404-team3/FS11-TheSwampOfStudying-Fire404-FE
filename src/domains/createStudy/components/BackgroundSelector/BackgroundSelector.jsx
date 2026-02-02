@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './BackgroundSelector.module.css';
+import clsx from 'clsx';
 
 const BackgroundSelector = ({ options, selected, onSelect }) => {
   return (
@@ -15,8 +16,8 @@ const BackgroundSelector = ({ options, selected, onSelect }) => {
               onSelect({ target: { name: 'background', value: option } })
             }
           >
-            {/* 배경 이미지 프리뷰 */}
-            <div className={`${styles.preview} ${styles[option]}`}>
+            {/* 배경 이미지 프리뷰 - clsx로 수정 */}
+            <div className={clsx(styles.preview, styles[option])}>
               {/* 선택된 배경만 체크 아이콘 올라가게 */}
               {selected === option && (
                 <div className={styles.checkOverlay}>

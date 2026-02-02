@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router';
-import toast from 'react-hot-toast';
 
+import { HomeHeader } from '@/components/HomeHeader';
 import { postStudy } from '@/api/studyCreateEditApi';
 import useStudyForm from '@/hooks/useStudyForm';
 import StudyForm from '@/components/StudyForm/StudyForm';
@@ -48,8 +48,8 @@ const CreateStudy = () => {
 
     try {
       // API 호출 및 결과 대기
+      console.log('만들 때 보낸 데이터:', studyFilter); // 비밀번호 확인용
       const result = await postStudy(studyFilter);
-      toast.success('성공적으로 스터디가 만들어졌습니다.');
 
       // 성공 시 스터디 상세페이지로 이동
       navigate(`/studies/${result.id}`);
@@ -58,29 +58,33 @@ const CreateStudy = () => {
 
       if (validationErrors) {
         setErrors(validationErrors);
-        toast.error('입력한 정보를 다시 확인해 주세요.');
+        alert('입력한 정보를 다시 확인해 주세요.');
       } else {
         // 유효성 검사 에러가 아닐 때 (500 서버 에러 등)
         console.error('전송 에러:', error);
-        toast.error(error.message || '시스템 오류가 발생했습니다.');
+        alert(error.message || '시스템 오류가 발생했습니다.');
       }
     }
   };
 
   return (
-    <div className={styles.container}>
-      <main className={styles.main}>
-        <h1 className={styles.title}>스터디 만들기</h1>
-        <StudyForm
-          formData={formData}
-          errors={errors}
-          onChange={handleInputChange}
-          onSubmit={handleSubmit}
-          submitLabel="만들기"
-          isCreateMode={true}
-        />
-      </main>
-    </div>
+    <>
+      <HomeHeader />
+
+      <div className={styles.container}>
+        <main className={styles.main}>
+          <h1 className={styles.title}>스터디 만들기</h1>
+          <StudyForm
+            formData={formData}
+            errors={errors}
+            onChange={handleInputChange}
+            onSubmit={handleSubmit}
+            submitLabel="만들기"
+            isCreateMode={true}
+          />
+        </main>
+      </div>
+    </>
   );
 };
 

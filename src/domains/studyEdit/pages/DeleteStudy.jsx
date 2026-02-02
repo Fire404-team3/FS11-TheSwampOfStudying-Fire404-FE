@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import toast from 'react-hot-toast';
+
 import { deleteStudy } from '@/api/studyCreateEditApi';
 
 /**
@@ -17,13 +17,13 @@ const DeleteStudy = ({ studyId, onClose }) => {
       await deleteStudy(studyId, password);
 
       // 2. 성공 처리 및 모달 닫기
-      toast.success('스터디가 삭제되었습니다.');
+      alert('스터디가 삭제되었습니다.');
       onClose();
 
       // 3. 메인 페이지로 이동
       navigate('/');
     } catch (error) {
-      toast.error(error.message || '삭제에 실패했습니다. 다시 시도해주세요.');
+      alert(error.message || '삭제에 실패했습니다. 다시 시도해주세요.');
     }
   };
 
