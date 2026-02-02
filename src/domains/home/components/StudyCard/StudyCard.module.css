@@ -15,7 +15,7 @@
   flex-direction: column;
   align-items: flex-start;
   margin: 1.88rem 1.88rem;
-  gap: 3.375rem;
+  gap: 2.2rem;
 }
 
 .contentContainer {
@@ -84,6 +84,11 @@
   font-style: normal;
   font-weight: 400;
   line-height: 1.5rem;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  overflow: hidden;
 }
 .emojiListContainer {
   display: flex;
@@ -221,5 +226,9 @@
   .cardContainer {
     gap: 0.69rem;
     margin-top: 1rem;
+  }
+  .description {
+    -webkit-line-clamp: 1;
+    line-clamp: 1;
   }
 }
