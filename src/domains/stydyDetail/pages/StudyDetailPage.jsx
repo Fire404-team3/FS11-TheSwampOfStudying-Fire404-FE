@@ -25,6 +25,10 @@ function StudyDetailPage({ className }) {
   const [isUpdateModalOpen, setIsUpdateModalOpen] = useState(false);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
 
+  // [숙희] 오늘의 습관,집중 진입시 비밀번호 모달 각각 관리 
+  const [isTodayHabitOpen, setIsTodayHabitOpen] = useState(false);
+  const [isTodayFouceOpen, setIsTodayFouceOpen] = useState(false);
+
   useEffect(() => {
     const allResourcesList = async () => {
       try {
@@ -85,6 +89,46 @@ function StudyDetailPage({ className }) {
     }
   };
 
+  //[숙희] 3. 오늘의 습관 진입시 비밀번호 모달 확인 후 진입 
+  const handleTodayHabitClick = () => {
+    setIsTodayHabitOpen(true);
+  };
+  const handleTodayHabitConfirm = async (password) => {
+    //비밀번호 확인 
+    console.log('확인하려고 입력한 비번:', password);
+    try {
+      //맞으면 모달 닫고 페이지 이동 
+      setIsTodayHabitOpen(false);
+      //이동할때 password챙겨서 이동 
+      navigate(`/studies/${id}/habits`, { state: { password: password } });
+      
+    } catch (error) {
+      console.error(error);
+      toast.error('비밀번호가 일치하지 않습니다.');
+    }
+  }
+
+    //[숙희] 4. 오늘의 집중 진입시 비밀번호 모달 확인 후 진입 
+  const handleTodayFouceClick = () => {
+    setIsTodayFouceOpen(true);
+  };
+  const handleTodayFouceConfirm = async (password) => {
+    //비밀번호 확인 
+    console.log('확인하려고 입력한 비번:', password);
+    try {
+      //맞으면 모달 닫고 페이지 이동 
+      setIsTodayFouceOpen(false);
+      //이동할때 password챙겨서 이동 
+      navigate(`/studies/${id}/fouce`, { state: { password: password } });
+      
+    } catch (error) {
+      console.error(error);
+      toast.error('비밀번호가 일치하지 않습니다.');
+    }
+  }
+
+
+
   // [수훈] 상태관리에 loading과 error의 에러 방지용
   if (loading) return <div>로딩 중...</div>;
   if (error) return <div>에러 발생: {error}</div>;
@@ -113,10 +157,10 @@ function StudyDetailPage({ className }) {
           <div className={styles.secondNev}>
             <div className={styles.studyName}>{studyName}</div>
             <div className={styles.moveBtn}>
-              <LinkButton to={`/studies/${id}/habits`} className={className}>
+              <LinkButton to={`/studies/${id}/habits`} className={className} onClick={handleTodayHabitClick}>
                 오늘의 습관
               </LinkButton>
-              <LinkButton to={`/studies/${id}/focus`} className={className}>
+              <LinkButton to={`/studies/${id}/focus`} className={className} onClick={handleTodayFouceClick}>
                 오늘의 집중
               </LinkButton>
             </div>
@@ -155,6 +199,28 @@ function StudyDetailPage({ className }) {
           mode="delete"
           onCheck={handleDeleteConfirm}
           onClose={() => setIsDeleteModalOpen(false)}
+        />
+      )}
+
+      {/* 3. 오늘의 습관 진입 모달 */}
+      {isTodayHabitOpen && (
+        <PasswordModal
+          studyId={id}
+          studyName="오늘의 습관 이동 권한 확인"
+          mode="view"
+          onCheck={handleTodayHabitConfirm}
+          onClose={() => setIsTodayHabitOpen(false)}
+        />
+      )}
+
+      {/* 4. 오늘의 집중 진입 모달 */}
+      {isTodayFouceOpen && (
+        <PasswordModal
+          studyId={id}
+          studyName="오늘의 집중 이동 권한 확인"
+          mode="view"
+          onCheck={handleTodayFouceConfirm}
+          onClose={() => setIsTodayFouceOpen(false)}
         />
       )}
     </div>
