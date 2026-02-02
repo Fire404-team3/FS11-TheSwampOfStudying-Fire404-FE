@@ -16,6 +16,7 @@ export default function RecentStudyList() {
     }
     return [];
   });
+
   const isEmptyRecentStudies = recentStudies.length === 0;
   return (
     <section className={styles.recentSection}>
