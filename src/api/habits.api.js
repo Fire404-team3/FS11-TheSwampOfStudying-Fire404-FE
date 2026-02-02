@@ -62,7 +62,7 @@ export const deleteHabitCheckDate = async (id, checkDate) => {
 // 모달
 
 export const updateHabits = async (studyId, habits) => {
-  const response = await fetch(`${API_BASE_URL}/habits/${studyId}`, {
+  const response = await fetch(`${API_BASE_URL}/studies/${studyId}/habits`, {
     method: 'PUT',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(habits),
