@@ -4,10 +4,11 @@ import { LinkButton } from '@/components/LinkButton';
 import pointImg from '@/assets/ic_point.svg';
 import { useEffect, useState } from 'react';
 import { fetchAllResourcesList } from '@/api/studyDetail';
+import { useParams } from 'react-router';
 
-function StudyDetailPage({ to, className }) {
+function StudyDetailPage({ className }) {
   // 임시로 주어진 id 값
-  const id = 'cml0jndun0000qoscmihfh6eq';
+  const { id } = useParams();
 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -53,10 +54,10 @@ function StudyDetailPage({ to, className }) {
           <div className={styles.secondNev}>
             <div className={styles.studyName}>{studyName}</div>
             <div className={styles.moveBtn}>
-              <LinkButton to={to} className={className}>
+              <LinkButton to={`/studies/${id}/habits`} className={className}>
                 오늘의 습관
               </LinkButton>
-              <LinkButton to={to} className={className}>
+              <LinkButton to={"/studies"} className={className}>
                 오늘의 집중
               </LinkButton>
             </div>

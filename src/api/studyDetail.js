@@ -3,7 +3,7 @@ const API_BASE_URL = 'http://localhost:5005';
 export const fetchAllResourcesList = async (id) => {
   try {
     const response = await fetch(
-      `${API_BASE_URL}/studies/${id}/habits/resources`,
+      `${API_BASE_URL}/studies/${id}`,
     );
 
     if (!response.ok) {

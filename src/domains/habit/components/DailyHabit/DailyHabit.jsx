@@ -3,7 +3,7 @@ import styles from './DailyHabit.module.css';
 import {
   creatHabitCheckDate,
   deleteHabitCheckDate,
-} from '../../api/habits.api.js';
+} from '@/api/habits.api.js';
 import clsx from 'clsx';
 import HabitsModal from '../HabitsModal/HabitsModal';
 
@@ -11,8 +11,7 @@ import HabitsModal from '../HabitsModal/HabitsModal';
 function DailyHabit({ habitList, studyId, refetchTodayHabits }) {
   const [clickedHabitId, setClickedHabitId] = useState([]);
   // 모달
-  const [study, setStudy] = useState(null);
-  const [habits, setHabits] = useState([]);
+
   const [showModal, setShowModal] = useState(false);
 
   //토글 click 함수
