@@ -7,8 +7,6 @@ export default function RecentStudyList() {
   const [recentStudies, setRecentStudies] = useState(() => {
     const saved = localStorage.getItem('recentStudies');
 
-    // const navigate = useNavigate();
-
     if (saved) {
       try {
         return JSON.parse(saved);
@@ -19,7 +17,7 @@ export default function RecentStudyList() {
     }
     return [];
   });
-  // navigate(`/studies/${result.id}`);
+
   const isEmptyRecentStudies = recentStudies.length === 0;
   return (
     <section className={styles.recentSection}>
