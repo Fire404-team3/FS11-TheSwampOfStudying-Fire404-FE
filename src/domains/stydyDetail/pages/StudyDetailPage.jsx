@@ -28,7 +28,7 @@ function StudyDetailPage({ className }) {
 
   // [숙희] 오늘의 습관,집중 진입시 비밀번호 모달 각각 관리
   const [isTodayHabitOpen, setIsTodayHabitOpen] = useState(false);
-  const [isTodayFouceOpen, setIsTodayFouceOpen] = useState(false);
+  const [isTodayFocusOpen, setIsTodayFocusOpen] = useState(false);
 
   useEffect(() => {
     const allResourcesList = async () => {
@@ -109,17 +109,17 @@ function StudyDetailPage({ className }) {
   };
 
   //[숙희] 4. 오늘의 집중 진입시 비밀번호 모달 확인 후 진입
-  const handleTodayFouceClick = () => {
-    setIsTodayFouceOpen(true);
+  const handleTodayFocusClick = () => {
+    setIsTodayFocusOpen(true);
   };
-  const handleTodayFouceConfirm = async (password) => {
+  const handleTodayFocusConfirm = async (password) => {
     //비밀번호 확인
     console.log('확인하려고 입력한 비번:', password);
     try {
       //맞으면 모달 닫고 페이지 이동
-      setIsTodayFouceOpen(false);
+      setIsTodayFocusOpen(false);
       //이동할때 password챙겨서 이동
-      navigate(`/studies/${id}/fouce`, { state: { password: password } });
+      navigate(`/studies/${id}/focus`, { state: { password: password } });
     } catch (error) {
       console.error(error);
       toast.error('비밀번호가 일치하지 않습니다.');
@@ -170,7 +170,7 @@ function StudyDetailPage({ className }) {
                 <LinkButton
                   to={`/studies/${id}/focus`}
                   className={className}
-                  onClick={handleTodayFouceClick}
+                  onClick={handleTodayFocusClick}
                 >
                   오늘의 집중
                 </LinkButton>
@@ -225,13 +225,13 @@ function StudyDetailPage({ className }) {
         )}
 
         {/* 4. 오늘의 집중 진입 모달 */}
-        {isTodayFouceOpen && (
+        {isTodayFocusOpen && (
           <PasswordModal
             studyId={id}
             studyName="오늘의 집중 이동 권한 확인"
             mode="view"
-            onCheck={handleTodayFouceConfirm}
-            onClose={() => setIsTodayFouceOpen(false)}
+            onCheck={handleTodayFocusConfirm}
+            onClose={() => setIsTodayFocusOpen(false)}
           />
         )}
       </div>
