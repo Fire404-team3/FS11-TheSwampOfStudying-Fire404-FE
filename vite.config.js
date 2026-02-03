@@ -17,4 +17,5 @@ export default defineConfig({
       '@': path.resolve('src'),
     },
   },
+  envDir: './env',
 });
