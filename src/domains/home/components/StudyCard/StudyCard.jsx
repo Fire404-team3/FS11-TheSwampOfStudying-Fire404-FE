@@ -1,6 +1,7 @@
 import storage from '@/utils/storage';
 import styles from './StudyCard.module.css';
 import clsx from 'clsx';
+import { Link } from 'react-router';
 
 export default function StudyCard({ study }) {
   if (!study) {
@@ -41,37 +42,39 @@ export default function StudyCard({ study }) {
   const isShowEmojis = emojiLogs && emojiLogs.length > 0;
 
   return (
-    <article
-      className={clsx(styles.backgroundArea, themeClass)}
-      onClick={handleCardClick}
-      style={{ cursor: 'pointer' }}
-    >
-      <div className={styles.cardContainer}>
-        <div className={styles.contentContainer}>
-          <div className={styles.mainContainer}>
-            <div className={styles.headerContainer}>
-              <h1 className={styles.title}>
-                <span className={styles.nickname}>{nickname}</span> 의 {name}
-              </h1>
+    <Link to={`/studies/${study.id}`} className={styles.linkWrapper}>
+      <article
+        className={clsx(styles.backgroundArea, themeClass)}
+        onClick={handleCardClick}
+        style={{ cursor: 'pointer' }}
+      >
+        <div className={styles.cardContainer}>
+          <div className={styles.contentContainer}>
+            <div className={styles.mainContainer}>
+              <div className={styles.headerContainer}>
+                <h2 className={styles.title}>
+                  <span className={styles.nickname}>{nickname}</span> 의 {name}
+                </h2>
 
-              <span className={styles.pointBadge}>
-                🍃{points.toLocaleString()}P 획득
-              </span>
-            </div>
-            <p className={styles.statusText}>{diffDays}일째 진행 중</p>
-          </div>
-          <h2 className={styles.description}>{description}</h2>
-        </div>
-        <div className={styles.emojiListContainer}>
-          {isShowEmojis &&
-            emojiLogs?.map((log) => (
-              <div key={log.id} className={styles.emojiBadge}>
-                <span className={styles.emojiType}> {log.emojiType}</span>
-                <span className={styles.emojiCount}> {log.count}</span>
+                <span className={styles.pointBadge}>
+                  🍃{points.toLocaleString()}P 획득
+                </span>
               </div>
-            ))}
+              <p className={styles.statusText}>{diffDays}일째 진행 중</p>
+            </div>
+            <h2 className={styles.description}>{description}</h2>
+          </div>
+          <div className={styles.emojiListContainer}>
+            {isShowEmojis &&
+              emojiLogs?.map((log) => (
+                <div key={log.id} className={styles.emojiBadge}>
+                  <span className={styles.emojiType}> {log.emojiType}</span>
+                  <span className={styles.emojiCount}> {log.count}</span>
+                </div>
+              ))}
+          </div>
         </div>
-      </div>
-    </article>
+      </article>
+    </Link>
   );
 }
