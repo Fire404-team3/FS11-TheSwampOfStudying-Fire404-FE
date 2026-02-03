@@ -1,16 +1,27 @@
 import { useState, useEffect, useRef } from 'react';
 import { Header } from '@/components/Header';
-import { FocusBoard, TimerCard, Toast } from '../../components';
+import { FocusBoard, TimerCard, Toast, toast } from '../../components';
+import { addPoints } from '@/api/studies';
+import storage from '@/utils/storage';
 import styles from './FocusPage.module.css';
 
-const GOAL_TIME = 25 * 60; // 25분 (초 단위)
+const DEFAULT_GOAL_TIME = 10 * 60; // 10분 (초 단위)
 const BONUS_INTERVAL = 10 * 60; // 10분마다 보너스 포인트
 
 export function FocusPage() {
+  const [study, setStudy] = useState(null);
   const [status, setStatus] = useState('idle'); // idle, running, paused, overtime
-  const [currentTime, setCurrentTime] = useState(GOAL_TIME);
-  const [toast, setToast] = useState({ visible: false, variant: 'success', message: '' });
+  const [goalTime, setGoalTime] = useState(DEFAULT_GOAL_TIME);
+  const [currentTime, setCurrentTime] = useState(DEFAULT_GOAL_TIME);
   const intervalRef = useRef(null);
+
+  // localStorage에서 currentStudy 읽기
+  useEffect(() => {
+    const currentStudy = storage.get('currentStudy');
+    if (currentStudy) {
+      setStudy(currentStudy);
+    }
+  }, []);
 
   // 타이머 로직
   useEffect(() => {
@@ -39,17 +50,15 @@ export function FocusPage() {
   // 포인트 계산
   const calculatePoints = () => {
     const basePoints = 3; // 성공 포인트
-    const totalStudyTime = GOAL_TIME - currentTime; // 총 공부 시간
+    const totalStudyTime = goalTime - currentTime; // 총 공부 시간
     const bonusPoints = Math.floor(totalStudyTime / BONUS_INTERVAL); // 10분당 1포인트
     return basePoints + bonusPoints;
   };
 
-  // 토스트 표시
-  const showToast = (variant, message) => {
-    setToast({ visible: true, variant, message });
-    setTimeout(() => {
-      setToast((prev) => ({ ...prev, visible: false }));
-    }, 3000);
+  // 시간 변경
+  const handleTimeChange = (seconds) => {
+    setGoalTime(seconds);
+    setCurrentTime(seconds);
   };
 
   // 시작 버튼
@@ -65,47 +74,67 @@ export function FocusPage() {
   const handlePause = () => {
     if (status === 'running') {
       setStatus('paused');
-      showToast('warning', '집중이 중단되었습니다.');
+      toast.warning('🚨 집중을 중단하였습니다.');
     }
   };
 
   // 리셋 버튼
   const handleReset = () => {
     setStatus('idle');
-    setCurrentTime(GOAL_TIME);
+    setCurrentTime(goalTime);
   };
 
   // 종료 버튼 (overtime 상태에서)
-  const handleStop = () => {
-    const points = calculatePoints();
-    showToast('success', `${points}포인트를 획득했습니다!`);
+  const handleStop = async () => {
+    const totalStudyTime = goalTime - currentTime; // 총 공부 시간 (초)
+    const minutes = Math.floor(totalStudyTime / 60); // 분으로 변환
+
+    try {
+      if (study?.id) {
+        const result = await addPoints(study.id, minutes);
+        // 로컬 상태 및 localStorage 업데이트
+        const updatedStudy = { ...study, points: result.totalPoints };
+        setStudy(updatedStudy);
+        storage.set('currentStudy', updatedStudy);
+        toast.success(`🎉 ${result.earnedPoints}포인트를 획득했습니다!`);
+      } else {
+        const points = calculatePoints();
+        toast.success(`🎉 ${points}포인트를 획득했습니다!`);
+      }
+    } catch (error) {
+      console.error('포인트 적립 실패:', error);
+      toast.warning('최소 집중 시간은 10분 이상입니다.');
+    }
+
     setStatus('idle');
-    setCurrentTime(GOAL_TIME);
+    setCurrentTime(goalTime);
   };
 
   return (
     <div className={styles.page}>
       <Header />
+
       <div className={styles.container}>
-        <FocusBoard studyName="연우의 개발공장" points={310}>
+        <FocusBoard
+          nickname={study?.nickname ?? ''}
+          name={study?.name ?? ''}
+          points={study?.points ?? 0}
+        >
           <TimerCard
-            goalTime={GOAL_TIME}
+            goalTime={goalTime}
             currentTime={currentTime}
             status={status}
             onStart={handleStart}
             onPause={handlePause}
             onReset={handleReset}
             onStop={handleStop}
+            onTimeChange={handleTimeChange}
           />
         </FocusBoard>
       </div>
 
       <div className={styles.toastContainer}>
-        <Toast
-          variant={toast.variant}
-          message={toast.message}
-          visible={toast.visible}
-        />
+        <Toast />
       </div>
     </div>
   );

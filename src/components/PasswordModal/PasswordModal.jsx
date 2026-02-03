@@ -81,7 +81,10 @@ const PasswordModal = ({ studyId, studyName, mode, onCheck, onClose }) => {
               ? '확인 중...'
               : mode === 'edit'
                 ? '수정하기'
-                : '스터디 삭제하기'}
+                : mode === 'delete'
+                  ? '스터디 삭제하기'
+                  : '이동하기'              
+                  }
           </button>
         </form>
 

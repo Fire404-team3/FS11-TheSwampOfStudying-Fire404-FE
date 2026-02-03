@@ -2,9 +2,6 @@ const API_BASE_URL = 'http://localhost:5005';
 
 // [수훈] API 수정 - 테스트용
 export const fetchAllResourcesList = async (id) => {
-  // [수정] try-catch 제거!
-  // 에러 처리는 이걸 부르는 StudyDetailPage로 넘김
-  // 페치 주소는 스터디 아이디까지만
   const response = await fetch(`${API_BASE_URL}/studies/${id}`);
 
   if (!response.ok) {

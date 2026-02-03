@@ -54,6 +54,7 @@
   border: none;
   border-radius: 1.25rem;
 
+  background-color: var(--gray-EEEEEE);
   color: var(--gray-818181);
   cursor: pointer;
 }

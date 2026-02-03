@@ -22,15 +22,12 @@ function App() {
         <Route path="/" element={<Home />} />
         {/* [수훈] 경로 수정 */}
         <Route path="/studies/new" element={<CreateStudy />} />
-
         {/* [수훈] useParams 사용으로 상세페이지 패스 수정 */}
         <Route path="/studies/:id" element={<StudyDetailPage />} />
-
         {/* [수훈] 스터디 수정하기 라우터 추가 */}
         <Route path="/studies/:id/update" element={<UpdateStudy />} />
-
-        <Route path="/habit" element={<HabitPage />} />
-        <Route path="/focus" element={<FocusPage />} />
+        <Route path="/studies/:id/habits" element={<HabitPage />} />
+        <Route path="/studies/:id/focus" element={<FocusPage />} />
       </Routes>
     </>
   );

@@ -1,3 +1,4 @@
+import { useState, useEffect, useRef } from 'react';
 import styles from './TimerCard.module.css';
 import icTimer from '@/assets/ic_timer.svg';
 import btnPause from '@/assets/btn_pause.svg';
@@ -13,6 +14,7 @@ import icPlay from '@/assets/ic_play.svg';
  * @param {() => void} props.onPause - 일시정지 버튼 클릭
  * @param {() => void} props.onReset - 리셋 버튼 클릭
  * @param {() => void} props.onStop - 종료 버튼 클릭
+ * @param {(seconds: number) => void} props.onTimeChange - 시간 변경 콜백
  */
 export function TimerCard({
   goalTime,
@@ -22,15 +24,82 @@ export function TimerCard({
   onPause,
   onReset,
   onStop,
+  onTimeChange,
 }) {
-  const formatTime = (seconds) => {
+  const [isEditing, setIsEditing] = useState(false);
+  const [minutesInput, setMinutesInput] = useState('');
+  const [secondsInput, setSecondsInput] = useState('');
+  const minutesRef = useRef(null);
+  const secondsRef = useRef(null);
+
+  const getTimeComponents = (seconds) => {
     const isNegative = seconds < 0;
     const absSeconds = Math.abs(seconds);
     const mins = Math.floor(absSeconds / 60);
     const secs = absSeconds % 60;
+    return { mins, secs, isNegative };
+  };
+
+  const formatTime = (seconds) => {
+    const { mins, secs, isNegative } = getTimeComponents(seconds);
     const formatted = `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
     return isNegative ? `-${formatted}` : formatted;
   };
+
+  const handleTimerClick = () => {
+    if (status === 'idle') {
+      const { mins, secs } = getTimeComponents(currentTime);
+      setMinutesInput(String(mins).padStart(2, '0'));
+      setSecondsInput(String(secs).padStart(2, '0'));
+      setIsEditing(true);
+    }
+  };
+
+  const handleMinutesChange = (e) => {
+    const value = e.target.value.replace(/\D/g, '').slice(0, 2);
+    setMinutesInput(value);
+  };
+
+  const handleSecondsChange = (e) => {
+    const value = e.target.value.replace(/\D/g, '').slice(0, 2);
+    setSecondsInput(value);
+  };
+
+  const applyTimeChange = () => {
+    const mins = parseInt(minutesInput, 10) || 0;
+    const secs = Math.min(parseInt(secondsInput, 10) || 0, 59);
+    const totalSeconds = mins * 60 + secs;
+    if (totalSeconds > 0 && onTimeChange) {
+      onTimeChange(totalSeconds);
+    }
+    setIsEditing(false);
+  };
+
+  const handleKeyDown = (e, field) => {
+    if (e.key === 'Enter') {
+      applyTimeChange();
+    } else if (e.key === 'Escape') {
+      setIsEditing(false);
+    } else if (e.key === 'ArrowRight' && field === 'minutes' && e.target.selectionStart === e.target.value.length) {
+      secondsRef.current?.focus();
+    } else if (e.key === 'ArrowLeft' && field === 'seconds' && e.target.selectionStart === 0) {
+      minutesRef.current?.focus();
+    }
+  };
+
+  const handleBlur = (e) => {
+    const relatedTarget = e.relatedTarget;
+    if (relatedTarget !== minutesRef.current && relatedTarget !== secondsRef.current) {
+      applyTimeChange();
+    }
+  };
+
+  useEffect(() => {
+    if (isEditing && minutesRef.current) {
+      minutesRef.current.focus();
+      minutesRef.current.select();
+    }
+  }, [isEditing]);
 
   const isWarning = status === 'running' && currentTime <= 10 && currentTime > 0;
   const isOvertime = status === 'overtime' || currentTime < 0;
@@ -53,9 +122,38 @@ export function TimerCard({
         </div>
       )}
 
-      <div className={getTimerClassName()}>
-        {formatTime(currentTime)}
-      </div>
+      {status === 'idle' && isEditing ? (
+        <div className={styles.timerInputWrapper}>
+          <input
+            ref={minutesRef}
+            type="text"
+            className={styles.timerInput}
+            value={minutesInput}
+            onChange={handleMinutesChange}
+            onKeyDown={(e) => handleKeyDown(e, 'minutes')}
+            onBlur={handleBlur}
+            placeholder="00"
+          />
+          <span className={styles.timerColon}>:</span>
+          <input
+            ref={secondsRef}
+            type="text"
+            className={styles.timerInput}
+            value={secondsInput}
+            onChange={handleSecondsChange}
+            onKeyDown={(e) => handleKeyDown(e, 'seconds')}
+            onBlur={handleBlur}
+            placeholder="00"
+          />
+        </div>
+      ) : (
+        <div
+          className={`${getTimerClassName()} ${status === 'idle' ? styles.editable : ''}`}
+          onClick={handleTimerClick}
+        >
+          {formatTime(currentTime)}
+        </div>
+      )}
 
       <div className={styles.buttons}>
         {status === 'idle' && (
