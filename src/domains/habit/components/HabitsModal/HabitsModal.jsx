@@ -55,7 +55,7 @@ export default function HabitsModal({
       // 변경: 서버 전송 직전, 임시 ID를 null로 정제하여 "new-" 의존성 제거
       const habitsToSubmit = habits.map((habit) => ({
         ...habit,
-        id: typeof habit.id === 'number' ? habit.id : null,
+        id: typeof habit.id === 'string' && habit.id.startsWith('temp-') ? null : habit.id,
       }));
 
       // 서버에 업데이트 요청 (이 안에서 에러가 나면 catch 블록으로 이동)
