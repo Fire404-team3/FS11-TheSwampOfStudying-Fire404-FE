@@ -2,8 +2,6 @@ import { useState } from 'react';
 import { updateHabits } from '@/api/habits.api.js';
 import HabitItem from '../HabitItem/HabitItem.jsx';
 import styles from './HabitsModal.module.css';
-import MediumCancelButton from '@/assets/btn_cancel_md.png';
-import ModificationCompleteButton from '@/assets/btn_modification_complete.png';
 import PlusIcon from '@/assets/icon_plus.png';
 import TrashIcon from '@/assets/icon_trash.png';
 
@@ -29,10 +27,16 @@ export default function HabitsModal({
 
   const handleClickAddNewButton = () => {
     const lastHabit = habits.at(-1);
-    if (lastHabit?.id.startsWith('new-') && lastHabit.name.trim() === '')
+    // 변경: id가 숫자가 아니면(임시 ID면) 신규 항목으로 간주하여 중복 추가 방지
+    if (
+      lastHabit &&
+      typeof lastHabit?.id !== 'number' &&
+      lastHabit.name.trim() === ''
+    ) {
       return;
-
-    setHabits((prev) => [...prev, { id: `new-${Date.now()}`, name: '' }]);
+    }
+    // 변경: 신규 추가시 동시 수정을 막기 위해 임시 ID 부여 (FE에서만 처리)
+    setHabits((prev) => [...prev, { id: `temp-${Date.now()}`, name: '' }]);
   };
 
   const handleClickDeleteButton = (id) => () => {
@@ -48,8 +52,14 @@ export default function HabitsModal({
     }
 
     try {
+      // 변경: 서버 전송 직전, 임시 ID를 null로 정제하여 "new-" 의존성 제거
+      const habitsToSubmit = habits.map((habit) => ({
+        ...habit,
+        id: typeof habit.id === 'number' ? habit.id : null,
+      }));
+
       // 서버에 업데이트 요청 (이 안에서 에러가 나면 catch 블록으로 이동)
-      await updateHabits(studyId, habits);
+      await updateHabits(studyId, habitsToSubmit);
       await refetchTodayHabits(); // 수정 후 재조회
       // alert('성공적으로 수정되었습니다.');  성공 알림 필요 여부
       onClose();

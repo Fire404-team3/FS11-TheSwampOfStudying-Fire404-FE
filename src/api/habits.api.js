@@ -87,3 +87,4 @@ export const updateHabits = async (studyId, habits) => {
 
   return true;  //서버 성공시 NO_CONENT 전달
 };
+
