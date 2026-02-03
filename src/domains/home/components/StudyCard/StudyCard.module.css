@@ -47,7 +47,32 @@
   font-weight: 700;
   line-height: normal;
   color: var(--theme-title);
+  display: inline-block;
+  padding-left: 0;
+  transform: translateX(0);
+  transition: transform 0.3s ease-in-out;
 }
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+.linkWrapper:hover .title {
+  animation: marquee 8s linear infinite;
+  transition: none;
+}
+
+.titleWrapper {
+  overflow: hidden;
+  white-space: nowrap;
+  width: 100%;
+  margin-right: 0.5rem;
+  mask-image: linear-gradient(to right, white 90%, transparent 100%);
+}
+
 .nickname {
   color: var(--theme-nickname);
 }

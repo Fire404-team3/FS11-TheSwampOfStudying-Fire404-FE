@@ -52,9 +52,12 @@ export default function StudyCard({ study }) {
           <div className={styles.contentContainer}>
             <div className={styles.mainContainer}>
               <div className={styles.headerContainer}>
-                <h2 className={styles.title}>
-                  <span className={styles.nickname}>{nickname}</span> 의 {name}
-                </h2>
+                <div className={styles.titleWrapper}>
+                  <h2 className={styles.title}>
+                    <span className={styles.nickname}>{nickname}</span> 의{' '}
+                    {name}
+                  </h2>
+                </div>
 
                 <span className={styles.pointBadge}>
                   🍃{points.toLocaleString()}P 획득
