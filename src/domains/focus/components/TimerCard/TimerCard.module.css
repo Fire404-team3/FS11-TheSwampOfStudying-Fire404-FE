@@ -3,7 +3,8 @@
   width: 100%;
   max-width: 73rem;
   height: 34.125rem;
-  padding: 2.5rem 1.5rem 2.5rem 1.5rem;
+  padding: 2.5rem 1.5rem;
+  padding-bottom: 2.5rem;
   flex-direction: column;
   align-items: center;
   border-radius: 1.25rem;
@@ -29,7 +30,6 @@
   padding: 0.375rem 0.75rem;
   border: 1px solid var(--gray-DDDDDD);
   border-radius: 1rem;
-  margin-bottom: 2.81rem;
   color: var(--black-black_414141, #414141);
   font-family: Pretendard;
   font-size: 1rem;
@@ -51,7 +51,10 @@
   font-weight: 800;
   line-height: normal;
   font-variant-numeric: tabular-nums;
-  margin: auto 0;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .timer.warning {
@@ -62,11 +65,53 @@
   color: var(--gray-818181);
 }
 
+.timer.editable {
+  cursor: text;
+}
+
+.timer.editable:hover {
+  opacity: 0.7;
+}
+
+.timerInputWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+}
+
+.timerInput {
+  color: var(--black-black_414141, #414141);
+  text-align: center;
+  font-family: Pretendard;
+  font-size: 9.375rem;
+  font-style: normal;
+  font-weight: 800;
+  line-height: normal;
+  font-variant-numeric: tabular-nums;
+  border: none;
+  background: transparent;
+  outline: none;
+  width: 2.5ch;
+}
+
+.timerInput:focus {
+  background-color: var(--gray-EEEEEE);
+  border-radius: 0.5rem;
+}
+
+.timerColon {
+  color: var(--black-black_414141, #414141);
+  font-family: Pretendard;
+  font-size: 9.375rem;
+  font-weight: 800;
+  line-height: normal;
+}
+
 .buttons {
   display: flex;
   align-items: center;
   gap: 1rem;
-  margin-top: auto;
 }
 
 .mainButton {
@@ -141,9 +186,19 @@
 @media (max-width: 1199px) {
   .card {
     max-width: 40.5rem;
+    height: 31.875rem;
+    padding-bottom: 2.5rem;
   }
 
   .timer {
+    font-size: 6rem;
+  }
+
+  .timerInput {
+    font-size: 6rem;
+  }
+
+  .timerColon {
     font-size: 6rem;
   }
 
@@ -158,12 +213,21 @@
 @media (max-width: 767px) {
   .card {
     max-width: 19.5rem;
+    height: 21.375rem;
     padding: 1.5rem 1rem;
+    padding-bottom: 2.5rem;
   }
 
   .timer {
     font-size: 4rem;
-    margin: 1rem 0 1.5rem 0;
+  }
+
+  .timerInput {
+    font-size: 4rem;
+  }
+
+  .timerColon {
+    font-size: 4rem;
   }
 
   .mainButton {

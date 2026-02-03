@@ -38,13 +38,16 @@ export const checkStudyPassword = async (id, password) => {
     body: JSON.stringify({ password }),
   });
 
-  const result = await response.json();
-
-  if (!response.ok) {
-    throw new Error(result.message || '비밀번호가 일치하지 않습니다.');
+  // 1. 성공했는지 확인 / 성공하면 JSON 변환 없이 바로 리턴
+  if (response.ok) {
+    return 'OK';
   }
 
-  return result;
+  // 2. 실패했다면, 에러메세지를 위해 JSON 가져오기
+  if (!response.ok) {
+    const result = await response.json();
+    throw new Error(result.message || '비밀번호가 일치하지 않습니다.');
+  }
 };
 
 // 3. 특정 스터디 상세 정보 가저오기 (수정 페이지)
