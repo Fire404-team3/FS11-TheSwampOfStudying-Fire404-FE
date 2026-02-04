@@ -17,7 +17,7 @@
 }
 
 /* Tablet */
-@media (max-width: 1199px) {
+@media (max-width: 46.5rem) {
   .header {
     padding: 1rem 1.5rem;
   }
@@ -27,7 +27,7 @@
 }
 
 /* Mobile */
-@media (max-width: 767px) {
+@media (max-width: 23.4375rem) {
   .header {
     padding: 0.75rem 1rem;
   }

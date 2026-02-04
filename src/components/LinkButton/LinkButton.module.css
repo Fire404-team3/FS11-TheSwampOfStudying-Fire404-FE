@@ -1,5 +1,5 @@
 .linkButton {
-  border-radius: 15px;
+  border-radius: 0.9375rem;
   border: 1px solid var(--gray-DDDDDD);
   color: var(--gray-gray_818181, #818181);
   text-align: center;

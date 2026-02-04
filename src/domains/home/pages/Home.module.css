@@ -11,17 +11,17 @@
   gap: 2.5rem;
 }
 /* iPad Mini */
-@media (max-width: 1199px) {
+@media (max-width: 46.5rem) {
   .fullPageWrapper {
     max-width: 46.5rem;
-    gap: 1.5rem;
+    gap: 1.25rem;
   }
 
   /* Mobile */
-  @media (max-width: 767px) {
+  @media (max-width: 23.4375rem) {
     .fullPageWrapper {
       max-width: 23.4375rem;
-      gap: 1rem;
+      gap: 1.25rem;
     }
   }
 }

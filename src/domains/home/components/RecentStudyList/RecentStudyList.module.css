@@ -35,7 +35,7 @@
 }
 
 /* Tablet (iPad Mini) */
-@media (max-width: 1199px) {
+@media (max-width: 46.5rem) {
   .recentSection {
     width: 43.5625rem;
     height: 23.5625rem;
@@ -44,7 +44,7 @@
   }
 }
 /* Mobile */
-@media (max-width: 767px) {
+@media (max-width: 23.4375rem) {
   .recentSection {
     width: 21.5rem;
     height: 15.4375rem;

@@ -22,7 +22,7 @@
 
 .main {
   width: 100%;
-  max-width: 40.5rem;
+  max-width: 43.5rem;
   background-color: #ffffff;
   padding: 1.5rem 1.5rem 2.5rem 1.5rem;
   border-radius: 1.25rem;
@@ -47,11 +47,16 @@
 
 /* 태블릿 : 46.5rem 이하 */
 @media (max-width: 46.5rem) {
+  .container {
+    padding-top: 1.25rem;
+    padding-bottom: 12.13rem;
+  }
+
   .main {
-    padding: 1rem;
-    margin-top: 1.25rem;
-    margin-left: 0.94rem;
-    margin-right: 1rem;
+    padding: 1.5rem;
+    /* margin-top: 1.25rem; */
+    /* margin-left: 0.94rem;
+    margin-right: 1rem; */
   }
   .input {
     padding: 1rem 1rem 1.25rem 1rem;
@@ -59,10 +64,16 @@
 }
 
 /* 모바일 : 23.4rem 이하 */
-@media (max-width: 23.4rem) {
+@media (max-width: 23.4375rem) {
   .container {
-    padding: 0;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-bottom: 10.69rem;
   }
+  .main{
+    padding: 1.25rem;
+  }
+
   .title {
     font-size: 1rem;
   }
