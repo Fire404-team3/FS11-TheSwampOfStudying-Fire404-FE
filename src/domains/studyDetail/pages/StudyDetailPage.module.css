@@ -117,7 +117,7 @@ button {
 /* 모바일 */
 @media (max-width: 743px) and (min-width: 375px) {
   .datailPageContainer {
-    padding: 1rem 1rem 3.5rem 1rem;
+    padding: 1.25rem 1rem 3.5rem 1rem;
   }
 
   .datailBox {
