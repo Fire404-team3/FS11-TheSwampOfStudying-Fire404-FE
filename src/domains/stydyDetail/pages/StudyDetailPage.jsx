@@ -11,7 +11,7 @@ import PasswordModal from '@/components/PasswordModal';
 import { Header } from '@/components/Header';
 
 function StudyDetailPage({ className }) {
-  // [수훈] useParams에서 ID 가져오기, 네비게이트 연결
+  // useParams에서 ID 가져오기, 네비게이트 연결
   const { id } = useParams();
   const navigate = useNavigate();
 
@@ -22,11 +22,11 @@ function StudyDetailPage({ className }) {
   const [description, setDescription] = useState('');
   const [habits, setHabits] = useState([]);
 
-  // [수훈] 비밀번호 모달 관리, 수정/삭제용 모달 각각 관리
+  // 비밀번호 모달 관리, 수정/삭제용 모달 각각 관리
   const [isUpdateModalOpen, setIsUpdateModalOpen] = useState(false);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
 
-  // [숙희] 오늘의 습관,집중 진입시 비밀번호 모달 각각 관리
+  // 오늘의 습관,집중 진입시 비밀번호 모달 각각 관리
   const [isTodayHabitOpen, setIsTodayHabitOpen] = useState(false);
   const [isTodayFocusOpen, setIsTodayFocusOpen] = useState(false);
 
@@ -49,7 +49,8 @@ function StudyDetailPage({ className }) {
     };
     allResourcesList();
   }, [id]);
-  // [수훈] 1. 수정 관련 기능(비밀번호 모달 -> 수정페이지 이동)
+
+  //  1. 수정 관련 기능(비밀번호 모달 -> 수정페이지 이동)
   const handleUpdateClick = () => {
     setIsUpdateModalOpen(true);
   };
@@ -71,7 +72,7 @@ function StudyDetailPage({ className }) {
     }
   };
 
-  // [수훈] 2. 삭제 관련 기능(비밀번호 모달 -> 삭제 -> 메인으로 이동)
+  // 2. 삭제 관련 기능(비밀번호 모달 -> 삭제 -> 메인으로 이동)
   const handleDeleteClick = () => {
     setIsDeleteModalOpen(true);
   };
@@ -90,7 +91,7 @@ function StudyDetailPage({ className }) {
     }
   };
 
-  //[숙희] 3. 오늘의 습관 진입시 비밀번호 모달 확인 후 진입
+  // 3. 오늘의 습관 진입시 비밀번호 모달 확인 후 진입
   const handleTodayHabitClick = () => {
     setIsTodayHabitOpen(true);
   };
@@ -108,7 +109,7 @@ function StudyDetailPage({ className }) {
     }
   };
 
-  //[숙희] 4. 오늘의 집중 진입시 비밀번호 모달 확인 후 진입
+  // 4. 오늘의 집중 진입시 비밀번호 모달 확인 후 진입
   const handleTodayFocusClick = () => {
     setIsTodayFocusOpen(true);
   };
@@ -126,7 +127,7 @@ function StudyDetailPage({ className }) {
     }
   };
 
-  // [수훈] 상태관리에 loading과 error의 에러 방지용
+  // 상태관리에 loading과 error의 에러 방지용
   if (loading) return <div>로딩 중...</div>;
   if (error) return <div>에러 발생: {error}</div>;
 
@@ -143,12 +144,12 @@ function StudyDetailPage({ className }) {
               <div className={styles.fixBtns}>
                 <button className={styles.Share}>공유하기</button>
                 <span>|</span>
-                {/* [수훈] onClick 추가 */}
+                {/* onClick 추가 */}
                 <button className={styles.studyFix} onClick={handleUpdateClick}>
                   수정하기
                 </button>
                 <span>|</span>
-                {/* [수훈] onClick 추가 */}
+                {/* onClick 추가 */}
                 <button
                   onClick={handleDeleteClick}
                   className={styles.deleteStudy}

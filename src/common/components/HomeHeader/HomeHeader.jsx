@@ -8,7 +8,6 @@ export function HomeHeader() {
         <img src="/img_logo.svg" alt="공부의숲 홈으로 이동" />
       </Link>
 
-      {/* [수훈] 링크 수정 */}
       <Link to="/studies/new" className={styles.createButton}>
         스터디 만들기
       </Link>
