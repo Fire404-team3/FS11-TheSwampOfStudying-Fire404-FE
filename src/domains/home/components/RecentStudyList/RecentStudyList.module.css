@@ -7,6 +7,7 @@
   border-radius: 1.25rem;
   background: #fff;
   height: 23.875rem;
+  overflow: hidden;
 }
 
 .title {
@@ -26,6 +27,8 @@
     justify-content: center;
     align-items: center;
   }
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .emptyText {
@@ -38,7 +41,7 @@
 @media (max-width: 1199px) {
   .recentSection {
     width: 43.5625rem;
-    height: 23.5625rem;
+    height: 22rem;
     padding: 1.5rem;
     overflow: hidden;
   }
@@ -46,8 +49,12 @@
 /* Mobile */
 @media (max-width: 767px) {
   .recentSection {
-    width: 21.5rem;
+    width: 100%;
+    max-width: 21.5rem;
     height: 15.4375rem;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
   }
   .title {
     font-size: 1rem;
@@ -56,7 +63,8 @@
   .recentContainer > article {
     flex: 0 0 15rem;
     width: 100%;
+    width: 15rem;
     height: 11.25rem;
-    min-width: 15rem;
   }
+  
 }
