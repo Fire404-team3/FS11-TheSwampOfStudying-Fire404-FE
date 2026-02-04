@@ -164,14 +164,12 @@ function StudyDetailPage({ className }) {
               <div className={styles.moveBtn}>
                 <LinkButton
                   to={`/studies/${id}/habits`}
-                  className={styles.habitBtn}
                   onClick={handleTodayHabitClick}
                 >
                   오늘의 습관
                 </LinkButton>
                 <LinkButton
                   to={`/studies/${id}/focus`}
-                  className={styles.fouceBtn}
                   onClick={handleTodayFocusClick}
                 >
                   오늘의 집중
@@ -219,8 +217,8 @@ function StudyDetailPage({ className }) {
         {isTodayHabitOpen && (
           <PasswordModal
             studyId={id}
-            studyName="오늘의 습관 이동 권한 확인"
-            mode="view"
+            studyName="오늘의 습관"
+            mode="habits"
             onCheck={handleTodayHabitConfirm}
             onClose={() => setIsTodayHabitOpen(false)}
           />
@@ -230,8 +228,8 @@ function StudyDetailPage({ className }) {
         {isTodayFocusOpen && (
           <PasswordModal
             studyId={id}
-            studyName="오늘의 집중 이동 권한 확인"
-            mode="view"
+            studyName="오늘의 집중"
+            mode="focus"
             onCheck={handleTodayFocusConfirm}
             onClose={() => setIsTodayFocusOpen(false)}
           />
