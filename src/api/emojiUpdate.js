@@ -29,7 +29,7 @@ export const decreaseEmoji = async ({ studyId, emojiType }) => {
   const result = await response.json();
 
   if (!response.ok) {
-    throw new Error('이모지를 제거하는데 실패했습니다.');
+    throw new Error(result.message || '이모지 처리 중 오류가 발생했습니다.');
   }
 
   return result;

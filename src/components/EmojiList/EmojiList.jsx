@@ -1,15 +1,17 @@
+import { useState } from 'react';
 import { increaseEmoji } from '@/api/emojiUpdate';
+import { setEmojiActive } from '@/utils/emojiStorage';
 import { EmojiButton } from '../EmojiButton';
 import { EmojiPickerWrapper } from '../EmojiPickerWrapper';
 import styles from './EmojiList.module.css';
-import { useState } from 'react';
 
 export function EmojiList({ study, onRefresh }) {
   const { id: studyId, emojiLogs = [] } = study;
 
-  const handleAddEmoji = async (emojiType) => {
+  const handlePickerSelect = async (emojiType) => {
     try {
       await increaseEmoji({ studyId, emojiType });
+      setEmojiActive(studyId, emojiType, true);
       onRefresh();
     } catch (error) {
       console.error(error);
@@ -32,6 +34,7 @@ export function EmojiList({ study, onRefresh }) {
             studyId={studyId}
             emojiType={log.emojiType}
             count={log.count}
+            onRefresh={onRefresh}
           />
         </li>
       ))}
@@ -42,7 +45,7 @@ export function EmojiList({ study, onRefresh }) {
             className={styles.moreButton}
             onClick={() => setIsMoreOpen((v) => !v)}
           >
-            +{hiddenEmojis.length}
+            + {hiddenEmojis.length}..
           </button>
 
           {/* 숨겨진 이모지 드롭다운 */}
@@ -55,6 +58,7 @@ export function EmojiList({ study, onRefresh }) {
                       studyId={studyId}
                       emojiType={log.emojiType}
                       count={log.count}
+                      onRefresh={onRefresh}
                     />
                   </li>
                 ))}
@@ -67,7 +71,7 @@ export function EmojiList({ study, onRefresh }) {
       {/* 이모지 추가 버튼 / 피커 */}
       <li>
         <EmojiPickerWrapper
-          onSelect={handleAddEmoji}
+          onSelect={handlePickerSelect}
           className={styles.emojiPicker}
         />
       </li>
