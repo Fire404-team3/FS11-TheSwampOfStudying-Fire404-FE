@@ -98,6 +98,7 @@ function StudyDetailPage({ className }) {
     //비밀번호 확인
     console.log('확인하려고 입력한 비번:', password);
     try {
+      await checkStudyPassword(id, password);
       //맞으면 모달 닫고 페이지 이동
       setIsTodayHabitOpen(false);
       //이동할때 password챙겨서 이동
@@ -116,6 +117,7 @@ function StudyDetailPage({ className }) {
     //비밀번호 확인
     console.log('확인하려고 입력한 비번:', password);
     try {
+      await checkStudyPassword(id, password);
       //맞으면 모달 닫고 페이지 이동
       setIsTodayFocusOpen(false);
       //이동할때 password챙겨서 이동

@@ -38,14 +38,27 @@ function HabitPage({ className }) {
     dailyHabitlist();
   }, [id]);
 
-  //날짜,시간 업로드
-  useEffect(() => {
-    const intervalId = setInterval(() => {
-      setCurrent(new Date());
-    }, INTERVAL_TIME); //10초에 한번씩...
-    return () => clearInterval(intervalId);
-  }, []);
+  // 시간 포멧
+  const formatDateTime = (date) => {
+    const dateStr = date
+      .toLocaleDateString('ko-KR', {
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit',
+      })
+      .replace(/\. /g, '-')
+      .replace('.', '');
 
+    const timeStr = date.toLocaleTimeString('ko-KR', {
+      hour: 'numeric',
+      minute: '2-digit',
+    });
+
+    return `${dateStr} ${timeStr}`;
+  };
+
+  if (loading) return <div>로딩 중...</div>;
+  if (error) return <div>에러 발생: {error}</div>;
   return (
     <>
       <Header />
@@ -67,9 +80,7 @@ function HabitPage({ className }) {
 
           <div className={styles.timeContainer}>
             <p className={styles.nowTimeWord}>현재 시간</p>
-            <div className={styles.imRealClock}>
-              {`${current.toISOString('ko-Kr').slice(0, 10)} ${current.toLocaleTimeString('ko-KR', { hour: 'numeric', minute: '2-digit' })}`}
-            </div>
+            <div className={styles.imRealClock}>{formatDateTime(current)}</div>
           </div>
 
           {/* 임의로 id값 부여  */}
