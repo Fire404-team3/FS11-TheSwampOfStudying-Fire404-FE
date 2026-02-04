@@ -2,8 +2,8 @@ import { useState } from 'react';
 import { updateHabits } from '@/api/habits.api.js';
 import HabitItem from '../HabitItem/HabitItem.jsx';
 import styles from './HabitsModal.module.css';
-import PlusIcon from '@/assets/icon_plus.png';
-import TrashIcon from '@/assets/icon_trash.png';
+import PlusIcon from '@/assets/images/icon_plus.png';
+import TrashIcon from '@/assets/images/icon_trash.png';
 
 export default function HabitsModal({
   studyId,
@@ -55,7 +55,10 @@ export default function HabitsModal({
       // 변경: 서버 전송 직전, 임시 ID를 null로 정제하여 "new-" 의존성 제거
       const habitsToSubmit = habits.map((habit) => ({
         ...habit,
-        id: typeof habit.id === 'string' && habit.id.startsWith('temp-') ? null : habit.id,
+        id:
+          typeof habit.id === 'string' && habit.id.startsWith('temp-')
+            ? null
+            : habit.id,
       }));
 
       // 서버에 업데이트 요청 (이 안에서 에러가 나면 catch 블록으로 이동)

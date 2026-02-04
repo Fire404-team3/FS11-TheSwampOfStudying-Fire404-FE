@@ -1,4 +1,4 @@
-const BASE_URL = 'http://localhost:5005';
+const BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5005';
 
 // 이모지 비활성화 시 click -> 이모지 카운트 1 증가
 export const increaseEmoji = async ({ studyId, emojiType }) => {

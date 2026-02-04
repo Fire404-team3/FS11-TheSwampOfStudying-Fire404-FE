@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { Header } from '@/components/Header';
 import { FocusBoard, TimerCard, Toast, toast } from '../../components';
-import { addPoints } from '@/api/studies';
+import { addPoints } from '@/api/studies.api';
 import storage from '@/utils/storage';
 import styles from './FocusPage.module.css';
 

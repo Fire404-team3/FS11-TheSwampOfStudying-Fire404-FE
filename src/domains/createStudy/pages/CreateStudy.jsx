@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router';
 
 import { HomeHeader } from '@/components/HomeHeader';
-import { postStudy } from '@/api/studyCreateEditApi';
+import { postStudy } from '@/api/studies.api';
 import useStudyForm from '@/hooks/useStudyForm';
 import StudyForm from '@/components/StudyForm/StudyForm';
 

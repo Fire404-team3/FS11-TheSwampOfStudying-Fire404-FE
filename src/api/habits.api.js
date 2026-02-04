@@ -1,4 +1,5 @@
-const API_BASE_URL = 'http://localhost:5005';
+const API_BASE_URL =
+  import.meta.env.VITE_API_BASE_URL || 'http://localhost:5005';
 
 //habit데이터 불러오는 api
 export const fetchHabitList = async (id) => {

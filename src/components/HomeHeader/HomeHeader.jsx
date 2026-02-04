@@ -1,7 +1,7 @@
 import { Link } from 'react-router';
 // import styles from './HomeHeader.module.css';
 import styles from './HomeHeader.module.css';
-import logo from '/src/assets/img_logo.svg';
+import logo from '@/assets/images/img_logo.svg';
 
 export function HomeHeader() {
   return (

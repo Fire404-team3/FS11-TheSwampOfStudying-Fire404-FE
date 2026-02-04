@@ -39,22 +39,31 @@
 }
 
 @keyframes marquee {
-  0%, 15% {
+  0%,
+  15% {
     transform: translateX(0);
   }
-  85%, 100% {
+  85%,
+  100% {
     transform: translateX(var(--scroll-distance));
   }
 }
 
 @keyframes maskFade {
-  0%, 15% {
+  0%,
+  15% {
     mask-image: linear-gradient(to right, black, black);
     -webkit-mask-image: linear-gradient(to right, black, black);
   }
-  30%, 85% {
+  30%,
+  85% {
     mask-image: linear-gradient(to right, transparent, black 3rem, black);
-    -webkit-mask-image: linear-gradient(to right, transparent, black 3rem, black);
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent,
+      black 3rem,
+      black
+    );
   }
   100% {
     mask-image: linear-gradient(to right, black, black);
@@ -79,8 +88,8 @@
   align-items: center;
   gap: 0.5rem;
   border-radius: 3.125rem;
-  border: 1px solid rgba(0, 0, 0, 0.10);
-  background: rgba(255, 255, 255, 0.30);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  background: rgba(255, 255, 255, 0.3);
   color: var(--black-black_414141, #414141);
   font-family: Pretendard;
   font-size: 1rem;
@@ -100,8 +109,8 @@
   gap: 0.25rem;
   padding: 0.75rem 1rem 0.75rem 1.5rem;
   border-radius: 0.9375rem;
-  border: 1px solid var(--gray-gray_DDDDDD, #DDD);
-  background: #FFF;
+  border: 1px solid var(--gray-gray_DDDDDD, #ddd);
+  background: #fff;
   color: var(--gray-818181);
   text-align: center;
   font-family: Pretendard;

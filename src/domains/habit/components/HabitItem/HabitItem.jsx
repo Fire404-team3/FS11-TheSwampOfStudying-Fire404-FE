@@ -1,6 +1,6 @@
 // HabitItem.jsx- PR 리뷰 후 재사용 컴포넌트 별도 분리(Habit Item 컴포넌트)
 import React from 'react';
-import TrashIcon from '@/assets/icon_trash.png';
+import TrashIcon from '@/assets/images/icon_trash.png';
 import styles from './HabitItem.module.css';
 
 function HabitItem({ habit, onChangeInput, onClickDelete }) {

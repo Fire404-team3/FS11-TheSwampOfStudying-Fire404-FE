@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 
-import { deleteStudy } from '@/api/studyCreateEditApi';
+import { deleteStudy } from '@/api/studies.api';
 
 /**
  * [스터디 삭제]

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { getEmojiActive, setEmojiActive } from '@/utils/emojiStorage';
-import { decreaseEmoji, increaseEmoji } from '@/api/emojiUpdate';
+import { decreaseEmoji, increaseEmoji } from '@/api/emoji.api';
 import clsx from 'clsx';
 import styles from './EmojiButton.module.css';
 
@@ -28,7 +28,7 @@ export function EmojiButton({ studyId, emojiType, count, onRefresh }) {
       // 로컬 상태 반전
       setIsActive((prev) => !prev);
 
-      if(onRefresh) onRefresh();
+      if (onRefresh) onRefresh();
     } catch (error) {
       console.log(error);
     }

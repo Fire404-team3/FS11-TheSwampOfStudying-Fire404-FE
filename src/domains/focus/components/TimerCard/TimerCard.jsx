@@ -1,9 +1,9 @@
 import { useState, useEffect, useRef } from 'react';
 import styles from './TimerCard.module.css';
-import icTimer from '@/assets/ic_timer.svg';
-import btnPause from '@/assets/btn_pause.svg';
-import btnRestart from '@/assets/btn_restart.svg';
-import icPlay from '@/assets/ic_play.svg';
+import icTimer from '@/assets/images/ic_timer.svg';
+import btnPause from '@/assets/images/btn_pause.svg';
+import btnRestart from '@/assets/images/btn_restart.svg';
+import icPlay from '@/assets/images/ic_play.svg';
 
 /**
  * @param {Object} props
@@ -81,16 +81,27 @@ export function TimerCard({
       applyTimeChange();
     } else if (e.key === 'Escape') {
       setIsEditing(false);
-    } else if (e.key === 'ArrowRight' && field === 'minutes' && e.target.selectionStart === e.target.value.length) {
+    } else if (
+      e.key === 'ArrowRight' &&
+      field === 'minutes' &&
+      e.target.selectionStart === e.target.value.length
+    ) {
       secondsRef.current?.focus();
-    } else if (e.key === 'ArrowLeft' && field === 'seconds' && e.target.selectionStart === 0) {
+    } else if (
+      e.key === 'ArrowLeft' &&
+      field === 'seconds' &&
+      e.target.selectionStart === 0
+    ) {
       minutesRef.current?.focus();
     }
   };
 
   const handleBlur = (e) => {
     const relatedTarget = e.relatedTarget;
-    if (relatedTarget !== minutesRef.current && relatedTarget !== secondsRef.current) {
+    if (
+      relatedTarget !== minutesRef.current &&
+      relatedTarget !== secondsRef.current
+    ) {
       applyTimeChange();
     }
   };
@@ -102,7 +113,8 @@ export function TimerCard({
     }
   }, [isEditing]);
 
-  const isWarning = status === 'running' && currentTime <= 10 && currentTime > 0;
+  const isWarning =
+    status === 'running' && currentTime <= 10 && currentTime > 0;
   const isOvertime = status === 'overtime' || currentTime < 0;
   const showGoalBadge = status !== 'idle';
 
@@ -159,19 +171,40 @@ export function TimerCard({
       <div className={styles.buttons}>
         {status === 'idle' && (
           <button className={styles.mainButton} onClick={onStart}>
-            <img src={icPlay} alt="재생" style={{ width: '2.75rem', height: '2.75rem' }} />
+            <img
+              src={icPlay}
+              alt="재생"
+              style={{ width: '2.75rem', height: '2.75rem' }}
+            />
             Start!
           </button>
         )}
 
         {(status === 'running' || status === 'paused') && (
           <>
-            <img src={btnPause} alt="일시정지" className={styles.circleButton} onClick={onPause} />
-            <button className={`${styles.mainButton} ${status === 'running' ? styles.running : ''}`} onClick={onStart}>
-              <img src={icPlay} alt="재생" style={{ width: '2.75rem', height: '2.75rem' }} />
+            <img
+              src={btnPause}
+              alt="일시정지"
+              className={styles.circleButton}
+              onClick={onPause}
+            />
+            <button
+              className={`${styles.mainButton} ${status === 'running' ? styles.running : ''}`}
+              onClick={onStart}
+            >
+              <img
+                src={icPlay}
+                alt="재생"
+                style={{ width: '2.75rem', height: '2.75rem' }}
+              />
               Start!
             </button>
-            <img src={btnRestart} alt="리셋" className={styles.circleButton} onClick={onReset} />
+            <img
+              src={btnRestart}
+              alt="리셋"
+              className={styles.circleButton}
+              onClick={onReset}
+            />
           </>
         )}
 

@@ -12,9 +12,7 @@ export function FocusBoard({ nickname, name, points, children }) {
   return (
     <section className={styles.board}>
       <StudyHeader nickname={nickname} name={name} points={points} />
-      <div className={styles.content}>
-        {children}
-      </div>
+      <div className={styles.content}>{children}</div>
     </section>
   );
 }

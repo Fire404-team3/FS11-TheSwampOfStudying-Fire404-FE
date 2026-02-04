@@ -1,11 +1,11 @@
 import HabitRecord from '../components/HabitRecord/HabitRecord';
 import styles from './StudyDetailPage.module.css';
 import { LinkButton } from '@/components/LinkButton';
-import pointImg from '@/assets/ic_point.svg';
+import pointImg from '@/assets/images/ic_point.svg';
 import { useEffect, useState } from 'react';
-import { fetchAllResourcesList } from '@/api/studyDetail';
+import { fetchAllResourcesList } from '@/api/studies.api';
 import { useNavigate, useParams } from 'react-router';
-import { checkStudyPassword, deleteStudy } from '@/api/studyCreateEditApi';
+import { checkStudyPassword, deleteStudy } from '@/api/studies.api';
 import toast from 'react-hot-toast';
 import PasswordModal from '@/components/PasswordModal';
 import { Header } from '@/components/Header';
@@ -40,7 +40,7 @@ function StudyDetailPage() {
       const result = await fetchAllResourcesList(id);
       setStudy(result.data);
       setStudyName(result.data.name);
-      setNickName(result.data.nickname)
+      setNickName(result.data.nickname);
       setPoint(result.data.points);
       setDescription(result.data.description);
 
@@ -170,12 +170,10 @@ function StudyDetailPage() {
 
             <div className={styles.secondNev}>
               <div className={styles.nameWrapper}>
-              <div className={styles.studyName}>
-                {nickName}의 {studyName}
+                <div className={styles.studyName}>
+                  {nickName}의 {studyName}
+                </div>
               </div>
-
-              </div>
-
 
               <div className={styles.moveBtn}>
                 <LinkButton

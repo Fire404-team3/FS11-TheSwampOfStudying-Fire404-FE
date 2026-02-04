@@ -8,7 +8,7 @@
 
 /* 데스크탑 여백 */
 .habitItemContainer::before {
-  content: "";
+  content: '';
   width: 6.25rem; /* 100px */
   flex-shrink: 0;
 }
@@ -16,7 +16,7 @@
 .habitItem {
   width: 25rem; /* 400px */
   height: 3.375rem; /* 54px */
-  background: var(--color-gray-200, #EEEEEE);
+  background: var(--color-gray-200, #eeeeee);
   border-radius: 1.25rem;
   display: flex;
   align-items: center;
@@ -41,7 +41,7 @@
   width: 3rem; /* 48px */
   height: 3rem;
   margin-left: 0.5rem;
-  background: var(--color-point-pink, #FFD6DE);
+  background: var(--color-point-pink, #ffd6de);
   border-radius: 50%;
   border: none;
   display: flex;

@@ -1,7 +1,7 @@
 import styles from './Home.module.css';
 import { useEffect, useState } from 'react';
 import StudyExploreList from '../components/StudyExploreList';
-import { getStudies } from '@/api/studyApi';
+import { getStudies } from '@/api/studies.api.js';
 import { HomeHeader } from '@/components/HomeHeader';
 import RecentStudyList from '../components/RecentStudyList/RecentStudyList';
 

@@ -3,7 +3,7 @@ import EmojiPicker from 'emoji-picker-react';
 import smileIcon from '@/assets/images/ic_smile.svg';
 import styles from './EmojiPickerWrapper.module.css';
 
-export function EmojiPickerWrapper({onSelect}) {
+export function EmojiPickerWrapper({ onSelect }) {
   const [open, setOpen] = useState(false);
 
   const handleEmojiClick = (emojiData) => {

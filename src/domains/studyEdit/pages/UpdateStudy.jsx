@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useParams, useNavigate, useLocation } from 'react-router';
-import { getStudyDetail, updateStudy } from '@/api/studyCreateEditApi.js';
+import { getStudyDetail, updateStudy } from '@/api/studies.api';
 
 import useStudyForm from '@/hooks/useStudyForm';
 import StudyForm from '@/components/StudyForm/StudyForm';

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { increaseEmoji } from '@/api/emojiUpdate';
+import { increaseEmoji } from '@/api/emoji.api';
 import { setEmojiActive } from '@/utils/emojiStorage';
 import { EmojiButton } from '../EmojiButton';
 import { EmojiPickerWrapper } from '../EmojiPickerWrapper';

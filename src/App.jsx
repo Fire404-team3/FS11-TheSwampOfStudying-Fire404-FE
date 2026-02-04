@@ -4,7 +4,7 @@ import styles from './App.module.css';
 import CreateStudy from './domains/createStudy/pages/CreateStudy';
 import HabitPage from './domains/habit/page/HabitPage';
 import { FocusPage } from '@/domains/focus/pages';
-import StudyDetailPage from './domains/stydyDetail/pages/StudyDetailPage';
+import StudyDetailPage from './domains/studyDetail/pages/StudyDetailPage';
 import UpdateStudy from './domains/studyEdit/pages/UpdateStudy';
 import { Toaster } from 'react-hot-toast';
 import GlobalToaster from './components/Toaster/GlobalToaster';
