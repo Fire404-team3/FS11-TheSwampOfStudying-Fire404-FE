@@ -1,18 +1,13 @@
 import HabitRecordRow from '../HabitRecordRow/HabitRecordRow';
 import styles from './HabitRecord.module.css';
 
-function HabitRecord({ habits}) {
-
+function HabitRecord({ habits }) {
   return (
-<article
-      data-length={habits.length}
-      className={styles.container}
-    >
+    <article data-length={habits.length} className={styles.container}>
       <h2 className={styles.title}>습관 기록표</h2>
 
       {habits.length > 0 ? (
         <div className={styles.grid}>
-          {/* 헤더 */}
           <div className={styles.headerRow}>
             <div />
             <div className={styles.headerDays}>
@@ -27,11 +22,7 @@ function HabitRecord({ habits}) {
           </div>
 
           {habits.map((habit, index) => (
-            <HabitRecordRow
-              key={habit.id}
-              habit={habit}
-              index={index + 1}
-            />
+            <HabitRecordRow key={habit.id} habit={habit} index={index + 1} />
           ))}
         </div>
       ) : (

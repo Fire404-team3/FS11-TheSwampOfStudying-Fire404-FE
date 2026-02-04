@@ -46,7 +46,7 @@ button {
   cursor: pointer;
 }
 
-.deleteStudy{
+.deleteStudy {
   cursor: pointer;
 }
 
@@ -54,6 +54,7 @@ button {
 .secondNev {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   margin-bottom: 1rem;
 }
 
@@ -66,11 +67,15 @@ button {
 .moveBtn {
   display: flex;
   gap: 1rem;
+  flex-shrink: 0;
 }
 
 /* 소개 */
 .description {
   margin-bottom: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
 /* 포인트 */
@@ -90,3 +95,94 @@ button {
   height: 1.1875rem;
 }
 
+/* 타블렛 */
+@media (max-width: 1199px) and (min-width: 744px) {
+  .datailPageContainer {
+    padding: 1rem 1rem 5.06rem 1rem;
+  }
+
+  .datailBox {
+    gap: 1.5rem;
+    padding: 1.5rem;
+  }
+
+  .fixBtns {
+    gap: 0.5rem;
+  }
+
+  .moveBtn {
+    gap: 0.5rem;
+  }
+}
+/* 모바일 */
+@media (max-width: 743px) and (min-width: 375px) {
+  .datailPageContainer {
+    padding: 1rem 1rem 3.5rem 1rem;
+  }
+
+  .datailBox {
+    padding: 1rem;
+    gap: 1.5rem;
+  }
+
+  .firstNev {
+    flex-direction: column-reverse;
+    gap: 1rem;
+  }
+
+  .fixBtns {
+    gap: 0.25rem;
+    justify-content: right;
+  }
+
+  .Share .studyFix .deleteStudy {
+    font-size: 0.75rem;
+  }
+
+  /* 애니메이션 */
+  .studyName {
+    white-space: nowrap;
+    display: inline-block;
+    flex-shrink: 0;
+  }
+  .nameWrapper {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+
+    width: 100%;
+    overflow: hidden;
+  }
+  
+  @keyframes marquee {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+
+  .nameWrapper:hover .studyName {
+    animation: marquee 8s linear infinite;
+    transition: none;
+  }
+
+  .secondNev {
+    flex-direction: column;
+    align-items: baseline;
+    gap: 1rem;
+  }
+
+  .moveBtn {
+    gap: 0.5rem;
+  }
+
+  .description p {
+    font-size: 1rem;
+  }
+
+  .description {
+    font-size: 0.9rem;
+  }
+}

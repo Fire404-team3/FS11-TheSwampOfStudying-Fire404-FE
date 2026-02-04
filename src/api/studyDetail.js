@@ -13,10 +13,8 @@ export const fetchAllResourcesList = async (id) => {
     throw new Error('데이터를 불러오는데 실패했습니다.');
   }
 
-  // 받아온 JSON 데이터를 해석함
-  const result = await response.json();
-
-  return {
-    data: result,
-  };
+  const data = await response.json();
+  return data;
 };
+
+
