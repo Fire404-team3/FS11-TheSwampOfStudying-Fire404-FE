@@ -9,6 +9,7 @@ import { checkStudyPassword, deleteStudy } from '@/api/studyCreateEditApi';
 import toast from 'react-hot-toast';
 import PasswordModal from '@/components/PasswordModal';
 import { Header } from '@/components/Header';
+import { EmojiList } from '@/components/EmojiList';
 
 function StudyDetailPage() {
   // [수훈] useParams에서 ID 가져오기, 네비게이트 연결
@@ -144,11 +145,11 @@ function StudyDetailPage() {
         <div className={styles.datailBox}>
           <div className={styles.infoContainer}>
             <div className={styles.firstNev}>
-              {/* <div>
+              <div>
                 {study && (
                   <EmojiList study={study} onRefresh={allResourcesList} />
                 )}
-              </div> */}
+              </div>
 
               <div className={styles.fixBtns}>
                 <button className={styles.Share}>공유하기</button>
