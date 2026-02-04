@@ -66,7 +66,7 @@
 /* mobile media */
 @media (max-width: 743px) and (min-width: 375px) {
   .habitContainer {
-    padding: 7.5rem 0.94rem 8.81rem 1rem;
+    padding: 1rem 0.94rem 8.81rem 1rem;
   }
   .habitBox {
     padding: 1rem 1.5rem;

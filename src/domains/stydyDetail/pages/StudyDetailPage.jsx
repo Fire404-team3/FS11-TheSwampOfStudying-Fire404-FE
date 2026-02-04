@@ -164,14 +164,14 @@ function StudyDetailPage({ className }) {
               <div className={styles.moveBtn}>
                 <LinkButton
                   to={`/studies/${id}/habits`}
-                  className={className}
+                  className={styles.habitBtn}
                   onClick={handleTodayHabitClick}
                 >
                   오늘의 습관
                 </LinkButton>
                 <LinkButton
                   to={`/studies/${id}/focus`}
-                  className={className}
+                  className={styles.fouceBtn}
                   onClick={handleTodayFocusClick}
                 >
                   오늘의 집중
