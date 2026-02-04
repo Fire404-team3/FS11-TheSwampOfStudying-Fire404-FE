@@ -126,31 +126,32 @@ export function FocusPage() {
   };
 
   return (
-    <div className={styles.page}>
+    <>
       <Header />
+      <div className={styles.page}>
+        <div className={styles.container}>
+          <FocusBoard
+            nickname={study?.nickname ?? ''}
+            name={study?.name ?? ''}
+            points={study?.points ?? 0}
+          >
+            <TimerCard
+              goalTime={goalTime}
+              currentTime={currentTime}
+              status={status}
+              onStart={handleStart}
+              onPause={handlePause}
+              onReset={handleReset}
+              onStop={handleStop}
+              onTimeChange={handleTimeChange}
+            />
+          </FocusBoard>
+        </div>
 
-      <div className={styles.container}>
-        <FocusBoard
-          nickname={study?.nickname ?? ''}
-          name={study?.name ?? ''}
-          points={study?.points ?? 0}
-        >
-          <TimerCard
-            goalTime={goalTime}
-            currentTime={currentTime}
-            status={status}
-            onStart={handleStart}
-            onPause={handlePause}
-            onReset={handleReset}
-            onStop={handleStop}
-            onTimeChange={handleTimeChange}
-          />
-        </FocusBoard>
+        <div className={styles.toastContainer}>
+          <Toast />
+        </div>
       </div>
-
-      <div className={styles.toastContainer}>
-        <Toast />
-      </div>
-    </div>
+    </>
   );
 }

@@ -17,7 +17,7 @@
 .navTop {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 1rem;
+  align-items: center;
 }
 
 .studyName {
@@ -53,9 +53,9 @@
 }
 
 /* tablet media */
-@media (max-width: 1199px) and (min-width: 744px) {
+@media (max-width: 46.5rem) {
   .habitContainer {
-    padding: 7.25rem 1.5rem 4.94rem 1.5rem;
+    padding: 1rem 1.5rem 4.94rem 1.5rem;
   }
   .habitBox {
     padding: 1.5rem;
@@ -63,16 +63,17 @@
 }
 
 /* mobile media */
-@media (max-width: 743px) and (min-width: 375px) {
+@media (max-width: 23.4375rem) {
   .habitContainer {
-    padding: 1rem 0.94rem 8.81rem 1rem;
+    padding: 0.25rem 0.94rem 8.81rem 1rem;
   }
   .habitBox {
-    padding: 1rem 1.5rem;
+    padding: 1rem;
   }
 
   .navTop {
     flex-direction: column;
+    align-items: normal;
     gap: 1rem;
   }
 
