@@ -28,7 +28,7 @@
 }
 
 /* 모바일 : 23.4rem 이하 */
-@media (max-width: 23.4rem) {
+@media (max-width: 23.4375rem) {
   .grid {
     grid-template-columns: repeat(2, 1fr);
   }
