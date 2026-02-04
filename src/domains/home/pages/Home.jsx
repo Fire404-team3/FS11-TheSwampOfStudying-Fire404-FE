@@ -2,7 +2,7 @@ import styles from './Home.module.css';
 import { useEffect, useState } from 'react';
 import StudyExploreList from '../components/StudyExploreList';
 import { getStudies } from '@/api/studyApi';
-import { HomeHeader } from '@/common/components/HomeHeader';
+import { HomeHeader } from '@/components/HomeHeader';
 import RecentStudyList from '../components/RecentStudyList/RecentStudyList';
 
 const DEBOUNCE_DELAY = 300;
