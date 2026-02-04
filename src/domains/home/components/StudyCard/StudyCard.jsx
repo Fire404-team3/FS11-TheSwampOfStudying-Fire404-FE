@@ -2,12 +2,11 @@ import storage from '@/utils/storage';
 import styles from './StudyCard.module.css';
 import clsx from 'clsx';
 import { Link } from 'react-router';
+import { useEffect, useRef, useState } from 'react';
 
 export default function StudyCard({ study }) {
-  if (!study) {
-    return <div>데이터 로딩 중...</div>;
-  }
-
+  const [isOverflow, setIsOverflow] = useState(false);
+  const titleRef = useRef(null);
   const {
     id,
     nickname,
@@ -18,6 +17,31 @@ export default function StudyCard({ study }) {
     background,
     emojiLogs,
   } = study;
+
+  useEffect(() => {
+    const checkOverflow = () => {
+      const element = titleRef.current;
+
+      const wrapper = element?.parentElement;
+
+      if (element && wrapper) {
+        const hasOverflow = element.scrollWidth > wrapper.clientWidth;
+        console.log('오버플로우 여부:', hasOverflow);
+        setIsOverflow(hasOverflow);
+      }
+    };
+
+    const timer = setTimeout(checkOverflow, 100);
+    window.addEventListener('resize', checkOverflow);
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener('resize', checkOverflow);
+    };
+  }, [name, nickname]);
+
+  if (!study) {
+    return <div>데이터 로딩 중...</div>;
+  }
 
   const handleCardClick = () => {
     const recentList = storage.get('recentStudies', []);
@@ -53,9 +77,22 @@ export default function StudyCard({ study }) {
           <div className={styles.contentContainer}>
             <div className={styles.mainContainer}>
               <div className={styles.headerContainer}>
-                <h2 className={styles.title}>
-                  <span className={styles.nickname}>{nickname}</span> 의 {name}
-                </h2>
+                <div className={styles.titleWrapper}>
+                  <h2
+                    ref={titleRef}
+                    className={clsx(styles.title, isOverflow && 'is-scrolling')}
+                  >
+                    <span className={styles.nickname}>{nickname}</span> 의{name}
+                    {isOverflow && (
+                      <>
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                        <span className={styles.nickname}>
+                          {nickname}
+                        </span> 의 {name}
+                      </>
+                    )}
+                  </h2>
+                </div>
 
                 <span className={styles.pointBadge}>
                   🍃{points.toLocaleString()}P 획득

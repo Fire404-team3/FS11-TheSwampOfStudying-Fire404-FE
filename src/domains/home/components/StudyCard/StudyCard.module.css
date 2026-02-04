@@ -24,6 +24,7 @@
   flex-direction: column;
   align-items: flex-start;
   gap: 1.875rem;
+  flex: 1;
 }
 .mainContainer {
   display: flex;
@@ -47,7 +48,32 @@
   font-weight: 700;
   line-height: normal;
   color: var(--theme-title);
+  display: inline-block;
+  padding-left: 0;
+  transform: translateX(0);
+  transition: transform 0.3s ease-in-out;
 }
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.titleWrapper {
+  overflow: hidden;
+  white-space: nowrap;
+  width: 100%;
+  margin-right: 0.5rem;
+  mask-image: linear-gradient(to right, white 90%, transparent 100%);
+}
+.linkWrapper:hover .title:global(.is-scrolling) {
+  animation: marquee 4s linear infinite !important;
+  transition: none;
+}
+
 .nickname {
   color: var(--theme-nickname);
 }
