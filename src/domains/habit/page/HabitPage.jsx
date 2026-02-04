@@ -23,7 +23,6 @@ function HabitPage({ className }) {
       setLoading(true);
       setError(null);
       const result = await fetchHabitList(id);
-      // console.log(result.data);
       setHabitList(result.data.habits);
       setStudyName(result.data.name);
       setNickName(result.data.nickname);
@@ -44,7 +43,7 @@ function HabitPage({ className }) {
   useEffect(() => {
     const intervalId = setInterval(() => {
       setCurrent(new Date());
-    }, INTERVAL_TIME); //10초에 한번씩...
+    }, INTERVAL_TIME); //10초에 한번
     return () => clearInterval(intervalId);
   }, []);
 
@@ -65,21 +64,22 @@ function HabitPage({ className }) {
 
     return `${dateStr} ${timeStr}`;
   };
-
+  // 상태관리에 loading과 error의 에러 방지용
   if (loading) return <div>로딩 중...</div>;
   if (error) return <div>에러 발생: {error}</div>;
+
   return (
     <>
       <Header />
       <div className={styles.habitContainer}>
         <div className={styles.habitBox}>
           <div className={styles.navTop}>
-            {/* 여기{study.name}으로 교체 */}
-            <p className={styles.studyNameTitle}>
-              {nickName}의 {studyName}
-            </p>
+            <div className={styles.nameWrapper}>
+              <div className={styles.studyName}>
+                {nickName}의 {studyName}
+              </div>
+            </div>
             <div className={styles.moveBtnContainer}>
-              {/* 페이지 이동 연결 해야함  */}
               <LinkButton to={`/studies/${id}/focus`} className={className}>
                 오늘의 집중
               </LinkButton>
@@ -94,13 +94,11 @@ function HabitPage({ className }) {
             <div className={styles.imRealClock}>{formatDateTime(current)}</div>
           </div>
 
-          {/* 임의로 id값 부여  */}
           <DailyHabit
             habitList={habitList}
             studyId={studyId}
             refetchTodayHabits={dailyHabitlist}
           />
-          {/* 넘어오지 마시오  */}
         </div>
       </div>
     </>

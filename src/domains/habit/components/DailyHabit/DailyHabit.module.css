@@ -75,7 +75,6 @@
 /* mobile media */
 @media (max-width: 743px) and (min-width: 375px) {
   .dailyHabitContainer {
-    margin-top: 1rem;
     padding: 1.5rem 1rem;
   }
 

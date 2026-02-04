@@ -22,6 +22,7 @@ function StudyDetailPage() {
   const [point, setPoint] = useState('');
   const [description, setDescription] = useState('');
   const [habits, setHabits] = useState([]);
+  const [study, setStudy] = useState(null);
 
   // [수훈] 비밀번호 모달 관리, 수정/삭제용 모달 각각 관리
   const [isUpdateModalOpen, setIsUpdateModalOpen] = useState(false);
@@ -31,23 +32,26 @@ function StudyDetailPage() {
   const [isTodayHabitOpen, setIsTodayHabitOpen] = useState(false);
   const [isTodayFocusOpen, setIsTodayFocusOpen] = useState(false);
 
+  const allResourcesList = async () => {
+    try {
+      setLoading(true);
+      setError(null);
+      const result = await fetchAllResourcesList(id);
+      setStudy(result.data);
+      setStudyName(result.data.name);
+      setNickName(result.data.nickname)
+      setPoint(result.data.points);
+      setDescription(result.data.description);
+
+      setHabits(result.data.habits || []); // [수훈] habits가 없으면 빈 배열
+    } catch (error) {
+      setError(error.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   useEffect(() => {
-    const allResourcesList = async () => {
-      try {
-        setLoading(true);
-        setError(null);
-        const result = await fetchAllResourcesList(id);
-        setStudyName(result.data.name);
-        setPoint(result.data.points);
-        setDescription(result.data.description);
-        setNickName(result.data.nickname);
-        setHabits(result.data.habits || []);
-      } catch (error) {
-        setError(error.message);
-      } finally {
-        setLoading(false);
-      }
-    };
     allResourcesList();
   }, [id]);
   // [수훈] 1. 수정 관련 기능(비밀번호 모달 -> 수정페이지 이동)
@@ -138,20 +142,21 @@ function StudyDetailPage() {
       <Header />
       <div className={styles.datailPageContainer}>
         <div className={styles.datailBox}>
-          {/* 스터디 정보 */}
           <div className={styles.infoContainer}>
             <div className={styles.firstNev}>
-              <div>이모지</div>
+              {/* <div>
+                {study && (
+                  <EmojiList study={study} onRefresh={allResourcesList} />
+                )}
+              </div> */}
 
               <div className={styles.fixBtns}>
                 <button className={styles.Share}>공유하기</button>
                 <span>|</span>
-                {/* [수훈] onClick 추가 */}
                 <button className={styles.studyFix} onClick={handleUpdateClick}>
                   수정하기
                 </button>
                 <span>|</span>
-                {/* [수훈] onClick 추가 */}
                 <button
                   onClick={handleDeleteClick}
                   className={styles.deleteStudy}
@@ -160,10 +165,16 @@ function StudyDetailPage() {
                 </button>
               </div>
             </div>
+
             <div className={styles.secondNev}>
+              <div className={styles.nameWrapper}>
               <div className={styles.studyName}>
                 {nickName}의 {studyName}
               </div>
+
+              </div>
+
+
               <div className={styles.moveBtn}>
                 <LinkButton
                   to={`/studies/${id}/habits`}
@@ -179,6 +190,7 @@ function StudyDetailPage() {
                 </LinkButton>
               </div>
             </div>
+
             <div className={styles.description}>
               <p>소개</p>
               <div>{description}</div>
