@@ -15,6 +15,7 @@ function HabitPage({ className }) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [studyName, setStudyName] = useState('');
+  const [nickName, setNickName] = useState('');
   const [studyId, setStudyId] = useState('');
 
   const dailyHabitlist = async () => {
@@ -25,6 +26,7 @@ function HabitPage({ className }) {
       // console.log(result.data);
       setHabitList(result.data.habits);
       setStudyName(result.data.name);
+      setNickName(result.data.nickname);
       setStudyId(result.data.id);
     } catch (error) {
       setError(error.message);
@@ -38,7 +40,14 @@ function HabitPage({ className }) {
     dailyHabitlist();
   }, [id]);
 
-  // 시간 포멧
+  //날짜,시간 업로드
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setCurrent(new Date());
+    }, INTERVAL_TIME); //10초에 한번씩...
+    return () => clearInterval(intervalId);
+  }, []);
+
   const formatDateTime = (date) => {
     const dateStr = date
       .toLocaleDateString('ko-KR', {
@@ -66,7 +75,9 @@ function HabitPage({ className }) {
         <div className={styles.habitBox}>
           <div className={styles.navTop}>
             {/* 여기{study.name}으로 교체 */}
-            <p className={styles.studyNameTitle}>{studyName}</p>
+            <p className={styles.studyNameTitle}>
+              {nickName}의 {studyName}
+            </p>
             <div className={styles.moveBtnContainer}>
               {/* 페이지 이동 연결 해야함  */}
               <LinkButton to={`/studies/${id}/focus`} className={className}>

@@ -10,7 +10,7 @@ import toast from 'react-hot-toast';
 import PasswordModal from '@/components/PasswordModal';
 import { Header } from '@/components/Header';
 
-function StudyDetailPage({ className }) {
+function StudyDetailPage() {
   // [수훈] useParams에서 ID 가져오기, 네비게이트 연결
   const { id } = useParams();
   const navigate = useNavigate();
@@ -18,6 +18,7 @@ function StudyDetailPage({ className }) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [studyName, setStudyName] = useState('');
+  const [nickName, setNickName] = useState('');
   const [point, setPoint] = useState('');
   const [description, setDescription] = useState('');
   const [habits, setHabits] = useState([]);
@@ -39,7 +40,7 @@ function StudyDetailPage({ className }) {
         setStudyName(result.data.name);
         setPoint(result.data.points);
         setDescription(result.data.description);
-
+        setNickName(result.data.nickname);
         setHabits(result.data.habits || []);
       } catch (error) {
         setError(error.message);
@@ -160,7 +161,9 @@ function StudyDetailPage({ className }) {
               </div>
             </div>
             <div className={styles.secondNev}>
-              <div className={styles.studyName}>{studyName}</div>
+              <div className={styles.studyName}>
+                {nickName}의 {studyName}
+              </div>
               <div className={styles.moveBtn}>
                 <LinkButton
                   to={`/studies/${id}/habits`}
