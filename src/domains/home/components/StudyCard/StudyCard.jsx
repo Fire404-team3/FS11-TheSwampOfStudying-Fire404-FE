@@ -3,6 +3,7 @@ import styles from './StudyCard.module.css';
 import clsx from 'clsx';
 import { Link } from 'react-router';
 import { useEffect, useRef, useState } from 'react';
+import pointImg from '@/assets/images/ic_point.svg';
 
 export default function StudyCard({ study }) {
   const [isOverflow, setIsOverflow] = useState(false);
@@ -95,7 +96,8 @@ export default function StudyCard({ study }) {
                 </div>
 
                 <span className={styles.pointBadge}>
-                  🍃{points.toLocaleString()}P 획득
+                  <img src={pointImg} />
+                  {points.toLocaleString()}P 획득
                 </span>
               </div>
               <p className={styles.statusText}>{diffDays}일째 진행 중</p>
