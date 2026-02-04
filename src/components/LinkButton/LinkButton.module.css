@@ -18,10 +18,9 @@
   text-decoration: none;
 }
 
-@media (max-width: 743px) and (min-width: 375px) {
+@media (max-width:23.4375rem) {
   .linkButton {
     padding: 0.5rem;
-    width: 7.6rem;
     height: 2.5rem;
   }
 }
