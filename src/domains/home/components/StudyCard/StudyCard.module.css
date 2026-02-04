@@ -14,8 +14,10 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  margin: 1.88rem 1.88rem;
-  gap: 2.2rem;
+
+  height: calc(15.1875rem - 3.76rem);
+  width: calc(100% - 3.76rem);
+  margin: 1.88rem;
 }
 
 .contentContainer {
@@ -122,6 +124,9 @@
   display: flex;
   flex-wrap: wrap;
   gap: 0.3125rem;
+  margin-top: auto;
+  /* 소개글이 두 줄일 때와 너무 붙지 않게 최소 간격만 유지 */
+  padding-top: 0.5rem;
 }
 .emojiBadge {
   display: flex;
@@ -253,7 +258,8 @@
   }
   .cardContainer {
     gap: 0.69rem;
-    margin-top: 1rem;
+    height: calc(11.25rem - 2rem);
+    margin: 1rem 1.88rem;
   }
   .description {
     -webkit-line-clamp: 1;
