@@ -69,7 +69,8 @@ export function TimerCard({
     const mins = parseInt(minutesInput, 10) || 0;
     const secs = Math.min(parseInt(secondsInput, 10) || 0, 59);
     const totalSeconds = mins * 60 + secs;
-    if (totalSeconds > 0 && onTimeChange) {
+    // 최소 집중시간: 10분 (600초)
+    if (totalSeconds >= 600 && onTimeChange) {
       onTimeChange(totalSeconds);
     }
     setIsEditing(false);
