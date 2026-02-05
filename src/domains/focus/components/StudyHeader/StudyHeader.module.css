@@ -103,7 +103,6 @@
   gap: 1rem;
 }
 
-
 /* Tablet */
 @media (max-width: 46.5rem) {
   /* .header {
@@ -143,8 +142,7 @@
     order: 4;
   }
 
-  .rightSection{
+  .rightSection {
     gap: 0.5rem;
   }
-
 }

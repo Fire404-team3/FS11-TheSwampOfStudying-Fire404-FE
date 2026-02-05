@@ -80,12 +80,8 @@ function HabitPage() {
               </div>
             </div>
             <div className={styles.moveBtnContainer}>
-              <LinkButton to={`/studies/${id}/focus`} >
-                오늘의 집중
-              </LinkButton>
-              <LinkButton to="/" >
-                홈
-              </LinkButton>
+              <LinkButton to={`/studies/${id}/focus`}>오늘의 집중</LinkButton>
+              <LinkButton to="/">홈</LinkButton>
             </div>
           </div>
 

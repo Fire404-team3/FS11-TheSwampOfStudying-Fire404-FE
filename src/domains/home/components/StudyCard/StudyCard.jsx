@@ -5,7 +5,7 @@ import { Link } from 'react-router';
 import { useEffect, useRef, useState } from 'react';
 import pointImg from '@/assets/images/ic_point.svg';
 
-export default function StudyCard({ study , className }) {
+export default function StudyCard({ study, className }) {
   const [isOverflow, setIsOverflow] = useState(false);
   const titleRef = useRef(null);
   const {
