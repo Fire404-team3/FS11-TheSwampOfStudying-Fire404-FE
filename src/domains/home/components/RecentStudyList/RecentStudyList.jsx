@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import styles from './RecentStudyList.module.css';
 import StudyCard from '../StudyCard';
 import clsx from 'clsx';
@@ -16,6 +16,18 @@ export default function RecentStudyList() {
     }
     return [];
   });
+
+  useEffect(() => {
+    const reloadStudies = () => {
+      const saved = localStorage.getItem('recentStudies');
+      setRecentStudies(saved ? JSON.parse(saved) : []);
+    };
+    window.addEventListener('recentStudiesUpdated', reloadStudies);
+
+    return () => {
+      window.removeEventListener('recentStudiesUpdated', reloadStudies);
+    };
+  }, []);
 
   const isEmptyRecentStudies = recentStudies.length === 0;
   return (

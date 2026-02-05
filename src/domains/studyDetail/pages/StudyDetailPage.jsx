@@ -87,6 +87,28 @@ function StudyDetailPage() {
       // 삭제 요청
       await deleteStudy(id, password);
       console.log(password);
+      const saved = localStorage.getItem('recentStudies');
+      if (saved) {
+        try {
+          const studies = JSON.parse(saved);
+          // 삭제하려는 id와 다른 항목들만 남기기 (타입 방어 위해 String 처리)
+          const filteredStudies = studies.filter(
+            (study) => String(study.id) !== String(id),
+          );
+
+          // 필터링된 결과로 로컬 스토리지 업데이트
+          localStorage.setItem(
+            'recentStudies',
+            JSON.stringify(filteredStudies),
+          );
+
+          // 변경 사항을 RecentStudyList 컴포넌트에 알림
+          window.dispatchEvent(new Event('recentStudiesUpdated'));
+        } catch (e) {
+          console.error('로컬 스토리지 갱신 중 오류:', e);
+        }
+      }
+
       // 맞으면 성공 토스트 띄우고 메인으로 이동
       alert('스터디가 삭제되었습니다.');
       setIsDeleteModalOpen(false);
