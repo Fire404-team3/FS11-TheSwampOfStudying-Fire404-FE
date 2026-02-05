@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { Header } from '@/components/Header';
 import { FocusBoard, TimerCard, Toast, toast } from '../../components';
-import { addPoints } from '@/api/studies';
+import { addPoints } from '@/api/studies.api';
 import storage from '@/utils/storage';
 import styles from './FocusPage.module.css';
 
@@ -78,8 +78,23 @@ export function FocusPage() {
     }
   };
 
-  // 리셋 버튼
-  const handleReset = () => {
+  // 리셋 버튼 (10분 이상 집중했으면 보너스 포인트 지급)
+  const handleReset = async () => {
+    const totalStudyTime = goalTime - currentTime;
+    const minutes = Math.floor(totalStudyTime / 60);
+
+    if (minutes >= 10 && study?.id) {
+      try {
+        const result = await addPoints(study.id, minutes, false);
+        const updatedStudy = { ...study, points: result.totalPoints };
+        setStudy(updatedStudy);
+        storage.set('currentStudy', updatedStudy);
+        toast.success(`📚 ${result.earnedPoints}포인트를 획득했습니다!`);
+      } catch (error) {
+        console.error('포인트 적립 실패:', error);
+      }
+    }
+
     setStatus('idle');
     setCurrentTime(goalTime);
   };
@@ -91,7 +106,7 @@ export function FocusPage() {
 
     try {
       if (study?.id) {
-        const result = await addPoints(study.id, minutes);
+        const result = await addPoints(study.id, minutes, true);
         // 로컬 상태 및 localStorage 업데이트
         const updatedStudy = { ...study, points: result.totalPoints };
         setStudy(updatedStudy);
@@ -111,31 +126,32 @@ export function FocusPage() {
   };
 
   return (
-    <div className={styles.page}>
+    <>
       <Header />
+      <div className={styles.page}>
+        <div className={styles.container}>
+          <FocusBoard
+            nickname={study?.nickname ?? ''}
+            name={study?.name ?? ''}
+            points={study?.points ?? 0}
+          >
+            <TimerCard
+              goalTime={goalTime}
+              currentTime={currentTime}
+              status={status}
+              onStart={handleStart}
+              onPause={handlePause}
+              onReset={handleReset}
+              onStop={handleStop}
+              onTimeChange={handleTimeChange}
+            />
+          </FocusBoard>
+        </div>
 
-      <div className={styles.container}>
-        <FocusBoard
-          nickname={study?.nickname ?? ''}
-          name={study?.name ?? ''}
-          points={study?.points ?? 0}
-        >
-          <TimerCard
-            goalTime={goalTime}
-            currentTime={currentTime}
-            status={status}
-            onStart={handleStart}
-            onPause={handlePause}
-            onReset={handleReset}
-            onStop={handleStop}
-            onTimeChange={handleTimeChange}
-          />
-        </FocusBoard>
+        <div className={styles.toastContainer}>
+          <Toast />
+        </div>
       </div>
-
-      <div className={styles.toastContainer}>
-        <Toast />
-      </div>
-    </div>
+    </>
   );
 }

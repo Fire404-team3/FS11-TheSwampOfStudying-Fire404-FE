@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import FormInput from '@/domains/createStudy/components/FormInput';
-import { checkStudyPassword } from '@/api/studyCreateEditApi';
+import { checkStudyPassword } from '@/api/studies.api';
 import toast from 'react-hot-toast';
 
 import '@/styles/reset.css';
@@ -42,7 +42,7 @@ const PasswordModal = ({ studyId, studyName, mode, onCheck, onClose }) => {
 
       // 검증 성공 시 토스트 알림
       // toast.success('🎉 인증에 성공했습니다.');
-      
+
       // 비밀번호 같이 보내기
       onCheck(password);
     } catch {
@@ -83,8 +83,9 @@ const PasswordModal = ({ studyId, studyName, mode, onCheck, onClose }) => {
                 ? '수정하기'
                 : mode === 'delete'
                   ? '스터디 삭제하기'
-                  : '이동하기'              
-                  }
+                  : mode === 'habits'
+                    ? '오늘의 습관 이동하기'
+                    : '오늘의 집중 이동하기'}
           </button>
         </form>
 

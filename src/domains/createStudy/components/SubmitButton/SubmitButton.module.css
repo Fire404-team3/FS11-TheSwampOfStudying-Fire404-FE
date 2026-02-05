@@ -42,7 +42,7 @@
 }
 
 /* Mobile: 23.4rem 이하 */
-@media (max-width: 23.4rem) {
+@media (max-width: 23.4375rem) {
   .button {
     margin-top: 0.38rem;
   }

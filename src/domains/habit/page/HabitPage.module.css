@@ -1,6 +1,5 @@
 /* haibtPage css */
 .habitContainer {
-  width: 0 auto;
   padding: 2.44rem 19.5rem 6.25rem 22.5rem;
   font-family: Pretendard;
 }
@@ -18,10 +17,10 @@
 .navTop {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 1rem;
+  align-items: center;
 }
 
-.studyNameTitle {
+.studyName {
   font-size: 2rem;
   font-weight: 800;
   color: var(--black);
@@ -54,9 +53,9 @@
 }
 
 /* tablet media */
-@media (max-width: 1199px) and (min-width: 744px) {
+@media (max-width: 46.5rem) {
   .habitContainer {
-    padding: 7.25rem 1.5rem 4.94rem 1.5rem;
+    padding: 1rem 1.5rem 4.94rem 1.5rem;
   }
   .habitBox {
     padding: 1.5rem;
@@ -64,21 +63,48 @@
 }
 
 /* mobile media */
-@media (max-width: 743px) and (min-width: 375px) {
+@media (max-width: 23.4375rem) {
   .habitContainer {
-    padding: 7.5rem 0.94rem 8.81rem 1rem;
+    padding: 0.25rem 0.94rem 8.81rem 1rem;
   }
   .habitBox {
-    padding: 1rem 1.5rem;
+    padding: 1rem;
   }
 
   .navTop {
     flex-direction: column;
+    align-items: normal;
     gap: 1rem;
   }
 
-  .studyNameTitle {
+  /* 애니매이션 */
+  .studyName {
     font-size: 1.5rem;
+    white-space: nowrap;
+    display: inline-block;
+    flex-shrink: 0;
+  }
+  .nameWrapper {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+
+    width: 100%;
+    overflow: hidden;
+  }
+
+  @keyframes marquee {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+
+  .nameWrapper:hover .studyName {
+    animation: marquee 8s linear infinite;
+    transition: none;
   }
 
   .moveBtnContainer {

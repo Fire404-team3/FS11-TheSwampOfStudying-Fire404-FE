@@ -6,6 +6,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 1.5rem;
 }
 
 /* 오늘의 습관 */
@@ -65,18 +66,18 @@
 }
 
 /* tablet media */
-@media (max-width: 1199px) and (min-width: 744px) {
+@media (max-width: 46.5rem) {
   .dailyHabitContainer {
-    margin-top: 2.5rem;
+    margin-top: 1.4rem;
     padding: 2.5rem 1.5rem;
   }
 }
 
 /* mobile media */
-@media (max-width: 743px) and (min-width: 375px) {
+@media (max-width: 23.4375rem) {
   .dailyHabitContainer {
-    margin-top: 1.5rem;
     padding: 1.5rem 1rem;
+    margin-top: 1rem;
   }
 
   .habitBox {

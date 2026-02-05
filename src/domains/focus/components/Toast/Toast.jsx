@@ -40,7 +40,10 @@ export function Toast({ duration = 3000 }) {
   if (!toastData) return null;
 
   return (
-    <div key={toastData.id} className={`${styles.toast} ${styles[toastData.variant]}`}>
+    <div
+      key={toastData.id}
+      className={`${styles.toast} ${styles[toastData.variant]}`}
+    >
       <span className={styles.message}>{toastData.message}</span>
     </div>
   );

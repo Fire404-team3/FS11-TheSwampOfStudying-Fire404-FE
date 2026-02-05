@@ -1,0 +1,56 @@
+.row {
+  display: grid;
+  grid-template-columns: subgrid;
+  grid-column: span 2;
+  height: 4rem; /* h-16 */
+}
+
+.title {
+  display: grid;
+  place-content: center;
+  /* padding-left: 1.5rem;  /* px-6 */
+  /* padding-right: 1.5rem;  */
+  text-align: right;
+  font-weight: 700;
+  color: #414141;
+  font-size: 1.125rem;
+}
+
+.days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  place-items: center;
+  font-size: 1.125rem; /* text-lg */
+  color: #818181;
+}
+
+.sticker {
+  width: 2.25rem; /* size-9 */
+  height: 2.25rem;
+}
+
+/* 타블렛 */
+@media (max-width: 1199px) and (min-width: 744px) {
+  .title {
+    font-size: 1.125rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    text-align: right;
+  }
+}
+
+/* 모바일 */
+@media (max-width: 743px) and (min-width: 375px) {
+  .title {
+    text-align: center;
+    font-size: 0.9rem;
+  }
+
+  .days {
+    gap: 0.2rem;
+  }
+
+  .sticker {
+    width: 1.8rem;
+  }
+}

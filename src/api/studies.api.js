@@ -1,9 +1,39 @@
+import { apiRequest } from './index';
+
+const BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5005';
+
+export const getStudies = async ({ search, sort, order, page, limit }) => {
+  const params = new URLSearchParams({
+    search: search || '',
+    sort,
+    order,
+    page,
+    limit,
+  });
+
+  const response = await fetch(`${BASE_URL}/studies?${params.toString()}`);
+
+  if (!response.ok) {
+    const errorData = await response.json().catch(() => ({}));
+
+    if (response.status >= 500) {
+      throw new Error('서버 점검 중입니다. 잠시 후 다시 시도해 주세요.');
+    }
+    if (response.status >= 400) {
+      throw new Error(errorData.message || '요청 값이 올바르지 않습니다.');
+    }
+    throw new Error(
+      `데이터를 불러오는데 실패했습니다. (Status: ${response.status})`,
+    );
+  }
+  return await response.json();
+};
+
 /**
  * [Study API 생성/비밀번호 검증 모달/수정/삭제 통합]
  */
 
 // 서버주소, 향후 env로 관리
-const BASE_URL = 'http://localhost:5005';
 
 // 1. 스터디 생성용 API
 export const postStudy = async (studyData) => {
@@ -110,3 +140,36 @@ export const deleteStudy = async (id, password) => {
 
   return result;
 };
+
+/**
+ * 스터디 상세 정보를 가져오는 API
+ * @param {string} id - 스터디 아이디
+ * @returns {Promise<{data: object}>} - 프론트엔드 일관성을 위해 { data: ... } 구조로 반환
+ */
+export const fetchAllResourcesList = async (id) => {
+  // 서버에 데이터를 요청함
+  const response = await fetch(`${BASE_URL}/studies/${id}`);
+
+  if (!response.ok) {
+    throw new Error('데이터를 불러오는데 실패했습니다.');
+  }
+
+  const data = await response.json();
+  return data;
+};
+
+/**
+ * 포인트 적립 API
+ * @param {string} studyId - 스터디 ID
+ * @param {number} minutes - 공부한 시간 (분)
+ * @param {boolean} isSuccess - 집중 성공 여부
+ * @returns {Promise<{ studyId: string, earnedPoints: number, totalPoints: number }>}
+ */
+export async function addPoints(studyId, minutes, isSuccess) {
+  const response = await apiRequest(`/studies/${studyId}/points`, {
+    method: 'POST',
+    body: { minutes, isSuccess },
+  });
+
+  return response;
+}

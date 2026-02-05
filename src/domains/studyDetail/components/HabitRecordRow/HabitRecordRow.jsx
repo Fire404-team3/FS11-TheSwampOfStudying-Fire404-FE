@@ -1,6 +1,6 @@
-import styles from './HabitRecordRow.module.css'
+import styles from './HabitRecordRow.module.css';
 
-import noCheckIcon from '@/assets/sticker_empty.svg';
+import noCheckIcon from '@/assets/images/sticker_empty.svg';
 import icon0 from '@/assets/checkIcon/sticker_light_green_100_01.svg';
 import icon1 from '@/assets/checkIcon/sticker_light_green_100_02.svg';
 import icon2 from '@/assets/checkIcon/sticker_light_green_100_03.svg';
@@ -47,17 +47,15 @@ function HabitRecordRow({ habit, index }) {
 
   const records = Array.isArray(habit.records) ? habit.records : [];
 
-  const daysOfHabitRecords = records.map(
-    (habitRecord) => new Date(habitRecord.checkDate).getDay()
+  const daysOfHabitRecords = records.map((habitRecord) =>
+    new Date(habitRecord.checkDate).getDay(),
   );
 
   const isActive = (day) => daysOfHabitRecords.includes(day);
 
   return (
     <div className={styles.row}>
-      <div className={styles.title}>
-        {habit.name || habit.title}
-      </div>
+      <div className={styles.title}>{habit.name || habit.title}</div>
 
       <div className={styles.days}>
         {[1, 2, 3, 4, 5, 6, 0].map((dayInNumber) => (

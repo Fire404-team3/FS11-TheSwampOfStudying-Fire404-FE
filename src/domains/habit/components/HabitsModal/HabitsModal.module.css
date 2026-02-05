@@ -58,7 +58,8 @@
 }
 
 /* 데스크탑 규격 */
-@media (min-width: 30.0625rem) { /* 481px 이상 */
+@media (min-width: 30.0625rem) {
+  /* 481px 이상 */
   .habitAddButton {
     width: 25rem; /* 400px */
     margin-left: 6.25rem; /* 100px */
@@ -79,7 +80,8 @@
   margin-top: auto;
 }
 
-.cancelButton, .saveButton {
+.cancelButton,
+.saveButton {
   width: 18rem; /* 288px */
   height: 3.625rem; /* 58px */
   border: none;
@@ -91,11 +93,16 @@
   color: var(--color-gray-500, #818181);
 }
 
-.cancelButton { background: var(--color-gray-300, #DDDDDD); }
-.saveButton { background-color: var(--color-point-green, #99C08E); }
+.cancelButton {
+  background: var(--color-gray-300, #dddddd);
+}
+.saveButton {
+  background-color: var(--color-point-green, #99c08e);
+}
 
 /* ===== 모바일 규격 (344px * 741px) ===== */
-@media (max-width: 30rem) { /* 480px 이하 */
+@media (max-width: 30rem) {
+  /* 480px 이하 */
   .modalBox {
     width: 21.5rem; /* 344px */
     height: 46.3125rem; /* 741px */
@@ -103,11 +110,12 @@
 
   .habitAddButton {
     /* 입력창(16rem) + 간격(0.5rem) + 쓰레기통(2.5rem) = 19rem */
-    width: 19rem; 
+    width: 19rem;
     margin-left: 1rem;
   }
 
-  .cancelButton, .saveButton {
+  .cancelButton,
+  .saveButton {
     width: 8.75rem; /* 140px */
   }
 }

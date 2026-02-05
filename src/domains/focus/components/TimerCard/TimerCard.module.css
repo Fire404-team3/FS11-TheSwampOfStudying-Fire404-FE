@@ -8,8 +8,8 @@
   flex-direction: column;
   align-items: center;
   border-radius: 1.25rem;
-  border: 1px solid var(--gray-gray_DDDDDD, #DDD);
-  background: #FFF;
+  border: 1px solid var(--gray-gray_DDDDDD, #ddd);
+  background: #fff;
 }
 
 .title {
@@ -127,7 +127,7 @@
   border-radius: 2rem;
   cursor: pointer;
   transition: opacity 0.2s ease;
-  color: #FFF;
+  color: #fff;
   text-align: center;
   font-family: Pretendard;
   font-size: 1.75rem;
@@ -183,7 +183,7 @@
 }
 
 /* Tablet */
-@media (max-width: 1199px) {
+@media (max-width: 46.5rem) {
   .card {
     max-width: 40.5rem;
     height: 31.875rem;
@@ -210,7 +210,7 @@
 }
 
 /* Mobile */
-@media (max-width: 767px) {
+@media (max-width: 23.4375rem) {
   .card {
     max-width: 19.5rem;
     height: 21.375rem;

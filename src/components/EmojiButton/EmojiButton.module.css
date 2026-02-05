@@ -1,0 +1,36 @@
+.emojiBadge {
+  --theme-emoji-bg: rgba(0, 0, 0, 0.5);
+
+  background: var(--theme-emoji-bg);
+  height: 1.9375rem;
+
+  display: inline-flex;
+  padding: 0.375rem 0.5rem;
+  align-items: center;
+  gap: 0.3125rem;
+  border-radius: 3.125rem;
+
+  cursor: pointer;
+
+  transition:
+    background 0.15s ease,
+    outline 0.15s ease;
+}
+.emojiBadge:hover {
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.active {
+  outline: 0.0625rem solid rgba(255, 255, 255, 0.6);
+  outline-offset: -0.0625rem;
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.emojiCount {
+  color: #fff;
+  font-family: var(--main-font);
+  font-size: 0.75rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}

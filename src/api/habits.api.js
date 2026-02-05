@@ -1,4 +1,5 @@
-const API_BASE_URL = 'http://localhost:5005';
+const API_BASE_URL =
+  import.meta.env.VITE_API_BASE_URL || 'http://localhost:5005';
 
 //habit데이터 불러오는 api
 export const fetchHabitList = async (id) => {
@@ -13,6 +14,7 @@ export const fetchHabitList = async (id) => {
     return data;
   } catch (error) {
     console.error('전송 에러', error);
+    throw error;
   }
 };
 
@@ -34,19 +36,18 @@ export const creatHabitCheckDate = async (id, checkDate) => {
     return response.json();
   } catch (error) {
     console.error('전송 에러', error);
+    throw error;
   }
 };
 
 //오늘의 습관에서 실행한 습관 클릭시 habitRecord에 checkDate날짜 삭제
-
 export const deleteHabitCheckDate = async (id, checkDate) => {
   try {
-    const response = await fetch(
-      `${API_BASE_URL}/habits/${id}/check?checkDate=${checkDate}`,
-      {
-        method: 'DELETE',
-      },
-    );
+    const response = await fetch(`${API_BASE_URL}/habits/${id}/check`, {
+      method: 'DELETE',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ checkDate }),
+    });
 
     if (!response.ok) {
       throw new Error('checkDate 삭제 실패되었습니다.');
@@ -55,9 +56,9 @@ export const deleteHabitCheckDate = async (id, checkDate) => {
     return response.json();
   } catch (error) {
     console.error('전송 에러', error);
+    throw error;
   }
 };
-
 
 // 모달
 
@@ -70,12 +71,11 @@ export const updateHabits = async (studyId, habits) => {
 
   if (!response.ok) {
     let finalMessage = '알 수 없는 오류가 발생했습니다.';
-    
+
     try {
       // 응답이 JSON인지 확인 후 파싱
       const errorData = await response.json();
       finalMessage = errorData.message || finalMessage;
-    
     } catch (parseError) {
       // JSON 파싱 실패 시 (서버가 HTML 에러를 뱉었을 때 등)
       console.error('Failed to parse error JSON', parseError);
@@ -85,6 +85,5 @@ export const updateHabits = async (studyId, habits) => {
     throw new Error(finalMessage);
   }
 
-  return true;  //서버 성공시 NO_CONENT 전달
+  return true; //서버 성공시 NO_CONENT 전달
 };
-

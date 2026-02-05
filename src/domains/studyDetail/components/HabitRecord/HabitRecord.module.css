@@ -41,3 +41,20 @@
   font-weight: 500;
   color: #818181;
 }
+
+/* 모바일 */
+@media (max-width: 743px) and (min-width: 375px) {
+  .container {
+    padding: 0.8rem; /* p-6 */
+  }
+
+  .title {
+    font-size: 1.125rem;
+    margin-bottom: 1.1rem;
+  }
+
+  .headerDays {
+    font-size: 1rem;
+    gap: 0.3rem;
+  }
+}

@@ -27,7 +27,6 @@ const StudyForm = ({
 
   return (
     <form onSubmit={onSubmit} className={styles.form}>
-      
       {/* 공통 필드 */}
       <FormInput
         label="닉네임"
