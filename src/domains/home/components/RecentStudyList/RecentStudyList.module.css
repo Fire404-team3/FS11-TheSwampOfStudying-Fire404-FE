@@ -50,6 +50,11 @@
 }
 /* Mobile */
 @media (max-width: 23.4375rem) {
+  .newSet {
+    width: 15rem;
+    height: 11.25rem;
+  }
+
   .recentSection {
     width: 100%;
     max-width: 21.5rem;
@@ -57,11 +62,17 @@
     overflow: hidden;
     display: flex;
     flex-direction: column;
+    padding: 1rem;
   }
   .title {
     font-size: 1rem;
     margin-bottom: -1rem;
   }
+
+  .recentContainer{
+    gap: 1rem;
+  }
+
   .recentContainer > article {
     flex: 0 0 15rem;
     width: 100%;

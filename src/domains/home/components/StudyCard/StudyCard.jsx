@@ -5,7 +5,7 @@ import { Link } from 'react-router';
 import { useEffect, useRef, useState } from 'react';
 import pointImg from '@/assets/images/ic_point.svg';
 
-export default function StudyCard({ study }) {
+export default function StudyCard({ study , className }) {
   const [isOverflow, setIsOverflow] = useState(false);
   const titleRef = useRef(null);
   const {
@@ -70,7 +70,7 @@ export default function StudyCard({ study }) {
   return (
     <Link to={`/studies/${study.id}`} className={styles.linkWrapper}>
       <article
-        className={clsx(styles.backgroundArea, themeClass)}
+        className={clsx(styles.backgroundArea, themeClass, className)}
         onClick={handleCardClick}
         style={{ cursor: 'pointer' }}
       >

@@ -30,7 +30,7 @@ export default function RecentStudyList() {
           <p className={styles.emptyText}>아직 조회한 스터디가 없어요</p>
         ) : (
           recentStudies.map((study) => (
-            <StudyCard key={study.id} study={study} />
+            <StudyCard key={study.id} study={study} className={styles.newSet} />
           ))
         )}
       </div>
