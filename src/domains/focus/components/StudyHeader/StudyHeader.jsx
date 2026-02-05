@@ -1,8 +1,10 @@
 import { useRef, useState, useEffect } from 'react';
-import { Link, useParams } from 'react-router';
+import { useParams } from 'react-router';
+// import { Link, useParams } from 'react-router';
 import styles from './StudyHeader.module.css';
 import icPoint from '@/assets/images/ic_point.svg';
-import icArrowRight from '@/assets/images/ic_arrow_right.svg';
+// import icArrowRight from '@/assets/images/ic_arrow_right.svg';
+import { LinkButton } from '@/components/LinkButton';
 
 /**
  * @param {Object} props
@@ -61,23 +63,26 @@ export function StudyHeader({ nickname, name, points }) {
         </div>
       </div>
       <nav className={styles.rightSection}>
-        <Link to={`/studies/${id}/habits`} className={styles.navButton}>
-          오늘의 습관
-          <img
-            src={icArrowRight}
-            alt=""
-            style={{ width: '1.5rem', height: '1.5rem' }}
-          />
-        </Link>
-        <Link to="/" className={styles.navButton}>
-          홈
-          <img
-            src={icArrowRight}
-            alt=""
-            style={{ width: '1.5rem', height: '1.5rem' }}
-          />
-        </Link>
+        <LinkButton to={`/studies/${id}/habits`}>오늘의 습관</LinkButton>
+        <LinkButton to="/">홈</LinkButton>
       </nav>
     </div>
   );
 }
+
+{/* <Link to={`/studies/${id}/habits`} className={styles.navButton}>
+  오늘의 습관
+  <img
+    src={icArrowRight}
+    alt=""
+    style={{ width: '1.5rem', height: '1.5rem' }}
+  />
+</Link>
+<Link to="/" className={styles.navButton}>
+  홈
+  <img
+    src={icArrowRight}
+    alt=""
+    style={{ width: '1.5rem', height: '1.5rem' }}
+  />
+</Link> */}

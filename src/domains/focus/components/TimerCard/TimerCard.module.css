@@ -183,7 +183,7 @@
 }
 
 /* Tablet */
-@media (max-width: 1199px) {
+@media (max-width: 46.5rem) {
   .card {
     max-width: 40.5rem;
     height: 31.875rem;
@@ -210,7 +210,7 @@
 }
 
 /* Mobile */
-@media (max-width: 767px) {
+@media (max-width: 23.4375rem) {
   .card {
     max-width: 19.5rem;
     height: 21.375rem;

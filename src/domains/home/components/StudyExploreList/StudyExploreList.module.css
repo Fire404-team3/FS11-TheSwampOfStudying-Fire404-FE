@@ -25,7 +25,7 @@
 }
 
 /* Tablet (iPad Mini) */
-@media (max-width: 1199px) {
+@media (max-width: 46.5rem) {
   .exploreSection {
     width: 43.5rem;
     padding: 2rem 1.5rem;
@@ -37,7 +37,7 @@
 }
 
 /* Mobile */
-@media (max-width: 767px) {
+@media (max-width: 23.4375rem) {
   .exploreSection {
     width: 21.5rem;
   }

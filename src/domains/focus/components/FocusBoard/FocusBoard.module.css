@@ -9,7 +9,7 @@
   align-items: flex-start;
   gap: 0.625rem;
   background-color: #fff;
-  border-radius: 1rem;
+  border-radius: 1.25rem;
   box-sizing: border-box;
 }
 
@@ -21,7 +21,7 @@
 }
 
 /* Tablet */
-@media (max-width: 1199px) {
+@media (max-width: 46.5rem) {
   .board {
     width: 43.5rem;
     min-height: 45.375rem;
@@ -30,7 +30,7 @@
 }
 
 /* Mobile */
-@media (max-width: 767px) {
+@media (max-width: 23.4375rem){
   .board {
     width: 21.5rem;
     min-height: auto;

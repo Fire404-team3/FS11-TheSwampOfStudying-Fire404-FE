@@ -6,7 +6,7 @@ import { fetchHabitList } from '@/api/habits.api';
 import { useParams } from 'react-router';
 import { Header } from '@/components/Header';
 
-function HabitPage({ className }) {
+function HabitPage() {
   const { id } = useParams();
   const INTERVAL_TIME = 10000;
   const [current, setCurrent] = useState(new Date());
@@ -80,10 +80,10 @@ function HabitPage({ className }) {
               </div>
             </div>
             <div className={styles.moveBtnContainer}>
-              <LinkButton to={`/studies/${id}/focus`} className={className}>
+              <LinkButton to={`/studies/${id}/focus`} >
                 오늘의 집중
               </LinkButton>
-              <LinkButton to="/" className={className}>
+              <LinkButton to="/" >
                 홈
               </LinkButton>
             </div>
