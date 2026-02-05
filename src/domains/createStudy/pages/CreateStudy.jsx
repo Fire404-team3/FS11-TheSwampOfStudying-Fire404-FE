@@ -54,7 +54,7 @@ const CreateStudy = () => {
       // 성공 시 스터디 상세페이지로 이동
       navigate(`/studies/${result.id}`);
     } catch (error) {
-      const validationErrors = error.details || error.response?.data?.details;
+      const validationErrors = error.details || error.response?.data?.details || [error.message];
 
       if (validationErrors) {
         setErrors(validationErrors);
