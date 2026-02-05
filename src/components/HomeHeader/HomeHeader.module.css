@@ -14,16 +14,11 @@
   height: 6.25rem;
   padding-left: 13.75rem;
   padding-right: 13.75rem;
-  /* max-width: 120rem; */
-  /* margin: 0 auto; */
-  /* padding: 0 2rem; */
-  /* gap: 1.5rem; */
 }
 
 .logoLink img {
   width: 11.35019rem;
   height: 3.75rem;
-  /* flex-shrink: 0; */
 }
 
 .createButton {
@@ -46,18 +41,6 @@
   transition: width 0.2s ease;
 }
 
-/* 데스크탑 ~ 태블릿 구간 (중간 완충) */
-/* @media (max-width: 80rem) {
-  약 1280px
-  .headerContents {
-    padding: 0 1.5rem;
-  }
-  .createButton {
-    width: 12rem; 서서히 줄어드는 느낌을 위해 중간값 설정
-    border-radius: 0.875rem;
-  }
-} */
-
 /* 태블릿 (46.5rem 미만 - 48로 올려서 반응형 줄일때 어색함 방지) */
 @media (max-width: 46.5rem) {
   .headerContents {
@@ -75,18 +58,6 @@
     height: 3.625rem;
   }
 }
-
-/* 태블릿 ~ 모바일 구간 (서서히 작아지는 구간) */
-/* @media (max-width: 23.4375rem) {
-  태블릿과 모바일 중간 지점
-  .logoLink img {
-    width: auto;
-    height: 3rem;
-  }
-  .createButton {
-    width: 7.5rem;
-  }
-} */
 
 /* 모바일 (23.4rem 미만) */
 @media (max-width: 23.4375rem) {
