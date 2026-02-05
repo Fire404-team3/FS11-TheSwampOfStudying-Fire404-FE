@@ -39,7 +39,7 @@
 
 .moreDropdown {
   width: 15.125rem;
-  height: 5.625rem;
+  /* height: 5.625rem; */
 
   border-radius: 0.9375rem;
   border: 1px solid var(--gray-DDDDDD, #ddd);
@@ -54,7 +54,7 @@
 
   position: absolute;
   top: 2.5rem;
-  left: 0;
+  left: -10rem;
   z-index: 1000;
   cursor: pointer;
 }
