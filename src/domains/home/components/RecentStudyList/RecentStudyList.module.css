@@ -43,9 +43,15 @@
 @media (max-width: 46.5rem) {
   .recentSection {
     width: 43.5625rem;
-    height: 22rem;
+    height: 21rem;
     padding: 1.5rem;
     overflow: hidden;
+    gap: 1.12rem;
+  }
+
+  .newSet {
+    width: 22.375rem;
+    height: 15.1875rem;
   }
 }
 /* Mobile */
@@ -69,7 +75,7 @@
     margin-bottom: -1rem;
   }
 
-  .recentContainer{
+  .recentContainer {
     gap: 1rem;
   }
 
