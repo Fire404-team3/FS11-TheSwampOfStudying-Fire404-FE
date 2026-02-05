@@ -83,7 +83,7 @@ export default function StudyCard({ study, className }) {
                     ref={titleRef}
                     className={clsx(styles.title, isOverflow && 'is-scrolling')}
                   >
-                    <span className={styles.nickname}>{nickname}</span> 의{name}
+                    <span className={styles.nickname}>{nickname}</span>의 {name}
                     {isOverflow && (
                       <>
                         &nbsp;&nbsp;&nbsp;&nbsp;
