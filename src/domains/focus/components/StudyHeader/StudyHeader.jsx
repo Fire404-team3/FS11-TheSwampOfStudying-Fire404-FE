@@ -69,20 +69,3 @@ export function StudyHeader({ nickname, name, points }) {
     </div>
   );
 }
-
-{/* <Link to={`/studies/${id}/habits`} className={styles.navButton}>
-  오늘의 습관
-  <img
-    src={icArrowRight}
-    alt=""
-    style={{ width: '1.5rem', height: '1.5rem' }}
-  />
-</Link>
-<Link to="/" className={styles.navButton}>
-  홈
-  <img
-    src={icArrowRight}
-    alt=""
-    style={{ width: '1.5rem', height: '1.5rem' }}
-  />
-</Link> */}

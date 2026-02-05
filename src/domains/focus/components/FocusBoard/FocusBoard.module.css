@@ -30,7 +30,7 @@
 }
 
 /* Mobile */
-@media (max-width: 23.4375rem){
+@media (max-width: 23.4375rem) {
   .board {
     width: 21.5rem;
     min-height: auto;

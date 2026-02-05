@@ -2,15 +2,13 @@
   min-height: 100vh;
   background-color: var(--bg);
   position: relative;
-    padding: 2.44rem 19.5rem 6.25rem 22.5rem;
-
+  padding: 2.44rem 19.5rem 6.25rem 22.5rem;
 }
 
 .container {
   /* max-width: 75rem; */
   /* padding: 3.34rem 2rem 9.53rem; */
   margin: 0 auto;
-
 }
 
 .toastContainer {
@@ -23,14 +21,14 @@
 
 /* Tablet */
 @media (max-width: 46.5rem) {
-  .page{
+  .page {
     padding: 1rem;
   }
 }
 
 /* Mobile */
 @media (max-width: 23.4375rem) {
-  .page{
+  .page {
     padding: 0 1rem 8.81rem;
   }
 
