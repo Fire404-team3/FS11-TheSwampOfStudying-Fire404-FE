@@ -1,7 +1,7 @@
 {
   "name": "fe-repo",
   "private": true,
-  "version": "0.0.1",
+  "version": "1.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -9,7 +9,7 @@
     "lint": "eslint .",
     "preview": "vite preview"
   },
-  "description": "팀 프로젝트 '프로젝트 이름' 프론트엔드",
+  "description": "팀 프로젝트 '공부의 숲' 프론트엔드",
   "contributors": [
     {
       "name": "백은결"
