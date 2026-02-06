@@ -10,6 +10,7 @@ import toast from 'react-hot-toast';
 import PasswordModal from '@/components/PasswordModal';
 import { Header } from '@/components/Header';
 import { EmojiList } from '@/components/EmojiList';
+import { QRCodeCanvas } from 'qrcode.react';
 
 function StudyDetailPage() {
   // [수훈] useParams에서 ID 가져오기, 네비게이트 연결
@@ -32,6 +33,9 @@ function StudyDetailPage() {
   // 오늘의 습관,집중 진입시 비밀번호 모달 각각 관리
   const [isTodayHabitOpen, setIsTodayHabitOpen] = useState(false);
   const [isTodayFocusOpen, setIsTodayFocusOpen] = useState(false);
+
+  // 공유하기 QR 모달 관리
+  const [isQRModalOpen, setIsQRModalOpen] = useState(false);
 
   const allResourcesList = async () => {
     try {
@@ -157,6 +161,10 @@ function StudyDetailPage() {
     }
   };
 
+  const handleShareClick = () => {
+    setIsQRModalOpen((prev) => !prev);
+  };
+
   // 상태관리에 loading과 error의 에러 방지용
   if (loading) return <div>로딩 중...</div>;
   if (error) return <div>에러 발생: {error}</div>;
@@ -175,7 +183,23 @@ function StudyDetailPage() {
               </div>
 
               <div className={styles.fixBtns}>
-                <button className={styles.Share}>공유하기</button>
+                <div className={styles.shareWrapper}>
+                  <button onClick={handleShareClick} className={styles.Share}>
+                    공유하기
+                  </button>
+                  {/* 공유하기 QR 모달 */}
+                  {isQRModalOpen && (
+                    <div
+                      onClick={handleShareClick}
+                      className={styles.QRWrapper}
+                    >
+                      <QRCodeCanvas
+                        value={window.location.href}
+                        includeMargin
+                      />
+                    </div>
+                  )}
+                </div>
                 <span>|</span>
                 <button className={styles.studyFix} onClick={handleUpdateClick}>
                   수정하기
