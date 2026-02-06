@@ -9,6 +9,7 @@ const DEBOUNCE_DELAY = 300;
 const LIMIT = 6;
 
 export default function Home() {
+  const [isLoading, setIsLoading] = useState(true);
   const [exploreStudies, setExploreStudies] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [sortOrder, setSortOrder] = useState({
@@ -37,6 +38,8 @@ export default function Home() {
           setTotalCount(result.meta.totalCount);
         } catch (error) {
           console.error('데이터 로드 실패', error);
+        } finally {
+          setIsLoading(false);
         }
       };
       fetchStudies();
@@ -53,6 +56,7 @@ export default function Home() {
       <section>
         <StudyExploreList
           studies={exploreStudies}
+          isLoading={isLoading}
           onSearchChange={setSearchTerm}
           searchTerm={searchTerm}
           sortOrder={sortOrder}

@@ -5,6 +5,7 @@ import styles from './StudyExploreList.module.css';
 
 export default function StudyExploreList({
   studies,
+  isLoading,
   searchTerm,
   onSearchChange,
   sortOrder,
@@ -14,6 +15,8 @@ export default function StudyExploreList({
   totalCount,
   limit,
 }) {
+  if (isLoading && studies.length === 0) return null;
+
   const handleSearch = (value) => {
     onSearchChange(value);
     onPageChange(1);
